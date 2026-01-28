@@ -1,0 +1,400 @@
+import { Link, useLocation } from 'react-router-dom';
+import { ArrowUpRight, Sparkles, User } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { HyperText } from '@/components/ui/hyper-text';
+import { ExpandableCard } from '@/components/ui/expandable-card';
+import SEO from '@/components/SEO';
+
+export default function Home() {
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      setTimeout(() => {
+        const section = document.getElementById(location.state.scrollTo);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('[data-animate]').forEach((el) => {
+      observerRef.current?.observe(el);
+    });
+
+    return () => observerRef.current?.disconnect();
+  }, []);
+
+  const services = [
+    'Systems Architecture',
+    'AI Automation',
+    'Digital Infrastructure',
+    'Business Operations',
+    'Full Stack Development',
+    'Marketing Systems',
+  ];
+
+  const projects = [
+    {
+      title: 'BuilderLync Platform',
+      category: ['SaaS', 'Development'],
+      gradient: 'from-cyan-500 to-blue-500',
+    },
+    {
+      title: 'AI Voice Agents',
+      category: ['AI', 'Automation'],
+      gradient: 'from-orange-500 to-red-500',
+    },
+    {
+      title: 'CRM Infrastructure',
+      category: ['Systems', 'Integration'],
+      gradient: 'from-emerald-500 to-teal-500',
+    },
+    {
+      title: 'Marketing Automation',
+      category: ['Marketing', 'Workflow'],
+      gradient: 'from-purple-500 to-pink-500',
+    },
+    {
+      title: 'Business Intelligence',
+      category: ['Analytics', 'Data'],
+      gradient: 'from-blue-500 to-indigo-500',
+    },
+    {
+      title: 'Operational Systems',
+      category: ['Operations', 'Testing'],
+      gradient: 'from-amber-500 to-orange-500',
+    },
+  ];
+
+  const servicesList = [
+    {
+      title: 'AI & Automation',
+      description: 'Production-ready AI systems including voice agents, workflow automation, and intelligent operational tools for real business environments.',
+      features: ['AI Voice Agents', 'Workflow Automation', 'Smart Business Tools'],
+    },
+    {
+      title: 'Business Operations',
+      description: 'Strategic operational systems that optimize business processes through integrated technology and data-driven decision making.',
+      features: ['Process Optimization', 'Operational Testing', 'Live Data Integration'],
+    },
+    {
+      title: 'Cybersecurity & Compliance',
+      description: 'Robust security frameworks and compliance solutions that protect your digital assets while meeting industry standards and regulations.',
+      features: ['Security Architecture', 'Compliance Auditing', 'Risk Assessment'],
+    },
+    {
+      title: 'Data Management & Analytics',
+      description: 'Comprehensive data solutions that transform raw information into actionable insights through advanced analytics and visualization.',
+      features: ['Data Pipeline Design', 'Business Intelligence', 'Predictive Analytics'],
+    },
+    {
+      title: 'Full Stack Development',
+      description: 'End-to-end software development from concept to deployment, specializing in SaaS platforms and business management systems.',
+      features: ['SaaS Platform Development', 'Custom Software Solutions', 'API Development'],
+    },
+    {
+      title: 'Systems Architecture',
+      description: 'Comprehensive system design and infrastructure planning that integrates marketing, CRM, and automation for scalable business operations.',
+      features: ['Enterprise System Design', 'Infrastructure Planning', 'Scalability Architecture'],
+    },
+  ];
+
+  return (
+    <div className="pt-20">
+      <SEO
+        title="Sean Richard | Systems Architect & Software Operator"
+        description="Sean Richard is an American entrepreneur, systems architect, and software operator focused on building AI-driven automation, business infrastructure, and scalable operating systems for contractors and service-based companies. He is the founder and operator of Sitehues Media Inc, Autom8ion Lab, BuilderLync Inc, and Tarrytown Roofing LLC."
+        path="/"
+      />
+      {/* Hero Section */}
+      <section
+        id="hero"
+        data-animate
+        className="min-h-screen flex items-center justify-center px-6 py-20 relative"
+      >
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="text-center mb-8 animate-fade-in flex justify-center">
+            <HyperText
+              text="Sean Richard"
+              className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter"
+              duration={1200}
+            />
+          </div>
+
+          <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-8">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold animate-slide-up">
+              Systems
+            </h2>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold animate-slide-up">
+              Architect
+            </h2>
+          </div>
+
+          <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-20">
+            <div className="md:w-2/5 animate-slide-up">
+              <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
+                I build AI-driven platforms, automation systems, and operational infrastructure designed for operators, not theory.
+              </p>
+            </div>
+
+            <Link to="/contact" className="relative group cursor-pointer animate-scale-in">
+              <div className="w-40 h-40 rounded-full border-2 border-white/20 flex items-center justify-center hover:border-accent transition-all duration-300 hover:rotate-12">
+                <div className="text-center">
+                  <div className="text-sm font-semibold mb-1">Start a</div>
+                  <ArrowUpRight className="w-5 h-5 mx-auto mb-1" />
+                  <div className="text-sm font-semibold">Conversation</div>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          <div className="flex justify-center animate-scale-in">
+            <div className="w-64 h-80 md:w-80 md:h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg border border-white/10 flex items-center justify-center relative overflow-hidden">
+              <User className="w-32 h-32 text-gray-600" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <div className="absolute bottom-4 left-0 right-0 text-center text-sm text-gray-400">
+                Professional Headshot
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Marquee Section */}
+      <section className="relative -mt-40 z-10">
+        <div className="bg-accent transform -rotate-2 py-6 overflow-hidden">
+          <div className="flex whitespace-nowrap animate-marquee">
+            {[...services, ...services].map((service, index) => (
+              <span key={index} className="inline-flex items-center text-2xl md:text-3xl font-bold text-white mx-8">
+                <Sparkles className="w-6 h-6 mr-4" />
+                {service}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-accent transform rotate-2 py-6 overflow-hidden mt-1">
+          <div className="flex whitespace-nowrap animate-marquee-reverse">
+            {[...services, ...services].map((service, index) => (
+              <span key={index} className="inline-flex items-center text-2xl md:text-3xl font-bold text-white mx-8">
+                <Sparkles className="w-6 h-6 mr-4" />
+                {service}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section
+        id="projects"
+        data-animate
+        className={`py-32 px-6 transition-opacity duration-1000 ${
+          visibleSections.has('projects') ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">( Latest Portfolio )</p>
+            <h2 className="text-4xl md:text-6xl font-bold">Companies and Projects</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <ExpandableCard
+              title="Sitehues Media Inc."
+              description="Digital Infrastructure"
+              src="/assets/images/sitehues-media.png"
+              className="aspect-[4/3]"
+              classNameExpanded="[&_h4]:text-white [&_h4]:font-medium [&_h4]:text-xl"
+            >
+              <h4>Company Overview</h4>
+              <p>
+                Sitehues Media is a digital infrastructure and execution company built for service-based businesses
+                that need predictable growth systems. It focuses on paid media execution, funnel architecture, and
+                CRM infrastructure designed to produce measurable results, not vanity metrics.
+              </p>
+              <h4>Key Capabilities</h4>
+              <p>
+                The company delivers paid advertising systems, conversion-focused funnels, CRM configuration, and
+                automated lead nurturing designed to move prospects from first touch to closed deal with minimal friction.
+              </p>
+              <h4>Operational Approach</h4>
+              <p>
+                Sitehues Media operates inside live production environments, validating systems through real client
+                campaigns before standardizing and scaling execution frameworks across industries.
+              </p>
+            </ExpandableCard>
+
+            <ExpandableCard
+              title="Autom8ion Lab"
+              description="AI Automation"
+              src="/assets/images/autom8ion-lab.png"
+              className="aspect-[4/3]"
+              classNameExpanded="[&_h4]:text-white [&_h4]:font-medium [&_h4]:text-xl"
+            >
+              <h4>Company Overview</h4>
+              <p>
+                Autom8ion Lab is an AI automation company focused on building production-ready systems for real
+                business operations. It develops AI solutions that replace manual workflows, reduce response time,
+                and improve operational throughput.
+              </p>
+              <h4>Key Capabilities</h4>
+              <p>
+                The platform includes AI voice agents, workflow automation, internal process orchestration, and
+                system-to-system integrations designed for reliability and scale.
+              </p>
+              <h4>Technical Implementation</h4>
+              <p>
+                Solutions are built for deployment in live environments, emphasizing uptime, security, and seamless
+                integration with existing business infrastructure rather than experimental or demo-based AI tools.
+              </p>
+            </ExpandableCard>
+
+            <ExpandableCard
+              title="BuilderLync Inc."
+              description="Contractor SaaS"
+              src="/assets/images/builderlync.png"
+              className="aspect-[4/3]"
+              classNameExpanded="[&_h4]:text-white [&_h4]:font-medium [&_h4]:text-xl"
+            >
+              <h4>Company Overview</h4>
+              <p>
+                BuilderLync is a contractor-focused SaaS platform designed to unify CRM, estimating, project
+                management, marketing automation, and AI communication tools into a single operating system.
+                It replaces fragmented software stacks with a centralized, execution-driven platform.
+              </p>
+              <h4>Key Features</h4>
+              <p>
+                The platform supports lead-to-close workflows, pipeline management, project tracking, automated
+                communication, and AI-assisted follow-up across multiple teams and job sites.
+              </p>
+              <h4>Technical Implementation</h4>
+              <p>
+                Built with modern web technologies and designed for scalability, BuilderLync is architected to
+                support high concurrency, real-time updates, and long-term data ownership for contractors.
+              </p>
+            </ExpandableCard>
+
+            <ExpandableCard
+              title="Tarrytown Roofing LLC"
+              description="Live Operations"
+              src="/assets/images/tarrytown-roofing.png"
+              className="aspect-[4/3]"
+              classNameExpanded="[&_h4]:text-white [&_h4]:font-medium [&_h4]:text-xl"
+            >
+              <h4>Company Overview</h4>
+              <p>
+                Tarrytown Roofing is a service-based roofing company operated as a real-world testing environment
+                for systems, automation, and contractor software. It functions as a live production business,
+                not a demonstration brand.
+              </p>
+              <h4>Key Operations</h4>
+              <p>
+                The company manages residential and commercial roofing projects while running fully integrated
+                sales pipelines, CRM workflows, and automated communication systems.
+              </p>
+              <h4>Operational Role</h4>
+              <p>
+                Tarrytown Roofing is used to validate software, automation, and operational frameworks under
+                real market conditions before they are deployed into SaaS platforms and client systems.
+              </p>
+            </ExpandableCard>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section
+        id="services"
+        data-animate
+        className={`py-32 px-6 transition-opacity duration-1000 ${
+          visibleSections.has('services') ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">( Our Services )</p>
+            <h2 className="text-4xl md:text-6xl font-bold">Where Skill Meets Impact</h2>
+          </div>
+
+          <div className="space-y-8">
+            {servicesList.map((service, index) => (
+              <div
+                key={index}
+                className="group border border-white/10 hover:border-accent/50 transition-all duration-500 relative overflow-hidden"
+              >
+                <div className="p-8 md:p-12 flex flex-col md:flex-row justify-between items-start gap-8">
+                  <div className="md:w-1/3">
+                    <h3 className="text-2xl md:text-4xl font-bold mb-4 group-hover:text-accent transition-colors">
+                      {service.title}
+                    </h3>
+                  </div>
+
+                  <div className="md:w-1/2">
+                    <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
+                    <ul className="space-y-2">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-gray-300">
+                          <Sparkles className="w-4 h-4 text-accent" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex items-center justify-center">
+                    <div className="w-16 h-16 border border-white/20 group-hover:border-accent rounded-full flex items-center justify-center group-hover:rotate-45 transition-all duration-300">
+                      <ArrowUpRight className="w-6 h-6" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section
+        id="cta"
+        data-animate
+        className={`py-32 px-6 border-t border-white/10 transition-opacity duration-1000 ${
+          visibleSections.has('cta') ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8">Ready to Build Something Great?</h2>
+          <p className="text-xl text-gray-400 mb-12">
+            Let's discuss how we can create innovative solutions for your business
+          </p>
+          <Link
+            to="/contact"
+            className="group inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-semibold hover:bg-accent-dark transition-all"
+          >
+            Get In Touch
+            <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
