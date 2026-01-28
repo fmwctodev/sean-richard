@@ -5,6 +5,7 @@ import { HyperText } from '@/components/ui/hyper-text';
 import { ExpandableCard } from '@/components/ui/expandable-card';
 import SEO from '@/components/SEO';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import LastUpdated from '@/components/LastUpdated';
 
 export default function Home() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -481,6 +482,7 @@ export default function Home() {
             Get In Touch
             <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </Link>
+          <LastUpdated date="Jan 2026" />
         </div>
       </section>
     </div>

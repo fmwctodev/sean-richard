@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import SEO from '@/components/SEO';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import LastUpdated from '@/components/LastUpdated';
 
 export default function About() {
   const [visible, setVisible] = useState(false);
@@ -127,6 +128,7 @@ export default function About() {
             </div>
           </section>
 
+          <LastUpdated date="Jan 2026" />
         </div>
       </div>
     </div>

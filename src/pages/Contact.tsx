@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Send } from 'lucide-react';
 import SEO from '@/components/SEO';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import LastUpdated from '@/components/LastUpdated';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -181,6 +182,8 @@ export default function Contact() {
             </li>
           </ul>
         </div>
+
+        <LastUpdated date="Jan 2026" />
       </div>
     </div>
   );
