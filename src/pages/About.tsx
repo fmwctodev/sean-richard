@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Linkedin, Github } from 'lucide-react';
 import SEO from '@/components/SEO';
 
 export default function About() {
@@ -125,29 +124,6 @@ export default function About() {
             </div>
           </section>
 
-          <section className="border-t border-white/10 pt-16">
-            <h2 className="text-3xl font-bold mb-6 text-gray-300">Connect</h2>
-            <div className="flex flex-col gap-4">
-              <a
-                href="https://www.linkedin.com/in/a8l-sean-richard/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-lg text-gray-400 hover:text-white transition-colors group"
-              >
-                <Linkedin size={24} className="group-hover:scale-110 transition-transform" />
-                <span>Sean Richard on LinkedIn</span>
-              </a>
-              <a
-                href="https://github.com/Autom8ion-Lab"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-lg text-gray-400 hover:text-white transition-colors group"
-              >
-                <Github size={24} className="group-hover:scale-110 transition-transform" />
-                <span>Sean Richard on GitHub</span>
-              </a>
-            </div>
-          </section>
         </div>
       </div>
     </div>
