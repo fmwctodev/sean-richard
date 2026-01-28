@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Send } from 'lucide-react';
 import SEO from '@/components/SEO';
+import SchemaMarkup from '@/components/SchemaMarkup';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -56,10 +57,11 @@ export default function Contact() {
   return (
     <div className="pt-32 pb-20 px-6">
       <SEO
-        title="Contact"
+        title="Contact Sean Richard - Get in Touch"
         description="Contact Sean Richard for inquiries about AI automation, SaaS platforms, systems architecture, contractor software, and strategic business partnerships."
         path="/contact"
       />
+      <SchemaMarkup path="/contact" pageTitle="Contact" />
       <div className="max-w-3xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">Contact</h1>
 

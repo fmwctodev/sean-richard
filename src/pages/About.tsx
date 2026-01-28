@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import SEO from '@/components/SEO';
+import SchemaMarkup from '@/components/SchemaMarkup';
 
 export default function About() {
   const [visible, setVisible] = useState(false);
@@ -11,10 +12,12 @@ export default function About() {
   return (
     <div className="pt-32 pb-20 px-6">
       <SEO
-        title="About"
+        title="About Sean Richard - Background, Companies, and Philosophy"
         description="Learn about Sean Richard, an American entrepreneur and systems architect building AI-driven automation, SaaS platforms, and operational infrastructure. Founder of Sitehues Media Inc, Autom8ion Lab, BuilderLync Inc, and Tarrytown Roofing LLC."
         path="/about"
+        type="profile"
       />
+      <SchemaMarkup path="/about" pageTitle="About Sean Richard" />
       <div className={`max-w-4xl mx-auto transition-all duration-1000 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-12">About</h1>
 

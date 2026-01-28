@@ -1,9 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ArrowUpRight, Sparkles, User } from 'lucide-react';
+import { ArrowUpRight, Sparkles, User, ChevronDown } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { HyperText } from '@/components/ui/hyper-text';
 import { ExpandableCard } from '@/components/ui/expandable-card';
 import SEO from '@/components/SEO';
+import SchemaMarkup from '@/components/SchemaMarkup';
 
 export default function Home() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -116,12 +117,55 @@ export default function Home() {
     },
   ];
 
+  const faqs = [
+    {
+      question: 'Who is Sean Richard?',
+      answer: 'Sean Richard is an American entrepreneur, systems architect, and software operator based in the United States. He is a graduate of Full Sail University and focuses on building AI-driven automation, business infrastructure, and scalable operating systems for contractors and service-based companies.'
+    },
+    {
+      question: 'What companies does Sean Richard operate?',
+      answer: 'Sean Richard founded and operates four companies: Sitehues Media Inc (digital infrastructure and marketing systems), Autom8ion Lab (AI automation and voice agents), BuilderLync Inc (contractor SaaS platform), and Tarrytown Roofing LLC (service business used for real-world system validation).'
+    },
+    {
+      question: 'What is Sean Richard\'s professional focus?',
+      answer: 'Sean Richard specializes in systems architecture, AI automation, SaaS platform development, and business operations infrastructure. His work centers on building production-ready systems that integrate CRM, marketing automation, and AI tools for service-based businesses and contractors.'
+    },
+    {
+      question: 'What is BuilderLync?',
+      answer: 'BuilderLync Inc is a SaaS platform providing an all-in-one operating system for contractors. It unifies CRM, estimating, project management, marketing automation, and AI communication tools into a single platform, replacing fragmented software stacks with a centralized system.'
+    },
+    {
+      question: 'What is Autom8ion Lab?',
+      answer: 'Autom8ion Lab is an AI automation company that develops production-ready systems including AI voice agents, workflow automation, and operational AI tools. The company builds solutions designed for deployment in live business environments.'
+    }
+  ];
+
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="pt-20">
       <SEO
-        title="Sean Richard | Systems Architect & Software Operator"
+        title="Sean Richard - Entrepreneur and Systems Architect"
         description="Sean Richard is an American entrepreneur, systems architect, and software operator focused on building AI-driven automation, business infrastructure, and scalable operating systems for contractors and service-based companies. He is the founder and operator of Sitehues Media Inc, Autom8ion Lab, BuilderLync Inc, and Tarrytown Roofing LLC."
         path="/"
+      />
+      <SchemaMarkup path="/" pageTitle="Home" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* Hero Section */}
       <section
@@ -367,6 +411,50 @@ export default function Home() {
                 </div>
 
                 <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section
+        id="faq"
+        data-animate
+        className={`py-32 px-6 transition-opacity duration-1000 ${
+          visibleSections.has('faq') ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-16">
+            <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">( Common Questions )</p>
+            <h2 className="text-4xl md:text-6xl font-bold">Frequently Asked</h2>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="border border-white/10 hover:border-white/20 transition-colors"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className="w-full p-6 flex items-center justify-between text-left"
+                >
+                  <span className="text-lg md:text-xl font-semibold pr-4">{faq.question}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${
+                      openFaq === index ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openFaq === index ? 'max-h-96' : 'max-h-0'
+                  }`}
+                >
+                  <p className="px-6 pb-6 text-gray-400 leading-relaxed">{faq.answer}</p>
+                </div>
               </div>
             ))}
           </div>

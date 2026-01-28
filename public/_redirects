@@ -1,0 +1,8 @@
+# Netlify redirects for seanrichard.com
+
+# Remove trailing slashes (except root)
+/about/    /about    301
+/contact/  /contact  301
+
+# SPA fallback - serve index.html for client-side routing
+/*    /index.html    200
