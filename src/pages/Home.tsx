@@ -178,7 +178,7 @@ export default function Home() {
           <div className="text-center mb-4 animate-fade-in flex justify-center">
             <HyperText
               text="Sean Richard"
-              className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white/20"
+              className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white"
               duration={1200}
             />
           </div>
@@ -211,8 +211,8 @@ export default function Home() {
             </div>
 
             {/* Centered Headshot */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 z-20 animate-scale-in pointer-events-none">
-              <div className="w-[280px] h-[500px] md:w-[380px] md:h-[650px] lg:w-[440px] lg:h-[750px]">
+            <div className="absolute inset-x-0 top-0 z-20 animate-scale-in pointer-events-none flex justify-center">
+              <div className="w-[280px] h-[500px] md:w-[380px] md:h-[650px] lg:w-[440px] lg:h-[750px] -ml-[calc(50vw-50%)]">
                 <img
                   src="/assets/headshots/sean-richard.png"
                   alt="Sean Richard - Professional Headshot"
