@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ArrowUpRight, Sparkles, User, ChevronDown } from 'lucide-react';
+import { ArrowUpRight, Sparkles, ChevronDown } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { HyperText } from '@/components/ui/hyper-text';
 import { ExpandableCard } from '@/components/ui/expandable-card';
@@ -211,12 +211,13 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center animate-scale-in">
-            <div className="w-64 h-80 md:w-80 md:h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg border border-white/10 flex items-center justify-center relative overflow-hidden">
-              <User className="w-32 h-32 text-gray-600" />
+            <div className="w-64 h-80 md:w-80 md:h-96 rounded-lg border border-white/10 relative overflow-hidden">
+              <img
+                src="/assets/headshots/sean-richard.png"
+                alt="Sean Richard - Professional Headshot"
+                className="w-full h-full object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-4 left-0 right-0 text-center text-sm text-gray-400">
-                Professional Headshot
-              </div>
             </div>
           </div>
         </div>
