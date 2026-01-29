@@ -211,7 +211,7 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center animate-scale-in">
-            <div className="w-80 h-96 md:w-96 md:h-[32rem] rounded-lg overflow-hidden">
+            <div className="w-96 h-[28rem] md:w-[32rem] md:h-[40rem] rounded-lg overflow-hidden">
               <img
                 src="/assets/headshots/sean-richard.png"
                 alt="Sean Richard - Professional Headshot"
