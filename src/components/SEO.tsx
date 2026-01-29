@@ -11,7 +11,7 @@ interface SEOProps {
 
 const BASE_URL = 'https://seanrichard.com';
 const SITE_NAME = 'Sean Richard';
-const DEFAULT_IMAGE = `${BASE_URL}/assets/images/og-default.jpg`;
+const DEFAULT_IMAGE = `${BASE_URL}/opengraph.png`;
 
 export default function SEO({
   title,
