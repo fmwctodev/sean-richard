@@ -183,8 +183,8 @@ export default function Home() {
             />
           </div>
 
-          <div className="relative">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+          <div className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+            <div className="flex flex-col md:flex-row justify-between items-start gap-8 relative z-10">
               <div className="md:w-2/5 text-left">
                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold animate-slide-up mb-8">
                   Systems
@@ -210,8 +210,9 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Centered Headshot */}
             <div className="absolute left-1/2 -translate-x-1/2 top-0 z-20 animate-scale-in pointer-events-none">
-              <div className="w-[280px] h-[420px] md:w-[380px] md:h-[570px] lg:w-[440px] lg:h-[660px]">
+              <div className="w-[280px] h-[500px] md:w-[380px] md:h-[650px] lg:w-[440px] lg:h-[750px]">
                 <img
                   src="/assets/headshots/sean-richard.png"
                   alt="Sean Richard - Professional Headshot"
@@ -219,30 +220,32 @@ export default function Home() {
                 />
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Marquee Banners */}
-        <div className="relative mt-32 md:mt-40 lg:mt-48">
-          <div className="bg-blue-600 transform -rotate-3 py-5 overflow-hidden relative z-10">
-            <div className="flex whitespace-nowrap animate-marquee">
-              {[...services, ...services, ...services].map((service, index) => (
-                <span key={index} className="inline-flex items-center text-xl md:text-2xl lg:text-3xl font-bold text-white mx-6 md:mx-8">
-                  <Sparkles className="w-5 h-5 md:w-6 md:h-6 mr-3 md:mr-4 text-yellow-300" />
-                  {service}
-                </span>
-              ))}
-            </div>
-          </div>
+            {/* Marquee Banners */}
+            <div className="absolute bottom-0 left-0 right-0">
+              {/* Top banner - behind headshot */}
+              <div className="bg-blue-600 transform -rotate-3 py-5 overflow-hidden relative z-10 -mx-20">
+                <div className="flex whitespace-nowrap animate-marquee">
+                  {[...services, ...services, ...services].map((service, index) => (
+                    <span key={index} className="inline-flex items-center text-xl md:text-2xl lg:text-3xl font-bold text-white mx-6 md:mx-8">
+                      <Sparkles className="w-5 h-5 md:w-6 md:h-6 mr-3 md:mr-4 text-yellow-300" />
+                      {service}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-          <div className="bg-blue-600 transform rotate-3 py-5 overflow-hidden -mt-2 relative z-0">
-            <div className="flex whitespace-nowrap animate-marquee-reverse">
-              {[...services, ...services, ...services].map((service, index) => (
-                <span key={index} className="inline-flex items-center text-xl md:text-2xl lg:text-3xl font-bold text-white mx-6 md:mx-8">
-                  <Sparkles className="w-5 h-5 md:w-6 md:h-6 mr-3 md:mr-4 text-yellow-300" />
-                  {service}
-                </span>
-              ))}
+              {/* Bottom banner - in front of headshot */}
+              <div className="bg-blue-600 transform rotate-3 py-5 overflow-hidden -mt-2 relative z-30 -mx-20">
+                <div className="flex whitespace-nowrap animate-marquee-reverse">
+                  {[...services, ...services, ...services].map((service, index) => (
+                    <span key={index} className="inline-flex items-center text-xl md:text-2xl lg:text-3xl font-bold text-white mx-6 md:mx-8">
+                      <Sparkles className="w-5 h-5 md:w-6 md:h-6 mr-3 md:mr-4 text-yellow-300" />
+                      {service}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
