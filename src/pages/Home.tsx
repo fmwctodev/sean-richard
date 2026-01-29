@@ -172,9 +172,9 @@ export default function Home() {
       <section
         id="hero"
         data-animate
-        className="min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden"
+        className="min-h-screen flex items-center justify-center px-6 py-20 relative"
       >
-        <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-8 animate-fade-in flex justify-center">
             <HyperText
               text="Sean Richard"
@@ -199,7 +199,7 @@ export default function Home() {
               </p>
             </div>
 
-            <Link to="/contact" className="relative group cursor-pointer animate-scale-in z-20">
+            <Link to="/contact" className="relative group cursor-pointer animate-scale-in">
               <div className="w-40 h-40 rounded-full border-2 border-white/20 flex items-center justify-center hover:border-accent transition-all duration-300 hover:rotate-12">
                 <div className="text-center">
                   <div className="text-sm font-semibold mb-1">Start a</div>
@@ -209,14 +209,16 @@ export default function Home() {
               </div>
             </Link>
           </div>
-        </div>
 
-        <div className="absolute left-1/2 -translate-x-1/2 top-[220px] md:top-[200px] w-[500px] h-[700px] md:w-[700px] md:h-[900px] animate-scale-in pointer-events-none">
-          <img
-            src="/assets/headshots/sean-richard.png"
-            alt="Sean Richard - Professional Headshot"
-            className="w-full h-full object-cover object-top"
-          />
+          <div className="flex justify-center animate-scale-in">
+            <div className="w-80 h-96 md:w-96 md:h-[32rem] rounded-lg overflow-hidden">
+              <img
+                src="/assets/headshots/sean-richard.png"
+                alt="Sean Richard - Professional Headshot"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
