@@ -211,13 +211,12 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center animate-scale-in">
-            <div className="w-64 h-80 md:w-80 md:h-96 rounded-lg border border-white/10 relative overflow-hidden">
+            <div className="w-80 h-96 md:w-96 md:h-[32rem] rounded-lg border border-white/10 overflow-hidden">
               <img
                 src="/assets/headshots/sean-richard.png"
                 alt="Sean Richard - Professional Headshot"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </div>
           </div>
         </div>
