@@ -199,8 +199,8 @@ export default function Home() {
                 I build AI-driven platforms, automation systems, and operational infrastructure designed for operators, not theory.
               </p>
 
-              <Link to="/contact" className="relative group cursor-pointer animate-scale-in mb-4">
-                <div className="w-28 h-28 rounded-full border-2 border-white/20 flex items-center justify-center hover:border-accent transition-all duration-300">
+              <Link to="/contact" className="relative z-40 group cursor-pointer animate-scale-in mb-4">
+                <div className="w-28 h-28 rounded-full border-2 border-white/20 flex items-center justify-center hover:border-accent transition-all duration-300 bg-black/50 backdrop-blur-sm">
                   <div className="text-center">
                     <div className="text-xs font-semibold mb-1">Hire Me</div>
                     <ArrowUpRight className="w-4 h-4 mx-auto mb-1" />
