@@ -238,7 +238,7 @@ export default function Home() {
             </div>
 
             {/* Centered Headshot */}
-            <div className="absolute inset-x-0 top-[200px] md:top-0 z-20 animate-scale-in pointer-events-none flex justify-center">
+            <div className="absolute inset-x-0 top-[280px] md:top-0 z-20 animate-scale-in pointer-events-none flex justify-center">
               <div className="w-[280px] sm:w-[320px] md:w-[450px] lg:w-[550px]">
                 <img
                   src="/assets/headshots/sean-richard.png"
