@@ -67,7 +67,7 @@ export function HyperText({
 
   return (
     <div
-      className="flex scale-100 cursor-default overflow-hidden"
+      className="flex flex-wrap justify-center scale-100 cursor-default"
       onMouseEnter={triggerAnimation}
     >
       <AnimatePresence mode="wait">

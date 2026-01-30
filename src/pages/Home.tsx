@@ -172,30 +172,57 @@ export default function Home() {
       <section
         id="hero"
         data-animate
-        className="min-h-screen flex flex-col justify-center px-6 pt-20 pb-0 relative overflow-hidden"
+        className="min-h-screen flex flex-col justify-start px-4 md:px-6 pt-8 md:pt-20 pb-0 relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto w-full relative">
-          <div className="text-center mb-4 animate-fade-in flex justify-center">
+          <div className="text-center mb-2 md:mb-4 animate-fade-in flex justify-center">
             <HyperText
               text="Sean Richard"
-              className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white"
+              className="text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white"
               duration={1200}
             />
           </div>
 
-          <div className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
-            <div className="flex flex-col md:flex-row justify-between items-start gap-8 relative z-10">
-              <div className="md:w-2/5 text-left">
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold animate-slide-up mb-8">
+          <div className="relative min-h-[600px] sm:min-h-[650px] md:min-h-[600px] lg:min-h-[700px]">
+            {/* Mobile Layout */}
+            <div className="md:hidden flex flex-col items-center relative z-10">
+              <div className="flex items-center justify-between w-full px-2 mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold animate-slide-up">
                   Systems
                 </h2>
-                <p className="text-lg md:text-xl text-gray-400 leading-relaxed animate-slide-up max-w-sm">
+                <h2 className="text-3xl sm:text-4xl font-bold animate-slide-up">
+                  Architect
+                </h2>
+              </div>
+
+              <p className="text-base text-gray-400 leading-relaxed animate-slide-up text-center px-4 mb-6 max-w-sm">
+                I build AI-driven platforms, automation systems, and operational infrastructure designed for operators, not theory.
+              </p>
+
+              <Link to="/contact" className="relative group cursor-pointer animate-scale-in mb-4">
+                <div className="w-28 h-28 rounded-full border-2 border-white/20 flex items-center justify-center hover:border-accent transition-all duration-300">
+                  <div className="text-center">
+                    <div className="text-xs font-semibold mb-1">Hire Me</div>
+                    <ArrowUpRight className="w-4 h-4 mx-auto mb-1" />
+                    <div className="text-xs font-semibold">For Projects</div>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Desktop Layout */}
+            <div className="hidden md:flex flex-row justify-between items-start gap-8 relative z-10">
+              <div className="md:w-2/5 text-left">
+                <h2 className="text-6xl lg:text-7xl font-bold animate-slide-up mb-8">
+                  Systems
+                </h2>
+                <p className="text-xl text-gray-400 leading-relaxed animate-slide-up max-w-sm">
                   I build AI-driven platforms, automation systems, and operational infrastructure designed for operators, not theory.
                 </p>
               </div>
 
               <div className="md:w-2/5 text-right flex flex-col items-end">
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold animate-slide-up mb-8">
+                <h2 className="text-6xl lg:text-7xl font-bold animate-slide-up mb-8">
                   Architect
                 </h2>
                 <Link to="/contact" className="relative group cursor-pointer animate-scale-in">
@@ -211,8 +238,8 @@ export default function Home() {
             </div>
 
             {/* Centered Headshot */}
-            <div className="absolute inset-x-0 top-0 z-20 animate-scale-in pointer-events-none flex justify-center">
-              <div className="w-[350px] md:w-[450px] lg:w-[550px]">
+            <div className="absolute inset-x-0 top-[120px] md:top-0 z-20 animate-scale-in pointer-events-none flex justify-center">
+              <div className="w-[280px] sm:w-[320px] md:w-[450px] lg:w-[550px]">
                 <img
                   src="/assets/headshots/sean-richard.png"
                   alt="Sean Richard - Professional Headshot"
@@ -224,11 +251,11 @@ export default function Home() {
             {/* Marquee Banners */}
             <div className="absolute bottom-0 left-0 right-0">
               {/* Top banner - behind headshot */}
-              <div className="bg-blue-600 transform -rotate-3 py-5 overflow-hidden relative z-10 -mx-20">
+              <div className="bg-blue-600 transform -rotate-2 md:-rotate-3 py-3 md:py-5 overflow-hidden relative z-10 -mx-8 md:-mx-20">
                 <div className="flex whitespace-nowrap animate-marquee">
                   {[...services, ...services, ...services].map((service, index) => (
-                    <span key={index} className="inline-flex items-center text-xl md:text-2xl lg:text-3xl font-bold text-white mx-6 md:mx-8">
-                      <Sparkles className="w-5 h-5 md:w-6 md:h-6 mr-3 md:mr-4 text-yellow-300" />
+                    <span key={index} className="inline-flex items-center text-sm sm:text-base md:text-2xl lg:text-3xl font-bold text-white mx-4 md:mx-8">
+                      <Sparkles className="w-4 h-4 md:w-6 md:h-6 mr-2 md:mr-4 text-yellow-300" />
                       {service}
                     </span>
                   ))}
@@ -236,11 +263,11 @@ export default function Home() {
               </div>
 
               {/* Bottom banner - in front of headshot */}
-              <div className="bg-blue-600 transform rotate-3 py-5 overflow-hidden -mt-2 relative z-30 -mx-20">
+              <div className="bg-blue-600 transform rotate-2 md:rotate-3 py-3 md:py-5 overflow-hidden -mt-1 md:-mt-2 relative z-30 -mx-8 md:-mx-20">
                 <div className="flex whitespace-nowrap animate-marquee-reverse">
                   {[...services, ...services, ...services].map((service, index) => (
-                    <span key={index} className="inline-flex items-center text-xl md:text-2xl lg:text-3xl font-bold text-white mx-6 md:mx-8">
-                      <Sparkles className="w-5 h-5 md:w-6 md:h-6 mr-3 md:mr-4 text-yellow-300" />
+                    <span key={index} className="inline-flex items-center text-sm sm:text-base md:text-2xl lg:text-3xl font-bold text-white mx-4 md:mx-8">
+                      <Sparkles className="w-4 h-4 md:w-6 md:h-6 mr-2 md:mr-4 text-yellow-300" />
                       {service}
                     </span>
                   ))}
