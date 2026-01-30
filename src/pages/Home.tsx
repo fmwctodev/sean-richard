@@ -251,11 +251,11 @@ export default function Home() {
             {/* Marquee Banners */}
             <div className="absolute bottom-[-80px] md:bottom-0 left-0 right-0">
               {/* Top banner - behind headshot */}
-              <div className="bg-red-600 transform -rotate-2 md:-rotate-3 py-3 md:py-5 overflow-hidden relative z-10 -mx-8 md:-mx-20">
+              <div className="bg-red-600 transform -rotate-3 py-4 md:py-5 overflow-hidden relative z-10 -mx-16 md:-mx-20">
                 <div className="flex whitespace-nowrap animate-marquee">
                   {[...services, ...services, ...services].map((service, index) => (
-                    <span key={index} className="inline-flex items-center text-sm sm:text-base md:text-2xl lg:text-3xl font-bold text-white mx-4 md:mx-8">
-                      <Sparkles className="w-4 h-4 md:w-6 md:h-6 mr-2 md:mr-4 text-yellow-300" />
+                    <span key={index} className="inline-flex items-center text-xl sm:text-2xl md:text-2xl lg:text-3xl font-bold text-white mx-6 md:mx-8">
+                      <Sparkles className="w-5 h-5 md:w-6 md:h-6 mr-3 md:mr-4 text-yellow-300" />
                       {service}
                     </span>
                   ))}
@@ -263,11 +263,11 @@ export default function Home() {
               </div>
 
               {/* Bottom banner - in front of headshot */}
-              <div className="bg-red-600 transform rotate-2 md:rotate-3 py-3 md:py-5 overflow-hidden -mt-1 md:-mt-2 relative z-30 -mx-8 md:-mx-20">
+              <div className="bg-red-600 transform rotate-3 py-4 md:py-5 overflow-hidden -mt-1 md:-mt-2 relative z-30 -mx-16 md:-mx-20">
                 <div className="flex whitespace-nowrap animate-marquee-reverse">
                   {[...services, ...services, ...services].map((service, index) => (
-                    <span key={index} className="inline-flex items-center text-sm sm:text-base md:text-2xl lg:text-3xl font-bold text-white mx-4 md:mx-8">
-                      <Sparkles className="w-4 h-4 md:w-6 md:h-6 mr-2 md:mr-4 text-yellow-300" />
+                    <span key={index} className="inline-flex items-center text-xl sm:text-2xl md:text-2xl lg:text-3xl font-bold text-white mx-6 md:mx-8">
+                      <Sparkles className="w-5 h-5 md:w-6 md:h-6 mr-3 md:mr-4 text-yellow-300" />
                       {service}
                     </span>
                   ))}
