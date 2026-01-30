@@ -35,6 +35,12 @@
     <meta name="twitter:image" content="https://seanrichard.com/assets/images/og-default.jpg" />
   </head>
   <body>
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="building"></textarea>
+      <textarea name="reason"></textarea>
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
