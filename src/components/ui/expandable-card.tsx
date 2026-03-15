@@ -83,6 +83,9 @@ export function ExpandableCard({
                     src={src}
                     alt={title}
                     className="w-full h-80 object-cover object-center"
+                    width="850"
+                    height="320"
+                    loading="lazy"
                   />
                 </div>
               </motion.div>
@@ -163,6 +166,9 @@ export function ExpandableCard({
             src={src}
             alt={title}
             className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            width="600"
+            height="450"
+            loading="lazy"
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />

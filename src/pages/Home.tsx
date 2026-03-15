@@ -244,6 +244,10 @@ export default function Home() {
                   src="/assets/headshots/sean-richard.png"
                   alt="Sean Richard - Professional Headshot"
                   className="w-full h-auto"
+                  width="550"
+                  height="700"
+                  loading="eager"
+                  fetchpriority="high"
                 />
               </div>
             </div>

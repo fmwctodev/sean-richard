@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789');
 
 @tailwind base;
 @tailwind components;
@@ -25,14 +25,17 @@
 
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
+    will-change: opacity;
   }
 
   .animate-slide-up {
     animation: slideUp 0.8s ease-out forwards;
+    will-change: opacity, transform;
   }
 
   .animate-scale-in {
     animation: scaleIn 0.5s ease-out forwards;
+    will-change: opacity, transform;
   }
 }
 
@@ -65,6 +68,12 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.animate-fade-in,
+.animate-slide-up,
+.animate-scale-in {
+  animation-fill-mode: both;
 }
 
 /* Marquee Animation */
