@@ -1,7 +1,6 @@
 import { SITE } from '@/content/nav';
 import { VENTURES } from '@/content/ventures';
 import { FAQS } from '@/content/faqs';
-import type { RepoSummary } from '@/lib/github';
 
 const BASE_URL = SITE.url;
 
@@ -116,17 +115,3 @@ export function getFaqSchema() {
   };
 }
 
-export function getPortfolioItemListSchema(repos: RepoSummary[]) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    '@id': `${BASE_URL}/portfolio#repos`,
-    name: 'Open Source Projects',
-    itemListElement: repos.map((repo, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      url: repo.html_url,
-      name: repo.displayName ?? repo.name,
-    })),
-  };
-}
