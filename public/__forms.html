@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify form definitions</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <!--
+      This file exists only so Netlify's build-time form parser can detect form
+      definitions in a static HTML file. The actual contact form is rendered
+      from app/contact/page.tsx via the React ContactForm component, which posts
+      back to "/" with the same field names.
+    -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="building"></textarea>
+      <textarea name="reason"></textarea>
+    </form>
+  </body>
+</html>

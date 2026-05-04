@@ -7,6 +7,13 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+
+# Next.js
+.next
+out
+*.tsbuildinfo
+
+# Old Vite output (kept for safety until first clean Next.js deploy)
 dist
 dist-ssr
 *.local
@@ -21,3 +28,7 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.env*.local
+
+# Netlify
+.netlify

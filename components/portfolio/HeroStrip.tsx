@@ -1,0 +1,43 @@
+import { Github } from 'lucide-react';
+import { HyperText } from '@/components/ui/HyperText';
+import { ResumeButton } from '@/components/ResumeButton';
+import { SITE } from '@/content/nav';
+
+export default function HeroStrip() {
+  return (
+    <section className="px-6 pt-32 pb-16">
+      <div className="max-w-6xl mx-auto">
+        <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">( Portfolio )</p>
+        <div className="flex justify-start">
+          <HyperText
+            text="Sean Richard"
+            className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter text-white"
+            duration={1200}
+          />
+        </div>
+        <p className="text-xl md:text-2xl text-gray-300 mt-6 max-w-3xl leading-relaxed">
+          AI Product Engineer · Full-Stack Builder · 0→1 Founder
+        </p>
+        <p className="text-base text-gray-400 mt-4 max-w-2xl leading-relaxed">
+          Full-stack product engineer who ships user-facing AI products end-to-end. Two-time
+          founder building Next.js / React / TypeScript applications backed by Supabase,
+          with LLM-powered workflows and AI agents in production.{' '}
+          <span className="text-gray-500">{SITE.location}</span>
+        </p>
+
+        <div className="flex flex-wrap items-center gap-4 mt-10">
+          <ResumeButton variant="primary" location="portfolio_hero" />
+          <a
+            href={SITE.social.githubPersonal}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/20 text-white font-semibold hover:border-accent hover:text-accent transition-colors"
+          >
+            <Github size={18} />
+            <span>View GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
