@@ -23,9 +23,15 @@ export type AllowlistEntry = {
  * framing (e.g. a Next.js + Supabase build can be both AI and Full Stack here).
  */
 export const REPO_ALLOWLIST: Record<string, AllowlistEntry> = {
-  // Populate during launch — examples:
-  // 'Autom8ion-Lab/lyncbot-core': { categories: ['AI', 'Full Stack'], featured: true },
-  // 'fmwctodev/forensics-lab':    { categories: ['Cyber'] },
+  'fmwctodev/sean-richard': {
+    categories: ['Full Stack'],
+    featured: true,
+    displayName: 'seanrichard.com',
+  },
+  'fmwctodev/herd': {
+    categories: ['AI', 'Full Stack'],
+    featured: true,
+  },
 };
 
 export const ALL_CATEGORIES: RepoCategory[] = ['AI', 'Full Stack', 'Cyber', 'IT'];
