@@ -61,7 +61,7 @@ export default function QualificationSignal({ strength }: Props) {
         {isCharged && (
           <span
             aria-hidden
-            className="absolute inset-0 rounded-full pointer-events-none animate-pulse-dot"
+            className="absolute inset-0 rounded-full pointer-events-none animate-pulse-ring border border-accent"
           />
         )}
       </div>

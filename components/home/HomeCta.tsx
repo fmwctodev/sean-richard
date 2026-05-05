@@ -43,6 +43,7 @@ export default function HomeCta() {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/contact"
+            prefetch={false}
             className="group inline-flex items-center gap-3 px-8 py-[18px] rounded-full bg-accent text-bg-primary font-semibold text-[15px] hover:bg-ink-primary transition-colors"
             style={{
               boxShadow: '0 10px 40px -10px rgba(239, 68, 68, 0.6)',

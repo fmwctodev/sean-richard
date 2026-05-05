@@ -76,6 +76,7 @@ export default function HomeServices() {
           ))}
           <Link
             href="/contact"
+            prefetch={false}
             className={cn(
               'group relative p-8 bg-bg-elevated transition-colors hover:bg-accent/5 overflow-hidden',
               'flex flex-col justify-between',

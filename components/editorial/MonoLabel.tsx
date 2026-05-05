@@ -39,9 +39,12 @@ export default function MonoLabel({
       {leading === 'dot' && (
         <span
           aria-hidden
-          className="inline-block bg-accent rounded-full animate-pulse-dot"
+          className="relative inline-block shrink-0"
           style={{ width: '8px', height: '8px' }}
-        />
+        >
+          <span className="absolute inset-0 rounded-full bg-accent animate-pulse-ring" />
+          <span className="relative block w-full h-full rounded-full bg-accent" />
+        </span>
       )}
       {children}
     </span>

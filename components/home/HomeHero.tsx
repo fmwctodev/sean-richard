@@ -52,6 +52,7 @@ export default function HomeHero() {
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
+                prefetch={false}
                 className="group relative inline-flex items-center gap-3 px-8 py-[18px] rounded-full bg-accent text-bg-primary font-semibold text-[15px] transition-all overflow-hidden"
                 style={{
                   boxShadow:

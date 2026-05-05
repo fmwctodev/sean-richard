@@ -45,7 +45,7 @@ const config: Config = {
         'slide-up': 'slideUp 0.8s ease-out',
         'scale-in': 'scaleIn 0.5s ease-out',
         marquee: 'marquee 40s linear infinite',
-        'pulse-dot': 'pulseDot 2s ease-in-out infinite',
+        'pulse-ring': 'pulseRing 2s cubic-bezier(0, 0, 0.2, 1) infinite',
         'mesh-drift-1': 'meshDrift1 80s ease-in-out infinite',
         'mesh-drift-2': 'meshDrift2 100s ease-in-out infinite',
         'mesh-drift-3': 'meshDrift3 120s ease-in-out infinite',
@@ -56,9 +56,9 @@ const config: Config = {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
         },
-        pulseDot: {
-          '0%, 100%': { boxShadow: '0 0 0 4px rgba(239, 68, 68, 0.18)' },
-          '50%': { boxShadow: '0 0 0 8px rgba(239, 68, 68, 0.05)' },
+        pulseRing: {
+          '0%': { transform: 'scale(1)', opacity: '0.55' },
+          '75%, 100%': { transform: 'scale(2.5)', opacity: '0' },
         },
         meshDrift1: {
           '0%, 100%': { transform: 'translate(0%, 0%) scale(1)' },
