@@ -1,5 +1,5 @@
-import { GraduationCap, Award } from 'lucide-react';
-import { DEGREES, CERTIFICATIONS } from '@/content/education';
+import { GraduationCap, Award, ExternalLink } from 'lucide-react';
+import { DEGREES, CERTIFICATION_LINKS } from '@/content/education';
 
 export default function EducationCredentials() {
   return (
@@ -41,12 +41,27 @@ export default function EducationCredentials() {
               Certifications
             </h3>
             <ul className="space-y-3">
-              {CERTIFICATIONS.map((cert, i) => (
-                <li
-                  key={i}
-                  className="border border-white/10 px-4 py-3 text-gray-300 text-sm hover:border-white/20 transition-colors"
-                >
-                  {cert}
+              {CERTIFICATION_LINKS.map((cert) => (
+                <li key={cert.url}>
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between gap-3 border border-white/10 hover:border-accent/40 px-4 py-3 transition-colors"
+                  >
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
+                        {cert.label}
+                      </p>
+                      <p className="text-xs text-gray-500 mt-0.5 truncate">
+                        {cert.source}
+                      </p>
+                    </div>
+                    <ExternalLink
+                      size={16}
+                      className="text-gray-500 group-hover:text-accent shrink-0"
+                    />
+                  </a>
                 </li>
               ))}
             </ul>
