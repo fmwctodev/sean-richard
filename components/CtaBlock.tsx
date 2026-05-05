@@ -31,7 +31,7 @@ export default function CtaBlock({
           </p>
         )}
         <h2 className="text-3xl md:text-5xl font-bold mb-6">{headline}</h2>
-        {body && <p className="text-gray-400 text-lg mb-8 leading-relaxed">{body}</p>}
+        {body && <p className="text-gray-300 text-lg mb-8 leading-relaxed">{body}</p>}
         <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
           <Link
             href={primaryHref}

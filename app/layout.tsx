@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
-import RainingLetters from '@/components/layout/RainingLetters';
+import BackgroundCanvas from '@/components/layout/BackgroundCanvas';
 import ScrollProgress from '@/components/layout/ScrollProgress';
 import SchemaMarkup from '@/components/seo/SchemaMarkup';
 import { SITE } from '@/content/nav';
@@ -83,9 +83,7 @@ export default function RootLayout({
           `}
         </Script>
         <div className="min-h-screen relative">
-          <div className="fixed inset-0 z-0 opacity-60 pointer-events-none">
-            <RainingLetters />
-          </div>
+          <BackgroundCanvas />
           <ScrollProgress />
           <div className="relative z-10">
             <Navigation />

@@ -14,7 +14,7 @@ export default function NotFound() {
       <div className="max-w-xl mx-auto text-center">
         <h1 className="text-8xl font-black text-accent mb-4">404</h1>
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Page Not Found</h2>
-        <p className="text-gray-400 text-lg mb-12">
+        <p className="text-gray-300 text-lg mb-12">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
 
@@ -40,28 +40,28 @@ export default function NotFound() {
           <nav className="flex flex-wrap justify-center gap-6">
             <Link
               href="/"
-              className="flex items-center gap-2 text-gray-400 hover:text-accent transition-colors"
+              className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
             >
               <Home size={16} />
               Home
             </Link>
             <Link
               href="/about"
-              className="flex items-center gap-2 text-gray-400 hover:text-accent transition-colors"
+              className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
             >
               <User size={16} />
               About
             </Link>
             <Link
               href="/portfolio"
-              className="flex items-center gap-2 text-gray-400 hover:text-accent transition-colors"
+              className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
             >
               <Briefcase size={16} />
               Portfolio
             </Link>
             <Link
               href="/contact"
-              className="flex items-center gap-2 text-gray-400 hover:text-accent transition-colors"
+              className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
             >
               <Mail size={16} />
               Contact

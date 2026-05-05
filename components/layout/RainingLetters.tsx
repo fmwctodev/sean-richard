@@ -14,16 +14,17 @@ const CHAR_POOL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>
 export default function RainingLetters() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [activeIndices, setActiveIndices] = useState<Set<number>>(new Set());
+  const [motionEnabled, setMotionEnabled] = useState(false);
 
   const createCharacters = useCallback((): Character[] => {
-    const charCount = 300;
+    const charCount = 240;
     const newCharacters: Character[] = [];
     for (let i = 0; i < charCount; i++) {
       newCharacters.push({
         char: CHAR_POOL[Math.floor(Math.random() * CHAR_POOL.length)],
         x: Math.random() * 100,
         y: Math.random() * 100,
-        speed: 0.1 + Math.random() * 0.3,
+        speed: 0.08 + Math.random() * 0.22,
       });
     }
     return newCharacters;
@@ -31,22 +32,30 @@ export default function RainingLetters() {
 
   useEffect(() => {
     setCharacters(createCharacters());
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setMotionEnabled(!mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
   }, [createCharacters]);
 
   useEffect(() => {
+    if (!motionEnabled || characters.length === 0) return;
     const updateActiveIndices = () => {
       const newActive = new Set<number>();
-      const numActive = Math.floor(Math.random() * 3) + 3;
+      const numActive = Math.floor(Math.random() * 2) + 2;
       for (let i = 0; i < numActive; i++) {
         newActive.add(Math.floor(Math.random() * characters.length));
       }
       setActiveIndices(newActive);
     };
-    const interval = setInterval(updateActiveIndices, 50);
+    const interval = setInterval(updateActiveIndices, 90);
     return () => clearInterval(interval);
-  }, [characters.length]);
+  }, [characters.length, motionEnabled]);
 
   useEffect(() => {
+    if (!motionEnabled) return;
     let frameId: number;
     const updatePositions = () => {
       setCharacters((prevChars) =>
@@ -64,7 +73,7 @@ export default function RainingLetters() {
     };
     frameId = requestAnimationFrame(updatePositions);
     return () => cancelAnimationFrame(frameId);
-  }, []);
+  }, [motionEnabled]);
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden">

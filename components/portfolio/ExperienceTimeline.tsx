@@ -27,14 +27,14 @@ export default function ExperienceTimeline() {
               </div>
 
               {entry.summary && (
-                <p className="italic text-gray-400 mb-3 leading-relaxed">{entry.summary}</p>
+                <p className="italic text-gray-300 mb-3 leading-relaxed">{entry.summary}</p>
               )}
 
               <ul className="space-y-2">
                 {entry.bullets.map((bullet, i) => (
                   <li
                     key={i}
-                    className="text-gray-400 text-sm leading-relaxed flex gap-2"
+                    className="text-gray-300 text-sm leading-relaxed flex gap-2"
                   >
                     <span className="text-accent shrink-0">•</span>
                     <span>{bullet}</span>

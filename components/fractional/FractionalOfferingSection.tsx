@@ -18,7 +18,7 @@ export default function FractionalOfferingSection({
         <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
           {offering.headline}
         </h2>
-        <div className="space-y-4 text-lg text-gray-400 leading-relaxed mb-12 max-w-3xl">
+        <div className="space-y-4 text-lg text-gray-300 leading-relaxed mb-12 max-w-3xl">
           {offering.body.map((p, i) => (
             <p key={i}>{p}</p>
           ))}

@@ -21,6 +21,34 @@
   }
 }
 
+@layer components {
+  .prose-body {
+    color: rgb(209 213 219);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    letter-spacing: 0.005em;
+  }
+
+  .prose-body p + p {
+    margin-top: 1em;
+  }
+
+  .prose-body strong {
+    color: rgb(243 244 246);
+    font-weight: 600;
+  }
+
+  .first-paragraph::first-letter {
+    color: #ef4444;
+    float: left;
+    font-size: 3.5rem;
+    line-height: 1;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+    font-weight: 800;
+  }
+}
+
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-gray-500;
@@ -90,4 +118,20 @@
 .dud {
   color: #0f0;
   opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation: none !important;
+  }
 }

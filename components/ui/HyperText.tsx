@@ -30,13 +30,28 @@ export function HyperText({
   const [trigger, setTrigger] = useState(false);
   const iterations = useRef(0);
   const isFirstRender = useRef(true);
+  const [motionEnabled, setMotionEnabled] = useState(true);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setMotionEnabled(!mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
 
   const triggerAnimation = () => {
+    if (!motionEnabled) return;
     iterations.current = 0;
     setTrigger(true);
   };
 
   useEffect(() => {
+    if (!motionEnabled) {
+      setDisplayText(text.split(''));
+      return;
+    }
     const interval = setInterval(
       () => {
         if (!animateOnLoad && isFirstRender.current) {
@@ -63,7 +78,7 @@ export function HyperText({
       duration / (text.length * 10),
     );
     return () => clearInterval(interval);
-  }, [text, duration, trigger, animateOnLoad]);
+  }, [text, duration, trigger, animateOnLoad, motionEnabled]);
 
   return (
     <div

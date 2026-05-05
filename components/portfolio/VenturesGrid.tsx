@@ -8,7 +8,7 @@ export default function VenturesGrid() {
         <div className="mb-12">
           <p className="text-sm text-gray-500 uppercase tracking-wider mb-3">( Ventures )</p>
           <h2 className="text-3xl md:text-5xl font-bold">Operating companies</h2>
-          <p className="text-gray-400 mt-4 max-w-2xl">
+          <p className="text-gray-300 mt-4 max-w-2xl">
             The portfolio of operating companies and the holding entity I run.
           </p>
         </div>
@@ -49,7 +49,7 @@ export default function VenturesGrid() {
                     />
                   )}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{v.shortPitch}</p>
+                <p className="text-sm text-gray-300 leading-relaxed">{v.shortPitch}</p>
               </Wrapper>
             );
           })}

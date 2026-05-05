@@ -10,7 +10,7 @@ export default function SelectedProductsGrid() {
             ( Selected Products · 0→1, Built &amp; Shipped )
           </p>
           <h2 className="text-3xl md:text-5xl font-bold">Flagship work</h2>
-          <p className="text-gray-400 mt-4 max-w-2xl">
+          <p className="text-gray-300 mt-4 max-w-2xl">
             Products I&apos;ve owned end-to-end — from problem scoping through production
             deployment. Most are private codebases; a few are linked below.
           </p>
@@ -24,7 +24,7 @@ export default function SelectedProductsGrid() {
             >
               <header className="mb-4">
                 <h3 className="text-2xl font-bold text-white mb-2">{product.name}</h3>
-                <p className="text-gray-400">{product.tagline}</p>
+                <p className="text-gray-300">{product.tagline}</p>
               </header>
 
               <div className="flex flex-wrap gap-2 mb-6">
@@ -40,7 +40,7 @@ export default function SelectedProductsGrid() {
 
               <ul className="space-y-3 mb-6 flex-1">
                 {product.bullets.map((bullet, i) => (
-                  <li key={i} className="text-sm text-gray-400 leading-relaxed flex gap-2">
+                  <li key={i} className="text-sm text-gray-300 leading-relaxed flex gap-2">
                     <span className="text-accent shrink-0">•</span>
                     <span>{bullet}</span>
                   </li>

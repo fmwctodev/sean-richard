@@ -30,7 +30,7 @@ export default function ContactPage() {
             Sitehues Media Inc, Autom8ion Lab, BuilderLync Inc, and select fractional
             executive engagements through Sean Scott Richard LLC.
           </p>
-          <p className="text-gray-400 leading-relaxed mt-3">
+          <p className="text-gray-300 leading-relaxed mt-3">
             Use this form if you&apos;re building or operating a serious business and want to
             discuss systems, infrastructure, AI automation, contractor growth, fractional
             CMO support, fractional CTO support, software platforms, or strategic
@@ -51,7 +51,7 @@ export default function ContactPage() {
 
         <div className="mt-12 p-6 border border-white/10 bg-white/5">
           <h2 className="text-xl font-bold mb-4">What to Expect</h2>
-          <ul className="space-y-3 text-gray-400">
+          <ul className="space-y-3 text-gray-300">
             <li className="flex items-start gap-3">
               <span className="text-accent mt-1">•</span>
               <span>Qualified inquiries reviewed within 48 hours.</span>

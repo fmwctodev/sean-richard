@@ -17,37 +17,37 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-white mb-4">Site</h4>
             <nav className="flex flex-col gap-2 text-sm">
-              <Link href="/" className="text-gray-400 hover:text-accent transition-colors">
+              <Link href="/" className="text-gray-300 hover:text-accent transition-colors">
                 Home
               </Link>
               <Link
                 href="/about"
-                className="text-gray-400 hover:text-accent transition-colors"
+                className="text-gray-300 hover:text-accent transition-colors"
               >
                 About
               </Link>
               <Link
                 href="/portfolio"
-                className="text-gray-400 hover:text-accent transition-colors"
+                className="text-gray-300 hover:text-accent transition-colors"
               >
                 Portfolio
               </Link>
               <Link
                 href="/fractional-cmo-cto"
-                className="text-gray-400 hover:text-accent transition-colors"
+                className="text-gray-300 hover:text-accent transition-colors"
               >
                 Fractional CMO/CTO
               </Link>
               <Link
                 href="/contact"
-                className="text-gray-400 hover:text-accent transition-colors"
+                className="text-gray-300 hover:text-accent transition-colors"
               >
                 Contact
               </Link>
               <ResumeButton
                 variant="footer-link"
                 location="footer"
-                className="inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
               >
                 <FileText size={14} />
                 <span>Resume (PDF)</span>
@@ -65,12 +65,12 @@ export default function Footer() {
                     href={v.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-accent transition-colors"
+                    className="text-gray-300 hover:text-accent transition-colors"
                   >
                     {v.name}
                   </a>
                 ) : (
-                  <span key={v.id} className="text-gray-400">
+                  <span key={v.id} className="text-gray-300">
                     {v.name}
                   </span>
                 ),
@@ -83,7 +83,7 @@ export default function Footer() {
             <nav className="flex flex-col gap-2 text-sm">
               <a
                 href={`mailto:${SITE.email}`}
-                className="inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
               >
                 <Mail size={14} />
                 <span>{SITE.email}</span>
@@ -92,7 +92,7 @@ export default function Footer() {
                 href={SITE.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
               >
                 <Linkedin size={14} />
                 <span>LinkedIn</span>
@@ -101,7 +101,7 @@ export default function Footer() {
                 href={SITE.social.githubPersonal}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
               >
                 <Github size={14} />
                 <span>GitHub (@fmwctodev)</span>
@@ -110,7 +110,7 @@ export default function Footer() {
                 href={SITE.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
               >
                 <Facebook size={14} />
                 <span>Facebook</span>

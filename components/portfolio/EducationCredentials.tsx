@@ -25,7 +25,7 @@ export default function EducationCredentials() {
                   className="border border-white/10 p-5 hover:border-white/20 transition-colors"
                 >
                   <p className="font-semibold text-white">{degree.credential}</p>
-                  <p className="text-gray-400 text-sm mt-1">{degree.school}</p>
+                  <p className="text-gray-300 text-sm mt-1">{degree.school}</p>
                   <p className="text-gray-500 text-xs mt-2">
                     {degree.dates}
                     {degree.status ? ` · ${degree.status}` : ''}

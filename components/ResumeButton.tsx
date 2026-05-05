@@ -21,7 +21,7 @@ const VARIANT_CLASSES: Record<Variant, string> = {
   secondary:
     'inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/20 text-white font-semibold hover:border-accent hover:text-accent transition-colors',
   subtle:
-    'inline-flex items-center gap-2 text-sm text-gray-400 hover:text-accent underline underline-offset-4 transition-colors',
+    'inline-flex items-center gap-2 text-sm text-gray-300 hover:text-accent underline underline-offset-4 transition-colors',
   'footer-link': '',
 };
 

@@ -8,7 +8,7 @@ function BookCard({ book }: { book: Book }) {
         {book.title}
       </h4>
       <p className="text-xs text-gray-500 mb-3">{book.authors.join(' · ')}</p>
-      <p className="text-sm text-gray-400 leading-relaxed italic">{book.commentary}</p>
+      <p className="text-sm text-gray-300 leading-relaxed italic">{book.commentary}</p>
     </article>
   );
 }
@@ -37,7 +37,7 @@ export default function OperatingInfluences() {
       <h2 className="text-3xl font-bold mb-4 text-gray-300">
         What I read to keep the systems sharp.
       </h2>
-      <p className="text-lg text-gray-400 leading-relaxed mb-12 max-w-3xl">
+      <p className="text-lg text-gray-300 leading-relaxed mb-12 max-w-3xl">
         A working list from O&apos;Reilly Learning. These are the books actively shaping how
         I think about security, infrastructure, and the systems my companies run on. Not a
         credential wall — a snapshot of where my technical discipline is sourced.

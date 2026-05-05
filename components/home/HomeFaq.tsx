@@ -8,7 +8,7 @@ export default function HomeFaq() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-32 px-6">
+    <section id="faq" className="py-20 md:py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-16">
           <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">
@@ -40,7 +40,7 @@ export default function HomeFaq() {
                   openFaq === index ? 'max-h-96' : 'max-h-0'
                 }`}
               >
-                <p className="px-6 pb-6 text-gray-400 leading-relaxed">{faq.answer}</p>
+                <p className="px-6 pb-6 text-gray-300 leading-relaxed">{faq.answer}</p>
               </div>
             </div>
           ))}

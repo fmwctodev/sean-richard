@@ -16,7 +16,7 @@ export default function EngagementProcess() {
             >
               <div className="text-5xl font-black text-accent mb-4">{step.n}</div>
               <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{step.body}</p>
+              <p className="text-gray-300 text-sm leading-relaxed">{step.body}</p>
             </div>
           ))}
         </div>

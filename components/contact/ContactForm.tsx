@@ -94,7 +94,7 @@ export default function ContactForm() {
             <Send className="text-accent" size={32} />
           </div>
           <h2 className="text-4xl font-bold mb-4">Inquiry Received</h2>
-          <p className="text-xl text-gray-400 mb-8">
+          <p className="text-xl text-gray-300 mb-8">
             Qualified inquiries are reviewed within 48 hours. If there&apos;s a fit,
             you&apos;ll hear back from Sean directly. If not, you&apos;ll be told directly.
           </p>

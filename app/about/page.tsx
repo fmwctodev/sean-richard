@@ -43,7 +43,7 @@ export default function AboutPage() {
     <div className="pt-32 pb-20 px-6">
       <SchemaMarkup path="/about" pageTitle="About Sean Richard" />
       <JsonLd data={getReadingListSchema()} />
-      <div className="max-w-4xl mx-auto animate-fade-in">
+      <div className="max-w-3xl mx-auto animate-fade-in">
         <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">( About )</p>
         <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
           About Sean Richard
@@ -52,8 +52,8 @@ export default function AboutPage() {
           Entrepreneur, systems architect, software operator, and fractional executive.
         </p>
 
-        <div className="space-y-16">
-          <section className="space-y-4 text-lg text-gray-400 leading-relaxed">
+        <div className="space-y-12">
+          <section className="space-y-4 text-lg text-gray-300 leading-relaxed">
             <p>
               Sean Richard is an American entrepreneur, systems architect, software
               operator, and fractional executive focused on building AI-driven automation,
@@ -74,9 +74,9 @@ export default function AboutPage() {
             </p>
           </section>
 
-          <section className="border-t border-white/10 pt-16">
+          <section className="border-t border-white/10 pt-12">
             <h2 className="text-3xl font-bold mb-6 text-gray-300">Background &amp; Foundation</h2>
-            <div className="space-y-4 text-lg text-gray-400 leading-relaxed">
+            <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
               <p>
                 Sean&apos;s professional foundation is rooted in disciplined execution,
                 technical systems thinking, and real-world operations.
@@ -107,9 +107,9 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="border-t border-white/10 pt-16">
+          <section className="border-t border-white/10 pt-12">
             <h2 className="text-3xl font-bold mb-6 text-gray-300">Professional Focus</h2>
-            <p className="text-lg text-gray-400 leading-relaxed mb-6">
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
               Sean&apos;s work focuses on building systems that directly impact revenue,
               operations, and execution inside service-based businesses. Core areas of
               focus:
@@ -122,7 +122,7 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
-            <p className="text-lg text-gray-400 leading-relaxed">
+            <p className="text-lg text-gray-300 leading-relaxed">
               Rather than offering broad advisory services, Sean works selectively with
               companies that need strategy connected to execution. His role is to design,
               build, direct, and improve the systems that allow a business to scale with
@@ -130,7 +130,7 @@ export default function AboutPage() {
             </p>
           </section>
 
-          <section className="border-t border-white/10 pt-16">
+          <section className="border-t border-white/10 pt-12">
             <h2 className="text-3xl font-bold mb-6 text-gray-300">Companies</h2>
             <div className="space-y-6">
               {VENTURES.map((v) => (
@@ -148,15 +148,15 @@ export default function AboutPage() {
                       </a>
                     )}
                   </div>
-                  <p className="text-gray-400 leading-relaxed">{v.description}</p>
+                  <p className="text-gray-300 leading-relaxed">{v.description}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          <section className="border-t border-white/10 pt-16">
+          <section className="border-t border-white/10 pt-12">
             <h2 className="text-3xl font-bold mb-6 text-gray-300">Operating Philosophy</h2>
-            <p className="text-lg text-gray-400 leading-relaxed mb-6">
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
               Sean&apos;s approach emphasizes execution over theory and systems over
               personalities. He prioritizes:
             </p>
@@ -168,7 +168,7 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
-            <p className="text-lg text-gray-400 leading-relaxed">
+            <p className="text-lg text-gray-300 leading-relaxed">
               Sean does not offer generic coaching, motivational consulting, or
               one-size-fits-all advisory work. His work is focused on building durable
               systems that operators can rely on — systems that connect strategy,
