@@ -75,7 +75,7 @@ export default function Footer() {
                     key={v.id}
                     href={v.url}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="me noopener noreferrer"
                     className="text-ink-secondary hover:text-ink-primary transition-colors"
                   >
                     {v.name.replace(/\s+(Inc|LLC)\.?$/, '')}
@@ -106,7 +106,7 @@ export default function Footer() {
               <a
                 href={SITE.social.linkedin}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
                 LinkedIn
@@ -114,7 +114,7 @@ export default function Footer() {
               <a
                 href={SITE.social.githubPersonal}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
                 GitHub (@fmwctodev)
@@ -122,7 +122,7 @@ export default function Footer() {
               <a
                 href={SITE.social.facebook}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
                 Facebook

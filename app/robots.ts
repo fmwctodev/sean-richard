@@ -14,13 +14,21 @@ const SEARCH_BOTS = [
 const AI_BOTS = [
   'GPTBot',
   'ChatGPT-User',
+  'OAI-SearchBot',
   'Google-Extended',
+  'Applebot-Extended',
   'CCBot',
   'ClaudeBot',
+  'Claude-Web',
   'anthropic-ai',
   'PerplexityBot',
+  'Perplexity-User',
   'Bytespider',
   'cohere-ai',
+  'DuckAssistBot',
+  'Meta-ExternalAgent',
+  'YouBot',
+  'Diffbot',
 ];
 
 export default function robots(): MetadataRoute.Robots {

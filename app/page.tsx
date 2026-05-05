@@ -11,9 +11,9 @@ import { JsonLd } from '@/components/seo/SchemaMarkup';
 import { getFaqSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
-  title: 'Sean Richard | Systems Architect, AI Automation, Fractional CMO & CTO',
+  title: 'Sean Richard | Fractional CMO/CTO, AI Automation, Founder of Autom8ion Lab',
   description:
-    'Sean Richard is an entrepreneur, systems architect, and fractional CMO/CTO building AI automation, contractor SaaS, marketing infrastructure, and business systems for service-based companies.',
+    'Sean Richard is an American entrepreneur, systems architect, and fractional CMO/CTO based in Palm Coast, Florida. Founder of Autom8ion Lab, Sitehues Media, and BuilderLync — building AI automation, contractor SaaS, and operating systems for service-based companies.',
   alternates: { canonical: '/' },
 };
 
