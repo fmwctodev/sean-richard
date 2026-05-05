@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, type FormEvent, type ChangeEvent } from 'react';
+import { useState, useMemo, type FormEvent } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Send } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
@@ -116,12 +116,6 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleRadioChange = (name: keyof FormState) => (value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -358,18 +352,13 @@ export default function ContactForm() {
                   id="building-input"
                   autoFocus
                   value={formData.building}
-                  onChange={handleChange}
-                  name="building-text"
+                  onChange={(e) =>
+                    setFormData({ ...formData, building: e.target.value })
+                  }
                   required
                   rows={6}
                   className={`${inputClass} resize-none`}
                   placeholder="Describe your business, platform, or project. The more specific the better."
-                  onInput={(e) =>
-                    setFormData({
-                      ...formData,
-                      building: (e.target as HTMLTextAreaElement).value,
-                    })
-                  }
                 />
                 <p className="font-mono text-ink-tertiary mt-2" style={{ fontSize: '11px', letterSpacing: '0.06em' }}>
                   {formData.building.length} chars · min 10
