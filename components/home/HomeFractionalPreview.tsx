@@ -55,7 +55,7 @@ export default function HomeFractionalPreview() {
               >
                 <div
                   className="font-mono text-accent mb-6"
-                  style={{ fontSize: '11px', letterSpacing: '0.18em' }}
+                  style={{ fontSize: '13px', letterSpacing: '0.18em' }}
                 >
                   FRACTIONAL
                 </div>

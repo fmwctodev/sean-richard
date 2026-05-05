@@ -55,7 +55,7 @@ export default function EngagementProcess() {
               >
                 {step.title}
               </h3>
-              <p className="relative text-ink-secondary text-[14px] leading-[1.6]">
+              <p className="relative text-ink-secondary text-[15px] leading-[1.6]">
                 {step.body}
               </p>
             </div>

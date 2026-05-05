@@ -54,7 +54,7 @@ export default function VenturesGrid() {
 
                 <div
                   className="relative font-mono mb-6 flex items-center justify-between"
-                  style={{ fontSize: '11px', letterSpacing: '0.16em' }}
+                  style={{ fontSize: '13px', letterSpacing: '0.16em' }}
                 >
                   <span className="text-accent">/ {String(i + 1).padStart(2, '0')}</span>
                   <span className="text-ink-tertiary uppercase">{v.category}</span>
@@ -77,7 +77,7 @@ export default function VenturesGrid() {
                   )}
                 </h3>
 
-                <p className="relative text-ink-secondary text-[14px] leading-[1.6]">
+                <p className="relative text-ink-secondary text-[15px] leading-[1.6]">
                   {v.shortPitch}
                 </p>
               </Wrapper>

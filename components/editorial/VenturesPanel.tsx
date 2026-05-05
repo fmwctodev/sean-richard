@@ -31,7 +31,7 @@ export default function VenturesPanel() {
             )}
             <span
               className="font-mono uppercase text-ink-tertiary text-right shrink-0"
-              style={{ fontSize: '11px', letterSpacing: '0.06em' }}
+              style={{ fontSize: '13px', letterSpacing: '0.06em' }}
             >
               {v.category}
             </span>

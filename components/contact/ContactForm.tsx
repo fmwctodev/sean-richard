@@ -299,7 +299,7 @@ export default function ContactForm() {
   }
 
   const labelClass = 'block font-mono uppercase text-ink-secondary mb-3';
-  const labelStyle = { fontSize: '11px', letterSpacing: '0.12em' };
+  const labelStyle = { fontSize: '13px', letterSpacing: '0.12em' };
 
   const fieldClass = (key: keyof FormState) => {
     const isValid = fieldValid[key as keyof typeof fieldValid];
@@ -630,7 +630,7 @@ function CharCounter({ current, min }: { current: number; min: number }) {
     <div className="flex items-center justify-between mt-2">
       <p
         className="font-mono uppercase"
-        style={{ fontSize: '11px', letterSpacing: '0.06em' }}
+        style={{ fontSize: '13px', letterSpacing: '0.06em' }}
       >
         <span className={met ? 'text-accent' : 'text-ink-tertiary'}>
           {current} chars
@@ -642,7 +642,7 @@ function CharCounter({ current, min }: { current: number; min: number }) {
           initial={{ opacity: 0, x: 4 }}
           animate={{ opacity: 1, x: 0 }}
           className="font-mono uppercase text-accent inline-flex items-center gap-1"
-          style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+          style={{ fontSize: '13px', letterSpacing: '0.12em' }}
         >
           <Check size={11} strokeWidth={3} /> Threshold cleared
         </motion.span>

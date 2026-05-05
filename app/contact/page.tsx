@@ -83,7 +83,7 @@ export default function ContactPage() {
 
             <p
               className="font-mono uppercase text-ink-tertiary"
-              style={{ fontSize: '11px', letterSpacing: '0.08em' }}
+              style={{ fontSize: '13px', letterSpacing: '0.08em' }}
             >
               Direct ·{' '}
               <a

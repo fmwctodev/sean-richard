@@ -67,7 +67,7 @@ export default function QualificationSignal({ strength }: Props) {
       </div>
       <span
         className={`font-mono uppercase transition-colors ${copyClass}`}
-        style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+        style={{ fontSize: '13px', letterSpacing: '0.12em' }}
       >
         {copy}
       </span>

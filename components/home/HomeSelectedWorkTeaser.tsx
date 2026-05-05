@@ -56,7 +56,7 @@ export default function HomeSelectedWorkTeaser() {
               />
               <div
                 className="relative font-mono text-accent mb-8 flex items-center justify-between"
-                style={{ fontSize: '11px', letterSpacing: '0.16em' }}
+                style={{ fontSize: '13px', letterSpacing: '0.16em' }}
               >
                 <span>/ {String(i + 1).padStart(2, '0')}</span>
                 <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -67,7 +67,7 @@ export default function HomeSelectedWorkTeaser() {
               >
                 {product.name}
               </h3>
-              <p className="relative text-ink-secondary text-[14px] leading-[1.6] mb-6">
+              <p className="relative text-ink-secondary text-[15px] leading-[1.6] mb-6">
                 {product.tagline}
               </p>
               <div className="relative flex flex-wrap gap-1.5">
@@ -75,7 +75,7 @@ export default function HomeSelectedWorkTeaser() {
                   <span
                     key={tech}
                     className="font-mono uppercase text-ink-tertiary border border-line px-2 py-[2px] rounded-full"
-                    style={{ fontSize: '9px', letterSpacing: '0.06em' }}
+                    style={{ fontSize: '12px', letterSpacing: '0.06em' }}
                   >
                     {tech}
                   </span>
@@ -83,7 +83,7 @@ export default function HomeSelectedWorkTeaser() {
                 {product.stack.length > 4 && (
                   <span
                     className="font-mono text-ink-tertiary px-2"
-                    style={{ fontSize: '9px' }}
+                    style={{ fontSize: '12px' }}
                   >
                     +{product.stack.length - 4}
                   </span>

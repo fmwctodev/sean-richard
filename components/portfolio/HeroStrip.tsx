@@ -42,7 +42,7 @@ export default function HeroStrip() {
         </p>
         <p
           className="font-mono uppercase text-ink-tertiary mb-10"
-          style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+          style={{ fontSize: '13px', letterSpacing: '0.12em' }}
         >
           {SITE.location}
         </p>

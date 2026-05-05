@@ -45,13 +45,13 @@ export default function EducationCredentials() {
                   </p>
                   <p
                     className="font-mono uppercase text-accent mb-1"
-                    style={{ fontSize: '11px', letterSpacing: '0.08em' }}
+                    style={{ fontSize: '13px', letterSpacing: '0.08em' }}
                   >
                     {degree.school}
                   </p>
                   <p
                     className="font-mono uppercase text-ink-tertiary"
-                    style={{ fontSize: '10px', letterSpacing: '0.06em' }}
+                    style={{ fontSize: '12px', letterSpacing: '0.06em' }}
                   >
                     {degree.dates}
                     {degree.status ? ` · ${degree.status}` : ''}
@@ -85,7 +85,7 @@ export default function EducationCredentials() {
                       </p>
                       <p
                         className="font-mono uppercase text-ink-tertiary mt-1 truncate"
-                        style={{ fontSize: '10px', letterSpacing: '0.06em' }}
+                        style={{ fontSize: '12px', letterSpacing: '0.06em' }}
                       >
                         {cert.source}
                       </p>

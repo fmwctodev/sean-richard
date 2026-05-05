@@ -268,7 +268,7 @@ export default function AboutPage() {
                 />
                 <div
                   className="relative font-mono mb-6 flex items-center justify-between"
-                  style={{ fontSize: '11px', letterSpacing: '0.16em' }}
+                  style={{ fontSize: '13px', letterSpacing: '0.16em' }}
                 >
                   <span className="text-accent">/ {String(i + 1).padStart(2, '0')}</span>
                   <span className="text-ink-tertiary uppercase">{v.category}</span>
@@ -283,7 +283,7 @@ export default function AboutPage() {
                 >
                   {v.name}
                 </h3>
-                <p className="relative text-ink-secondary leading-[1.6] text-[14px] mb-4">
+                <p className="relative text-ink-secondary leading-[1.6] text-[15px] mb-4">
                   {v.description}
                 </p>
                 {v.url && (
@@ -292,7 +292,7 @@ export default function AboutPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative inline-flex items-center gap-2 font-mono uppercase text-accent hover:text-ink-primary transition-colors"
-                    style={{ fontSize: '11px', letterSpacing: '0.06em' }}
+                    style={{ fontSize: '13px', letterSpacing: '0.06em' }}
                   >
                     Visit ↗
                   </a>

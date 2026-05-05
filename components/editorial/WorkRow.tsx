@@ -45,7 +45,7 @@ export default function WorkRow({ num, title, meta, href, external }: Props) {
       </span>
       <span
         className="font-mono text-ink-tertiary uppercase md:text-right"
-        style={{ fontSize: '11px', letterSpacing: '0.08em' }}
+        style={{ fontSize: '13px', letterSpacing: '0.08em' }}
       >
         {meta}
       </span>

@@ -46,7 +46,7 @@ export default function SelectedProductsGrid() {
 
               <div
                 className="relative font-mono text-accent mb-6 flex items-center justify-between"
-                style={{ fontSize: '11px', letterSpacing: '0.16em' }}
+                style={{ fontSize: '13px', letterSpacing: '0.16em' }}
               >
                 <span>/ {String(i + 1).padStart(2, '0')}</span>
                 <span className="text-ink-tertiary">
@@ -73,7 +73,7 @@ export default function SelectedProductsGrid() {
                   <span
                     key={tech}
                     className="font-mono uppercase text-ink-tertiary border border-line px-2 py-[3px] rounded-full"
-                    style={{ fontSize: '10px', letterSpacing: '0.06em' }}
+                    style={{ fontSize: '12px', letterSpacing: '0.06em' }}
                   >
                     {tech}
                   </span>
@@ -84,7 +84,7 @@ export default function SelectedProductsGrid() {
                 {product.bullets.map((bullet, idx) => (
                   <li
                     key={idx}
-                    className="text-ink-secondary text-[14px] leading-[1.55] flex gap-3"
+                    className="text-ink-secondary text-[15px] leading-[1.55] flex gap-3"
                   >
                     <span className="text-accent shrink-0 font-mono text-[12px] mt-[2px]">
                       →
@@ -103,7 +103,7 @@ export default function SelectedProductsGrid() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 font-mono uppercase text-accent hover:text-ink-primary transition-colors"
-                      style={{ fontSize: '11px', letterSpacing: '0.06em' }}
+                      style={{ fontSize: '13px', letterSpacing: '0.06em' }}
                     >
                       <ExternalLink size={13} />
                       <span>{link.label}</span>

@@ -44,14 +44,14 @@ export default function ExperienceTimeline() {
                     </h3>
                     <p
                       className="font-mono uppercase text-accent mt-1"
-                      style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+                      style={{ fontSize: '13px', letterSpacing: '0.12em' }}
                     >
                       {entry.org}
                     </p>
                   </div>
                   <p
                     className="font-mono uppercase text-ink-tertiary md:text-right shrink-0"
-                    style={{ fontSize: '10px', letterSpacing: '0.08em' }}
+                    style={{ fontSize: '12px', letterSpacing: '0.08em' }}
                   >
                     {entry.dates}
                     {entry.location ? ` · ${entry.location}` : ''}
@@ -59,7 +59,7 @@ export default function ExperienceTimeline() {
                 </div>
 
                 {entry.summary && (
-                  <p className="italic text-ink-secondary mb-4 leading-[1.55] text-[14px]">
+                  <p className="italic text-ink-secondary mb-4 leading-[1.55] text-[15px]">
                     {entry.summary}
                   </p>
                 )}
@@ -68,7 +68,7 @@ export default function ExperienceTimeline() {
                   {entry.bullets.map((bullet, i) => (
                     <li
                       key={i}
-                      className="text-ink-secondary text-[14px] leading-[1.55] flex gap-3"
+                      className="text-ink-secondary text-[15px] leading-[1.55] flex gap-3"
                     >
                       <span className="text-accent shrink-0 font-mono text-[11px] mt-[3px]">
                         →

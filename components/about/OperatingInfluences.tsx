@@ -22,11 +22,11 @@ function BookCard({ book }: { book: Book }) {
       </h4>
       <p
         className="relative font-mono uppercase text-ink-tertiary mb-3"
-        style={{ fontSize: '10px', letterSpacing: '0.06em' }}
+        style={{ fontSize: '12px', letterSpacing: '0.06em' }}
       >
         {book.authors.join(' · ')}
       </p>
-      <p className="relative text-[14px] text-ink-secondary leading-[1.6] italic">
+      <p className="relative text-[15px] text-ink-secondary leading-[1.6] italic">
         {book.commentary}
       </p>
     </article>

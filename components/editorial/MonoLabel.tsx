@@ -27,7 +27,7 @@ export default function MonoLabel({
         colorClass,
         className,
       )}
-      style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+      style={{ fontSize: '13px', letterSpacing: '0.12em' }}
     >
       {leading === 'rule' && (
         <span

@@ -54,7 +54,7 @@ export default function HomeServices() {
               />
               <div
                 className="relative flex justify-between mb-12 font-mono"
-                style={{ fontSize: '11px', letterSpacing: '0.16em' }}
+                style={{ fontSize: '13px', letterSpacing: '0.16em' }}
               >
                 <span className="text-ink-tertiary">
                   {String(i + 1).padStart(2, '0')} / {String(total + 1).padStart(2, '0')}
@@ -69,7 +69,7 @@ export default function HomeServices() {
               >
                 {service.title}
               </h3>
-              <p className="relative text-ink-secondary text-[14px] leading-[1.6]">
+              <p className="relative text-ink-secondary text-[15px] leading-[1.6]">
                 {service.body}
               </p>
             </Link>
@@ -83,7 +83,7 @@ export default function HomeServices() {
           >
             <div
               className="font-mono text-accent mb-12"
-              style={{ fontSize: '11px', letterSpacing: '0.16em' }}
+              style={{ fontSize: '13px', letterSpacing: '0.16em' }}
             >
               <div className="flex justify-between">
                 <span>GET IN TOUCH</span>
@@ -97,7 +97,7 @@ export default function HomeServices() {
               >
                 Not sure which fits?
               </h3>
-              <p className="text-ink-secondary text-[14px] leading-[1.6]">
+              <p className="text-ink-secondary text-[15px] leading-[1.6]">
                 Most engagements start with a systems review. Tell me what you&apos;re
                 operating and what&apos;s broken — I&apos;ll tell you whether I&apos;m
                 the right person and where to start.

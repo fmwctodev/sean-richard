@@ -10,13 +10,13 @@ export default function ProgressBar({ step, total }: Props) {
       <div className="flex justify-between mb-2 items-baseline">
         <span
           className="font-mono uppercase text-ink-tertiary"
-          style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+          style={{ fontSize: '13px', letterSpacing: '0.12em' }}
         >
           Step {String(step).padStart(2, '0')} / {String(total).padStart(2, '0')}
         </span>
         <span
           className="font-mono uppercase text-accent"
-          style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+          style={{ fontSize: '13px', letterSpacing: '0.12em' }}
         >
           {Math.round(percent)}% Complete
         </span>
