@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useMemo, type FormEvent } from 'react';
+import { useState, useMemo, useEffect, type FormEvent } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Send } from 'lucide-react';
+import { Send, Check, Zap } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 import MonoLabel from '@/components/editorial/MonoLabel';
-import EditorialHeadline from '@/components/editorial/EditorialHeadline';
 import ProgressBar from './ProgressBar';
 import QualificationSignal from './QualificationSignal';
 import RadioCard from './RadioCard';
@@ -69,31 +68,11 @@ const HELP_TYPES: { value: string; label: string; description: string }[] = [
 ];
 
 const COMPANY_STAGES: { value: string; label: string; description: string }[] = [
-  {
-    value: 'Startup / pre-revenue',
-    label: 'Pre-revenue',
-    description: 'Building, not yet earning.',
-  },
-  {
-    value: 'Under $1M/year',
-    label: 'Under $1M/yr',
-    description: 'Past revenue, pre-systems.',
-  },
-  {
-    value: '$1M–$5M/year',
-    label: '$1M–$5M/yr',
-    description: 'Sweet spot for fractional support.',
-  },
-  {
-    value: '$5M–$10M/year',
-    label: '$5M–$10M/yr',
-    description: 'Scaling operations, decision time.',
-  },
-  {
-    value: '$10M+/year',
-    label: '$10M+/yr',
-    description: 'Mature, infrastructure matters.',
-  },
+  { value: 'Startup / pre-revenue', label: 'Pre-revenue', description: 'Building, not yet earning.' },
+  { value: 'Under $1M/year', label: 'Under $1M/yr', description: 'Past revenue, pre-systems.' },
+  { value: '$1M–$5M/year', label: '$1M–$5M/yr', description: 'Sweet spot for fractional support.' },
+  { value: '$5M–$10M/year', label: '$5M–$10M/yr', description: 'Scaling operations, decision time.' },
+  { value: '$10M+/year', label: '$10M+/yr', description: 'Mature, infrastructure matters.' },
   {
     value: 'Internal platform or venture-backed project',
     label: 'Platform / venture-backed',
@@ -103,12 +82,32 @@ const COMPANY_STAGES: { value: string; label: string; description: string }[] = 
 
 const TOTAL_STEPS = 4;
 
-const STEP_HEADLINES = [
-  { eyebrow: 'Step one', headline: 'Who are you?' },
-  { eyebrow: 'Step two', headline: 'What are you operating?' },
-  { eyebrow: 'Step three', headline: 'What kind of help?' },
-  { eyebrow: 'Step four', headline: "What's the actual problem?" },
-] as const;
+const STEP_HEADLINES: { eyebrow: string; headline: string; accent: string }[] = [
+  { eyebrow: 'Step 01 — Identity', headline: 'Who are you?', accent: 'you' },
+  { eyebrow: 'Step 02 — Operations', headline: 'What are you operating?', accent: 'operating' },
+  { eyebrow: 'Step 03 — Calibration', headline: 'What kind of help?', accent: 'help' },
+  { eyebrow: 'Step 04 — Diagnosis', headline: "What's the actual problem?", accent: 'problem' },
+];
+
+function renderHeadline(text: string, accent: string) {
+  const idx = text.toLowerCase().indexOf(accent.toLowerCase());
+  if (idx === -1) return text;
+  const before = text.slice(0, idx);
+  const word = text.slice(idx, idx + accent.length);
+  const after = text.slice(idx + accent.length);
+  return (
+    <>
+      {before}
+      <span
+        className="text-accent"
+        style={{ textShadow: '0 0 40px rgba(239, 68, 68, 0.5)' }}
+      >
+        {word}
+      </span>
+      {after}
+    </>
+  );
+}
 
 export default function ContactForm() {
   const [step, setStep] = useState(1);
@@ -116,36 +115,77 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [recentlyValidated, setRecentlyValidated] = useState<Set<keyof FormState>>(
+    new Set(),
+  );
 
   const handleRadioChange = (name: keyof FormState) => (value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
+    flashFieldValidated(name);
   };
+
+  const flashFieldValidated = (key: keyof FormState) => {
+    setRecentlyValidated((prev) => new Set([...prev, key]));
+    setTimeout(() => {
+      setRecentlyValidated((prev) => {
+        const next = new Set(prev);
+        next.delete(key);
+        return next;
+      });
+    }, 700);
+  };
+
+  const fieldValid = useMemo(() => ({
+    name: formData.name.trim() !== '',
+    email: /\S+@\S+\.\S+/.test(formData.email),
+    building: formData.building.trim().length >= 10,
+    help_type: formData.help_type !== '',
+    company_stage: formData.company_stage !== '',
+    problem: formData.problem.trim().length >= 20,
+  }), [formData]);
 
   const isStepValid = useMemo(() => {
     switch (step) {
       case 1:
-        return formData.name.trim() !== '' && /\S+@\S+\.\S+/.test(formData.email);
+        return fieldValid.name && fieldValid.email;
       case 2:
-        return formData.building.trim().length >= 10;
+        return fieldValid.building;
       case 3:
-        return formData.help_type !== '' && formData.company_stage !== '';
+        return fieldValid.help_type && fieldValid.company_stage;
       case 4:
-        return formData.problem.trim().length >= 20;
+        return fieldValid.problem;
       default:
         return false;
     }
-  }, [step, formData]);
+  }, [step, fieldValid]);
 
   const overallStrength = useMemo(() => {
-    let filled = 0;
-    if (formData.name.trim()) filled += 1;
-    if (/\S+@\S+\.\S+/.test(formData.email)) filled += 1;
-    if (formData.building.trim().length >= 10) filled += 1;
-    if (formData.help_type) filled += 1;
-    if (formData.company_stage) filled += 1;
-    if (formData.problem.trim().length >= 20) filled += 1;
-    return filled / 6;
-  }, [formData]);
+    const requiredKeys = [
+      'name',
+      'email',
+      'building',
+      'help_type',
+      'company_stage',
+      'problem',
+    ] as const;
+    const filled = requiredKeys.filter((k) => fieldValid[k]).length;
+    return filled / requiredKeys.length;
+  }, [fieldValid]);
+
+  // Watch for individual field validation transitions to flash success
+  useEffect(() => {
+    (Object.keys(fieldValid) as (keyof typeof fieldValid)[]).forEach((key) => {
+      if (fieldValid[key] && !recentlyValidated.has(key as keyof FormState)) {
+        // Only flash on the FIRST time it becomes valid this session
+        const wasInvalid = (window as any).__lastValid?.[key] === false;
+        if (wasInvalid) {
+          flashFieldValidated(key as keyof FormState);
+        }
+      }
+    });
+    (window as any).__lastValid = fieldValid;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fieldValid]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -166,7 +206,10 @@ export default function ContactForm() {
         if (typeof value === 'string') params.append(key, value);
       });
 
-      const response = await fetch('/', {
+      // POST to /__forms.html — the static HTML file Netlify recognizes
+      // as a form-submission endpoint when @netlify/plugin-nextjs is in
+      // use. POSTing to "/" returns 405 because Next.js has no handler there.
+      const response = await fetch('/__forms.html', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
@@ -184,7 +227,9 @@ export default function ContactForm() {
         setFormData(INITIAL);
         setStep(1);
       } else {
-        setError('Something went wrong. Please try again.');
+        setError(
+          `Submission failed (status ${response.status}). Please try again, or email sean@sitehues.com directly.`,
+        );
       }
     } catch {
       setError('Network error. Please check your connection and try again.');
@@ -196,22 +241,47 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
         className="min-h-[40vh] flex items-center justify-center"
       >
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-2xl mx-auto text-center relative">
+          <motion.div
+            initial={{ scale: 0, rotate: -45 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ delay: 0.15, type: 'spring', stiffness: 220 }}
+            className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-accent/15 border border-accent mb-8 relative"
+          >
+            <span
+              aria-hidden
+              className="absolute inset-0 rounded-full"
+              style={{ boxShadow: '0 0 60px rgba(239, 68, 68, 0.5)' }}
+            />
+            <Check className="text-accent relative" size={36} strokeWidth={2.5} />
+          </motion.div>
           <div className="mb-6">
             <MonoLabel variant="accent" leading="dot">
-              Inquiry Received
+              Inquiry Received · Strong Fit Signal
             </MonoLabel>
           </div>
-          <EditorialHeadline
-            text="Qualified inquiries reviewed within {{em}}48 hours{{/em}}."
-            size="section"
-            className="mb-6 max-w-[24ch] mx-auto"
-          />
+          <h2
+            className="font-sans font-extrabold text-ink-primary mb-6 max-w-[24ch] mx-auto"
+            style={{
+              fontSize: 'clamp(32px, 5vw, 56px)',
+              lineHeight: 0.98,
+              letterSpacing: '-0.03em',
+            }}
+          >
+            Qualified inquiries reviewed within{' '}
+            <span
+              className="text-accent"
+              style={{ textShadow: '0 0 60px rgba(239, 68, 68, 0.5)' }}
+            >
+              48 hours
+            </span>
+            .
+          </h2>
           <p className="text-ink-secondary text-[16px] leading-[1.6] mb-8 max-w-[55ch] mx-auto">
             If there&apos;s a fit, you&apos;ll hear back from Sean directly. If not,
             you&apos;ll be told directly.
@@ -228,11 +298,21 @@ export default function ContactForm() {
     );
   }
 
-  const inputClass =
-    'w-full px-4 py-[14px] bg-bg-elevated border border-line focus:border-accent focus:outline-none transition-colors text-ink-primary placeholder:text-ink-tertiary';
-  const labelClass =
-    'block font-mono uppercase text-ink-secondary mb-3';
+  const labelClass = 'block font-mono uppercase text-ink-secondary mb-3';
   const labelStyle = { fontSize: '11px', letterSpacing: '0.12em' };
+
+  const fieldClass = (key: keyof FormState) => {
+    const isValid = fieldValid[key as keyof typeof fieldValid];
+    const flashing = recentlyValidated.has(key);
+    return [
+      'w-full px-4 py-[14px] bg-bg-elevated border focus:outline-none transition-all text-ink-primary placeholder:text-ink-tertiary rounded-lg',
+      flashing
+        ? 'border-accent shadow-[0_0_0_3px_rgba(239,68,68,0.25)]'
+        : isValid
+          ? 'border-accent/40'
+          : 'border-line focus:border-accent',
+    ].join(' ');
+  };
 
   const headlineFor = STEP_HEADLINES[step - 1];
 
@@ -242,8 +322,9 @@ export default function ContactForm() {
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
+      action="/__forms.html"
       onSubmit={handleSubmit}
-      className="space-y-10"
+      className="space-y-10 relative"
     >
       <input type="hidden" name="form-name" value="contact" />
       <p className="hidden">
@@ -261,41 +342,88 @@ export default function ContactForm() {
       <input type="hidden" name="company_stage" value={formData.company_stage} />
       <input type="hidden" name="problem" value={formData.problem} />
 
-      {/* Header: progress + qualification signal */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-        <div className="flex-1 max-w-[420px]">
-          <ProgressBar step={step} total={TOTAL_STEPS} />
+      {/* HEADER: progress + qualification signal + step dots */}
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div className="flex-1 max-w-[420px]">
+            <ProgressBar step={step} total={TOTAL_STEPS} />
+          </div>
+          <QualificationSignal strength={overallStrength} />
         </div>
-        <QualificationSignal strength={overallStrength} />
+
+        {/* Step dots */}
+        <div className="flex items-center gap-3">
+          {Array.from({ length: TOTAL_STEPS }).map((_, i) => {
+            const stepNum = i + 1;
+            const isActive = stepNum === step;
+            const isPast = stepNum < step;
+            return (
+              <div key={stepNum} className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => stepNum < step && setStep(stepNum)}
+                  disabled={stepNum > step}
+                  className={`relative w-8 h-8 rounded-full font-mono text-[11px] flex items-center justify-center transition-all ${
+                    isActive
+                      ? 'bg-accent text-bg-primary'
+                      : isPast
+                        ? 'bg-accent/15 border border-accent text-accent hover:bg-accent/25 cursor-pointer'
+                        : 'bg-bg-elevated border border-line text-ink-tertiary cursor-not-allowed'
+                  }`}
+                  style={
+                    isActive
+                      ? { boxShadow: '0 0 24px rgba(239, 68, 68, 0.5)' }
+                      : undefined
+                  }
+                  aria-label={`Step ${stepNum}`}
+                  aria-current={isActive ? 'step' : undefined}
+                >
+                  {isPast ? <Check size={14} strokeWidth={3} /> : stepNum}
+                </button>
+                {i < TOTAL_STEPS - 1 && (
+                  <div
+                    className={`h-px w-8 transition-colors ${
+                      isPast ? 'bg-accent' : 'bg-line'
+                    }`}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {error && (
-        <div className="p-4 border border-accent/40 bg-accent/5 text-ink-primary text-[14px]">
+        <div className="p-4 border border-accent/40 bg-accent/5 text-ink-primary text-[14px] rounded-lg">
           {error}
         </div>
       )}
 
-      {/* Step content */}
-      <div className="min-h-[280px]">
+      {/* STEP CONTENT */}
+      <div className="min-h-[320px] relative">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.35 }}
+            exit={{ opacity: 0, y: -24 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="space-y-6"
           >
             <div>
-              <div className="mb-2">
+              <div className="mb-3">
                 <MonoLabel variant="accent">{headlineFor.eyebrow}</MonoLabel>
               </div>
-              <EditorialHeadline
-                text={headlineFor.headline}
-                size="card"
-                as="h2"
-                className="max-w-[24ch]"
-              />
+              <h2
+                className="font-sans font-extrabold text-ink-primary max-w-[24ch]"
+                style={{
+                  fontSize: 'clamp(28px, 4vw, 44px)',
+                  lineHeight: 1.02,
+                  letterSpacing: '-0.03em',
+                }}
+              >
+                {renderHeadline(headlineFor.headline, headlineFor.accent)}
+              </h2>
             </div>
 
             {step === 1 && (
@@ -304,38 +432,43 @@ export default function ContactForm() {
                   <label htmlFor="name-input" className={labelClass} style={labelStyle}>
                     Name
                   </label>
-                  <input
-                    id="name-input"
-                    type="text"
-                    autoFocus
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    required
-                    className={inputClass}
-                    placeholder="Your name"
-                  />
+                  <div className="relative">
+                    <input
+                      id="name-input"
+                      type="text"
+                      autoFocus
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required
+                      className={fieldClass('name')}
+                      placeholder="Your name"
+                    />
+                    <FieldCheck visible={fieldValid.name} />
+                  </div>
                 </div>
                 <div>
                   <label htmlFor="email-input" className={labelClass} style={labelStyle}>
                     Email
                   </label>
-                  <input
-                    id="email-input"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    required
-                    className={inputClass}
-                    placeholder="your@email.com"
-                  />
+                  <div className="relative">
+                    <input
+                      id="email-input"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
+                      className={fieldClass('email')}
+                      placeholder="your@email.com"
+                    />
+                    <FieldCheck visible={fieldValid.email} />
+                  </div>
                 </div>
                 <div>
                   <label htmlFor="company-input" className={labelClass} style={labelStyle}>
-                    Company <span className="text-ink-tertiary normal-case font-sans tracking-normal">(optional)</span>
+                    Company{' '}
+                    <span className="text-ink-tertiary normal-case font-sans tracking-normal">
+                      (optional)
+                    </span>
                   </label>
                   <input
                     id="company-input"
@@ -344,7 +477,7 @@ export default function ContactForm() {
                     onChange={(e) =>
                       setFormData({ ...formData, company: e.target.value })
                     }
-                    className={inputClass}
+                    className={fieldClass('company' as keyof FormState)}
                     placeholder="Company or organization"
                   />
                 </div>
@@ -356,21 +489,22 @@ export default function ContactForm() {
                 <label htmlFor="building-input" className={labelClass} style={labelStyle}>
                   What are you building or operating?
                 </label>
-                <textarea
-                  id="building-input"
-                  autoFocus
-                  value={formData.building}
-                  onChange={(e) =>
-                    setFormData({ ...formData, building: e.target.value })
-                  }
-                  required
-                  rows={6}
-                  className={`${inputClass} resize-none`}
-                  placeholder="Describe your business, platform, or project. The more specific the better."
-                />
-                <p className="font-mono text-ink-tertiary mt-2" style={{ fontSize: '11px', letterSpacing: '0.06em' }}>
-                  {formData.building.length} chars · min 10
-                </p>
+                <div className="relative">
+                  <textarea
+                    id="building-input"
+                    autoFocus
+                    value={formData.building}
+                    onChange={(e) =>
+                      setFormData({ ...formData, building: e.target.value })
+                    }
+                    required
+                    rows={6}
+                    className={`${fieldClass('building')} resize-none`}
+                    placeholder="Describe your business, platform, or project. The more specific the better."
+                  />
+                  <FieldCheck visible={fieldValid.building} top="14px" />
+                </div>
+                <CharCounter current={formData.building.length} min={10} />
               </div>
             )}
 
@@ -420,28 +554,29 @@ export default function ContactForm() {
                 <label htmlFor="problem-input" className={labelClass} style={labelStyle}>
                   What problem are you trying to solve?
                 </label>
-                <textarea
-                  id="problem-input"
-                  autoFocus
-                  value={formData.problem}
-                  onChange={(e) =>
-                    setFormData({ ...formData, problem: e.target.value })
-                  }
-                  required
-                  rows={7}
-                  className={`${inputClass} resize-none`}
-                  placeholder="Briefly explain the current bottleneck, goal, or system you need help with."
-                />
-                <p className="font-mono text-ink-tertiary mt-2" style={{ fontSize: '11px', letterSpacing: '0.06em' }}>
-                  {formData.problem.length} chars · min 20
-                </p>
+                <div className="relative">
+                  <textarea
+                    id="problem-input"
+                    autoFocus
+                    value={formData.problem}
+                    onChange={(e) =>
+                      setFormData({ ...formData, problem: e.target.value })
+                    }
+                    required
+                    rows={7}
+                    className={`${fieldClass('problem')} resize-none`}
+                    placeholder="Briefly explain the current bottleneck, goal, or system you need help with."
+                  />
+                  <FieldCheck visible={fieldValid.problem} top="14px" />
+                </div>
+                <CharCounter current={formData.problem.length} min={20} />
               </div>
             )}
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Step controls */}
+      {/* STEP CONTROLS */}
       <div className="flex items-center justify-between gap-4 pt-6 border-t border-line">
         <button
           type="button"
@@ -453,32 +588,130 @@ export default function ContactForm() {
           ← Back
         </button>
 
-        <button
-          type="submit"
-          disabled={!isStepValid || isSubmitting}
-          className={`group inline-flex items-center gap-3 px-7 py-[14px] rounded-full font-medium text-[14px] transition-all ${
-            isStepValid
-              ? 'bg-accent text-bg-primary hover:bg-ink-primary'
-              : 'bg-bg-elevated text-ink-tertiary cursor-not-allowed border border-line'
-          }`}
-        >
-          {step < TOTAL_STEPS ? (
-            <>
-              Next
-              <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </>
-          ) : isSubmitting ? (
-            'Submitting...'
-          ) : (
-            <>
-              Submit Inquiry
-              <Send size={15} />
-            </>
-          )}
-        </button>
+        <SubmitButton
+          step={step}
+          isStepValid={isStepValid}
+          isSubmitting={isSubmitting}
+          totalSteps={TOTAL_STEPS}
+          fillStrength={overallStrength}
+        />
       </div>
     </form>
+  );
+}
+
+function FieldCheck({ visible, top = '50%' }: { visible: boolean; top?: string }) {
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.span
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0, opacity: 0 }}
+          transition={{ duration: 0.25, ease: 'backOut' }}
+          aria-hidden
+          className="absolute right-3 inline-flex items-center justify-center w-6 h-6 rounded-full bg-accent text-bg-primary"
+          style={{
+            top,
+            transform: top === '50%' ? 'translateY(-50%)' : undefined,
+            boxShadow: '0 0 16px rgba(239, 68, 68, 0.5)',
+          }}
+        >
+          <Check size={14} strokeWidth={3} />
+        </motion.span>
+      )}
+    </AnimatePresence>
+  );
+}
+
+function CharCounter({ current, min }: { current: number; min: number }) {
+  const met = current >= min;
+  return (
+    <div className="flex items-center justify-between mt-2">
+      <p
+        className="font-mono uppercase"
+        style={{ fontSize: '11px', letterSpacing: '0.06em' }}
+      >
+        <span className={met ? 'text-accent' : 'text-ink-tertiary'}>
+          {current} chars
+        </span>
+        <span className="text-ink-tertiary"> · min {min}</span>
+      </p>
+      {met && (
+        <motion.span
+          initial={{ opacity: 0, x: 4 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="font-mono uppercase text-accent inline-flex items-center gap-1"
+          style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+        >
+          <Check size={11} strokeWidth={3} /> Threshold cleared
+        </motion.span>
+      )}
+    </div>
+  );
+}
+
+function SubmitButton({
+  step,
+  isStepValid,
+  isSubmitting,
+  totalSteps,
+  fillStrength,
+}: {
+  step: number;
+  isStepValid: boolean;
+  isSubmitting: boolean;
+  totalSteps: number;
+  fillStrength: number;
+}) {
+  const isFinal = step === totalSteps;
+  const fillPercent = Math.round(fillStrength * 100);
+
+  return (
+    <button
+      type="submit"
+      disabled={!isStepValid || isSubmitting}
+      className={`group relative inline-flex items-center gap-3 px-7 py-[14px] rounded-full font-semibold text-[14px] transition-all overflow-hidden ${
+        isStepValid
+          ? 'bg-accent text-bg-primary'
+          : 'bg-bg-elevated text-ink-tertiary cursor-not-allowed border border-line'
+      }`}
+      style={
+        isStepValid
+          ? { boxShadow: '0 8px 32px -8px rgba(239, 68, 68, 0.6)' }
+          : undefined
+      }
+    >
+      {/* Energy charge indicator on final submit */}
+      {isFinal && isStepValid && (
+        <span
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-r from-accent-light to-accent opacity-0 group-hover:opacity-100 transition-opacity"
+        />
+      )}
+
+      <span className="relative z-10 flex items-center gap-2">
+        {isFinal ? (
+          isSubmitting ? (
+            <>
+              <span className="inline-block w-3 h-3 rounded-full bg-bg-primary animate-pulse" />
+              Submitting…
+            </>
+          ) : (
+            <>
+              <Zap size={15} fill="currentColor" />
+              Submit Inquiry · {fillPercent}% Charged
+            </>
+          )
+        ) : (
+          <>
+            Next
+            <span aria-hidden className="transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </>
+        )}
+      </span>
+    </button>
   );
 }
