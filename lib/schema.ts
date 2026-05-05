@@ -1,6 +1,7 @@
 import { SITE } from '@/content/nav';
 import { VENTURES } from '@/content/ventures';
 import { FAQS } from '@/content/faqs';
+import { BOOKS } from '@/content/books';
 
 const BASE_URL = SITE.url;
 
@@ -142,6 +143,34 @@ export function getFractionalServicesSchema() {
       areaServed: o.areaServed,
       provider: { '@id': `${BASE_URL}/#sean-richard` },
     })),
+  };
+}
+
+export function getReadingListSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ReadAction',
+    '@id': `${BASE_URL}/about#operating-influences`,
+    agent: { '@id': `${BASE_URL}/#sean-richard` },
+    name: 'Operating Influences — Sean Richard reading list',
+    object: {
+      '@type': 'ItemList',
+      name: 'Operating Influences',
+      itemListElement: BOOKS.map((book, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Book',
+          name: book.title,
+          author: book.authors.map((author) => ({
+            '@type': 'Person',
+            name: author,
+          })),
+          about: book.topic,
+          ...(book.isbn ? { isbn: book.isbn } : {}),
+        },
+      })),
+    },
   };
 }
 

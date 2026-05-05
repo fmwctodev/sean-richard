@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import LastUpdated from '@/components/LastUpdated';
-import SchemaMarkup from '@/components/seo/SchemaMarkup';
+import SchemaMarkup, { JsonLd } from '@/components/seo/SchemaMarkup';
 import CtaBlock from '@/components/CtaBlock';
+import OperatingInfluences from '@/components/about/OperatingInfluences';
 import { VENTURES } from '@/content/ventures';
+import { getReadingListSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'About Sean Richard | Entrepreneur, Systems Architect & Fractional Executive',
@@ -40,6 +42,7 @@ export default function AboutPage() {
   return (
     <div className="pt-32 pb-20 px-6">
       <SchemaMarkup path="/about" pageTitle="About Sean Richard" />
+      <JsonLd data={getReadingListSchema()} />
       <div className="max-w-4xl mx-auto animate-fade-in">
         <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">( About )</p>
         <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
@@ -172,6 +175,8 @@ export default function AboutPage() {
               technology, marketing, automation, and execution.
             </p>
           </section>
+
+          <OperatingInfluences />
 
           <LastUpdated date="May 2026" />
         </div>
