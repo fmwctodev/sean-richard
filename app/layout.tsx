@@ -1,19 +1,34 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Instrument_Serif, Geist, Geist_Mono } from 'next/font/google';
 import Script from 'next/script';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
-import BackgroundCanvas from '@/components/layout/BackgroundCanvas';
+import AmbientMesh from '@/components/layout/AmbientMesh';
 import ScrollProgress from '@/components/layout/ScrollProgress';
 import SchemaMarkup from '@/components/seo/SchemaMarkup';
 import { SITE } from '@/content/nav';
 import './globals.css';
 
-const inter = Inter({
+const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
-  weight: ['400', '600', '700', '900'],
+  weight: ['400'],
+  style: ['normal', 'italic'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-instrument-serif',
+});
+
+const geistSans = Geist({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-geist-sans',
+});
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-geist-mono',
 });
 
 const GA_MEASUREMENT_ID = 'G-KET5CM5RLL';
@@ -48,7 +63,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#000000',
+  themeColor: '#0E0D0C',
 };
 
 export default function RootLayout({
@@ -57,7 +72,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html
+      lang="en"
+      className={`${instrumentSerif.variable} ${geistSans.variable} ${geistMono.variable}`}
+    >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -68,7 +86,7 @@ export default function RootLayout({
           fetchPriority="high"
         />
       </head>
-      <body className="bg-black text-white font-sans antialiased">
+      <body className="bg-bg-primary text-ink-primary font-sans antialiased">
         <SchemaMarkup path="/" />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
@@ -83,7 +101,7 @@ export default function RootLayout({
           `}
         </Script>
         <div className="min-h-screen relative">
-          <BackgroundCanvas />
+          <AmbientMesh />
           <ScrollProgress />
           <div className="relative z-10">
             <Navigation />

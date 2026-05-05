@@ -1,53 +1,57 @@
-import { Check, X } from 'lucide-react';
+import Section from '@/components/editorial/Section';
+import MonoLabel from '@/components/editorial/MonoLabel';
 import { WHO_THIS_IS_FOR, WHO_THIS_IS_NOT_FOR } from '@/content/fractional';
 
 export default function FitMatrix() {
   return (
-    <section className="px-6 py-20 border-t border-white/10">
-      <div className="max-w-5xl mx-auto">
-        <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">( Fit Check )</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-12">
-          Who this is for — and who it isn&apos;t.
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="border border-emerald-500/30 bg-emerald-500/5 p-8">
-            <div className="flex items-center gap-2 mb-6">
-              <Check className="text-emerald-400" size={20} />
-              <h3 className="text-lg font-bold text-emerald-300">Who This Is For</h3>
-            </div>
-            <ul className="space-y-3">
-              {WHO_THIS_IS_FOR.map((item, i) => (
-                <li
-                  key={i}
-                  className="text-gray-300 leading-relaxed text-sm flex gap-2"
-                >
-                  <span className="text-emerald-400 shrink-0">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+    <Section
+      number="05"
+      eyebrow="Fit Check"
+      title="Who this is for — and who it {{em}}isn't{{/em}}."
+    >
+      <div className="grid md:grid-cols-2 gap-px bg-line">
+        <div className="bg-bg-primary p-10">
+          <div className="mb-6">
+            <MonoLabel variant="accent" leading="rule">
+              Who This Is For
+            </MonoLabel>
           </div>
+          <ul className="space-y-3">
+            {WHO_THIS_IS_FOR.map((item, i) => (
+              <li
+                key={i}
+                className="text-ink-secondary leading-[1.55] text-[15px] flex gap-3"
+              >
+                <span className="text-accent shrink-0 font-mono text-[12px] mt-[2px]">
+                  →
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          <div className="border border-red-500/30 bg-red-500/5 p-8">
-            <div className="flex items-center gap-2 mb-6">
-              <X className="text-red-400" size={20} />
-              <h3 className="text-lg font-bold text-red-300">Who This Is Not For</h3>
-            </div>
-            <ul className="space-y-3">
-              {WHO_THIS_IS_NOT_FOR.map((item, i) => (
-                <li
-                  key={i}
-                  className="text-gray-300 leading-relaxed text-sm flex gap-2"
-                >
-                  <span className="text-red-400 shrink-0">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="bg-bg-elevated p-10">
+          <div className="mb-6">
+            <MonoLabel variant="tertiary" leading="rule">
+              Who This Is Not For
+            </MonoLabel>
           </div>
+          <ul className="space-y-3">
+            {WHO_THIS_IS_NOT_FOR.map((item, i) => (
+              <li
+                key={i}
+                className="text-ink-tertiary leading-[1.55] text-[15px] flex gap-3"
+              >
+                <span className="text-ink-tertiary shrink-0 font-mono text-[12px] mt-[2px]">
+                  ×
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Linkedin, Github, Facebook, Mail, FileText } from 'lucide-react';
 import { SITE } from '@/content/nav';
 import { VENTURES } from '@/content/ventures';
 import { ResumeButton } from '@/components/ResumeButton';
@@ -7,57 +6,69 @@ import { ResumeButton } from '@/components/ResumeButton';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="border-t border-white/10 py-16 px-6 mt-20">
-      <div className="max-w-6xl mx-auto">
-        <p className="text-center text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-          {SITE.tagline}
+    <footer className="border-t border-line py-12 px-6">
+      <div className="max-w-[1440px] mx-auto">
+        <p
+          className="text-center text-ink-tertiary font-mono uppercase"
+          style={{ fontSize: '12px', letterSpacing: '0.06em' }}
+        >
+          © {currentYear} {SITE.legalEntity} · Built &amp; operated from {SITE.location}
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4">Site</h4>
-            <nav className="flex flex-col gap-2 text-sm">
-              <Link href="/" className="text-gray-300 hover:text-accent transition-colors">
+            <h4
+              className="font-mono uppercase text-ink-secondary mb-4"
+              style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+            >
+              Site
+            </h4>
+            <nav className="flex flex-col gap-2 text-[14px]">
+              <Link href="/" className="text-ink-secondary hover:text-ink-primary transition-colors">
                 Home
               </Link>
               <Link
                 href="/about"
-                className="text-gray-300 hover:text-accent transition-colors"
+                className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
                 About
               </Link>
               <Link
                 href="/portfolio"
-                className="text-gray-300 hover:text-accent transition-colors"
+                className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
                 Portfolio
               </Link>
               <Link
                 href="/fractional-cmo-cto"
-                className="text-gray-300 hover:text-accent transition-colors"
+                className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
                 Fractional CMO/CTO
               </Link>
               <Link
                 href="/contact"
-                className="text-gray-300 hover:text-accent transition-colors"
+                className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
                 Contact
               </Link>
               <ResumeButton
                 variant="footer-link"
                 location="footer"
-                className="inline-flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
+                className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
-                <FileText size={14} />
-                <span>Resume (PDF)</span>
+                Resume (PDF)
               </ResumeButton>
             </nav>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4">Companies</h4>
-            <nav className="flex flex-col gap-2 text-sm">
+            <h4
+              className="font-mono uppercase text-ink-secondary mb-4"
+              style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+            >
+              Companies
+            </h4>
+            <nav className="flex flex-col gap-2 text-[14px]">
               {VENTURES.map((v) =>
                 v.url ? (
                   <a
@@ -65,13 +76,13 @@ export default function Footer() {
                     href={v.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-accent transition-colors"
+                    className="text-ink-secondary hover:text-ink-primary transition-colors"
                   >
-                    {v.name}
+                    {v.name.replace(/\s+(Inc|LLC)\.?$/, '')}
                   </a>
                 ) : (
-                  <span key={v.id} className="text-gray-300">
-                    {v.name}
+                  <span key={v.id} className="text-ink-secondary">
+                    {v.name.replace(/\s+(Inc|LLC)\.?$/, '')}
                   </span>
                 ),
               )}
@@ -79,51 +90,50 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4">Connect</h4>
-            <nav className="flex flex-col gap-2 text-sm">
+            <h4
+              className="font-mono uppercase text-ink-secondary mb-4"
+              style={{ fontSize: '11px', letterSpacing: '0.12em' }}
+            >
+              Connect
+            </h4>
+            <nav className="flex flex-col gap-2 text-[14px]">
               <a
                 href={`mailto:${SITE.email}`}
-                className="inline-flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
+                className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
-                <Mail size={14} />
-                <span>{SITE.email}</span>
+                {SITE.email}
               </a>
               <a
                 href={SITE.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
+                className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
-                <Linkedin size={14} />
-                <span>LinkedIn</span>
+                LinkedIn
               </a>
               <a
                 href={SITE.social.githubPersonal}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
+                className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
-                <Github size={14} />
-                <span>GitHub (@fmwctodev)</span>
+                GitHub (@fmwctodev)
               </a>
               <a
                 href={SITE.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-gray-300 hover:text-accent transition-colors"
+                className="text-ink-secondary hover:text-ink-primary transition-colors"
               >
-                <Facebook size={14} />
-                <span>Facebook</span>
+                Facebook
               </a>
             </nav>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-gray-500">
-          <p>
-            © {currentYear} {SITE.legalEntity}. Built and operated from {SITE.location}.
-          </p>
-        </div>
+        <p className="mt-12 text-center text-ink-tertiary font-serif italic text-[15px]">
+          {SITE.tagline}
+        </p>
       </div>
     </footer>
   );

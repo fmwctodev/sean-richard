@@ -5,7 +5,7 @@ import FractionalOfferingSection from '@/components/fractional/FractionalOfferin
 import EngagementProcess from '@/components/fractional/EngagementProcess';
 import FitMatrix from '@/components/fractional/FitMatrix';
 import Outcomes from '@/components/fractional/Outcomes';
-import CtaBlock from '@/components/CtaBlock';
+import ClosingCta from '@/components/editorial/ClosingCta';
 import SchemaMarkup, { JsonLd } from '@/components/seo/SchemaMarkup';
 import { FRACTIONAL_OFFERINGS } from '@/content/fractional';
 import { getFractionalServicesSchema } from '@/lib/schema';
@@ -31,12 +31,11 @@ export default function FractionalPage() {
       <EngagementProcess />
       <FitMatrix />
       <Outcomes />
-      <CtaBlock
+      <ClosingCta
         eyebrow="Apply to Work With Sean"
-        headline="Qualified inquiries reviewed within 48 hours."
+        title="Qualified inquiries reviewed within {{em}}48 hours{{/em}}."
         primaryHref="/contact"
         primaryLabel="Apply to Work With Sean"
-        showResume
         resumeLocation="portfolio_closing"
       />
     </div>

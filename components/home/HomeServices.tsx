@@ -1,44 +1,37 @@
-import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import Section from '@/components/editorial/Section';
+import ServiceCard from '@/components/editorial/ServiceCard';
 import { SERVICES } from '@/content/services';
 
 export default function HomeServices() {
+  const total = SERVICES.length;
   return (
-    <section id="services" className="py-20 md:py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-16 max-w-3xl">
-          <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">( Services )</p>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Where strategy, systems, and execution meet.
-          </h2>
-          <p className="text-xl text-gray-300 leading-relaxed">
-            I work with a limited number of businesses where the problem isn&apos;t
-            marketing, technology, or operations in isolation — it&apos;s the absence of a
-            connected system. My work focuses on building that system.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map((service) => (
-            <Link
-              key={service.id}
-              href={service.href}
-              className="group border border-white/10 hover:border-accent/50 transition-colors p-8 flex flex-col"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl md:text-2xl font-bold group-hover:text-accent transition-colors">
-                  {service.title}
-                </h3>
-                <ArrowUpRight
-                  size={18}
-                  className="text-gray-500 group-hover:text-accent shrink-0"
-                />
-              </div>
-              <p className="text-gray-300 leading-relaxed text-sm">{service.body}</p>
-            </Link>
-          ))}
-        </div>
+    <Section
+      id="services"
+      number="01"
+      eyebrow="Services"
+      title="Where strategy, systems, and {{em}}execution{{/em}} meet."
+      intro="I work with a limited number of businesses where the problem isn't marketing, technology, or operations in isolation — it's the absence of a connected system. My work focuses on building that system."
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-line">
+        {SERVICES.map((service, i) => (
+          <ServiceCard
+            key={service.id}
+            num={i + 1}
+            total={total}
+            title={service.title}
+            body={service.body}
+            href={service.href}
+          />
+        ))}
+        <ServiceCard
+          num={total + 1}
+          total={total + 1}
+          title="Not sure which fits?"
+          body="Most engagements start with a systems review. Tell me what you're operating and what's broken — I'll tell you whether I'm the right person and where to start."
+          href="/contact"
+          variant="closer"
+        />
       </div>
-    </section>
+    </Section>
   );
 }

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { NAV_LINKS } from '@/content/nav';
 import { trackResumeDownload } from '@/lib/analytics';
@@ -26,26 +26,27 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-black/90 backdrop-blur-sm border-b border-white/10'
-          : 'bg-transparent'
+          ? 'bg-bg-primary/85 backdrop-blur-md border-b border-line'
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-4">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-[clamp(24px,5vw,80px)]">
+        <div className="flex items-center justify-between h-[76px] gap-4">
           <Link
             href="/"
-            className="text-xl font-bold tracking-tight hover:text-gray-300 transition-colors shrink-0"
+            className="font-serif italic text-[22px] text-ink-primary hover:text-ink-secondary transition-colors shrink-0"
+            style={{ letterSpacing: '-0.01em' }}
           >
-            SR
+            Sean<span className="text-accent">·</span>Richard
           </Link>
 
-          <div className="hidden lg:flex items-center space-x-7">
+          <div className="hidden lg:flex items-center gap-9">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.to}
                 href={link.to!}
-                className={`text-sm font-medium transition-colors hover:text-white ${
-                  pathname === link.to ? 'text-white' : 'text-gray-400'
+                className={`text-[14px] transition-colors ${
+                  pathname === link.to ? 'text-ink-primary' : 'text-ink-secondary hover:text-ink-primary'
                 }`}
               >
                 {link.label}
@@ -58,31 +59,31 @@ export default function Navigation() {
               href="/resume.pdf"
               download="Sean_Richard_Resume.pdf"
               onClick={() => trackResumeDownload('footer')}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 border border-white/15 text-xs font-semibold text-gray-200 hover:border-accent hover:text-accent transition-colors rounded-full"
+              className="hidden sm:inline-flex items-center gap-2 px-[18px] py-[10px] border border-line-strong text-ink-primary font-mono uppercase rounded-full hover:border-accent hover:text-accent transition-colors"
+              style={{ fontSize: '12px', letterSpacing: '0.04em' }}
             >
-              <Download size={13} />
-              Resume
+              Resume <span aria-hidden>↓</span>
             </a>
             <button
-              className="lg:hidden text-white"
+              className="lg:hidden text-ink-primary"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
       </div>
 
       {isOpen && (
-        <div className="lg:hidden bg-black border-t border-white/10">
+        <div className="lg:hidden bg-bg-primary border-t border-line">
           <div className="px-6 py-4 space-y-4">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.to}
                 href={link.to!}
-                className={`block text-sm font-medium transition-colors hover:text-white ${
-                  pathname === link.to ? 'text-white' : 'text-gray-400'
+                className={`block text-[15px] transition-colors ${
+                  pathname === link.to ? 'text-ink-primary' : 'text-ink-secondary hover:text-ink-primary'
                 }`}
               >
                 {link.label}
@@ -92,7 +93,7 @@ export default function Navigation() {
               href="/resume.pdf"
               download="Sean_Richard_Resume.pdf"
               onClick={() => trackResumeDownload('footer')}
-              className="block text-sm font-medium text-accent hover:text-accent-light"
+              className="block text-[15px] text-accent hover:text-accent-light"
             >
               Resume ↓
             </a>

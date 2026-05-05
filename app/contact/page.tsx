@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import LastUpdated from '@/components/LastUpdated';
+import EditorialHeadline from '@/components/editorial/EditorialHeadline';
+import MonoLabel from '@/components/editorial/MonoLabel';
 import SchemaMarkup from '@/components/seo/SchemaMarkup';
 import ContactForm from '@/components/contact/ContactForm';
 import { SITE } from '@/content/nav';
@@ -13,84 +14,81 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="pt-32 pb-20 px-6">
+    <div>
       <SchemaMarkup path="/contact" pageTitle="Contact" />
-      <div className="max-w-3xl mx-auto">
-        <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">( Contact )</p>
-        <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 leading-tight">
-          Tell me what you&apos;re operating, what&apos;s broken, and what scale looks like.
-        </h1>
-        <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-          Serious inquiries only. This isn&apos;t a general contact form.
-        </p>
 
-        <div className="mb-8 p-6 border border-white/10 bg-white/5">
-          <p className="text-gray-300 leading-relaxed">
-            This site represents the work and companies operated by Sean Richard, including
-            Sitehues Media Inc, Autom8ion Lab, BuilderLync Inc, and select fractional
-            executive engagements through Sean Scott Richard LLC.
-          </p>
-          <p className="text-gray-300 leading-relaxed mt-3">
-            Use this form if you&apos;re building or operating a serious business and want to
-            discuss systems, infrastructure, AI automation, contractor growth, fractional
-            CMO support, fractional CTO support, software platforms, or strategic
-            partnerships.
-          </p>
-        </div>
-
-        <div className="mb-12 p-6 border border-yellow-500/30 bg-yellow-500/10">
-          <p className="text-yellow-200 leading-relaxed">
-            <strong>This is not a general inquiry form.</strong>
-            <br />
-            Use this if you&apos;re building a serious business or platform and want to
-            discuss systems, infrastructure, or potential collaboration.
-          </p>
-        </div>
-
-        <ContactForm />
-
-        <div className="mt-12 p-6 border border-white/10 bg-white/5">
-          <h2 className="text-xl font-bold mb-4">What to Expect</h2>
-          <ul className="space-y-3 text-gray-300">
-            <li className="flex items-start gap-3">
-              <span className="text-accent mt-1">•</span>
-              <span>Qualified inquiries reviewed within 48 hours.</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-accent mt-1">•</span>
-              <span>Direct conversation with Sean — not a sales team.</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-accent mt-1">•</span>
-              <span>No courses, generic coaching, or low-ticket offers.</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-accent mt-1">•</span>
-              <span>
-                Clear discussion around systems, execution, technology, marketing
-                infrastructure, and business outcomes.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-accent mt-1">•</span>
-              <span>If there&apos;s no fit, you&apos;ll be told directly.</span>
-            </li>
-          </ul>
-        </div>
-
-        <p className="mt-8 text-sm text-gray-500 text-center">
-          Email direct:{' '}
-          <a
-            href={`mailto:${SITE.email}`}
-            className="text-accent hover:text-accent-light"
+      <section
+        className="px-6"
+        style={{ padding: 'clamp(96px, 14vh, 160px) 24px clamp(48px, 8vh, 80px)' }}
+      >
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-6">
+            <MonoLabel variant="accent">Contact</MonoLabel>
+          </div>
+          <EditorialHeadline
+            as="h1"
+            size="hero"
+            text="Tell me what you're {{em}}operating{{/em}}, what's broken, and what scale looks like."
+            className="mb-8"
+          />
+          <p
+            className="text-[clamp(17px,1.4vw,21px)] leading-[1.5] text-ink-secondary"
+            style={{ maxWidth: '60ch' }}
           >
-            {SITE.email}
-          </a>{' '}
-          · {SITE.location}
-        </p>
+            Serious inquiries only. This isn&apos;t a general contact form.
+          </p>
+        </div>
+      </section>
 
-        <LastUpdated date="May 2026" />
-      </div>
+      <section className="px-6 pb-20">
+        <div className="max-w-3xl mx-auto">
+          <ContactForm />
+
+          <div className="mt-16 grid md:grid-cols-[80px_1fr] gap-3 md:gap-12 items-start border-t border-line pt-12">
+            <div className="font-mono text-ink-tertiary text-[13px] tracking-[0.12em]">
+              /
+            </div>
+            <div>
+              <div className="mb-3">
+                <MonoLabel variant="accent">What to expect</MonoLabel>
+              </div>
+              <ul className="space-y-3">
+                {[
+                  'Qualified inquiries reviewed within 48 hours.',
+                  'Direct conversation with Sean — not a sales team.',
+                  'No courses, generic coaching, or low-ticket offers.',
+                  'Clear discussion around systems, execution, technology, marketing infrastructure, and business outcomes.',
+                  "If there's no fit, you'll be told directly.",
+                ].map((line, i) => (
+                  <li
+                    key={i}
+                    className="text-ink-secondary leading-[1.55] text-[15px] flex gap-3"
+                  >
+                    <span className="text-accent shrink-0 font-mono text-[12px] mt-[2px]">
+                      →
+                    </span>
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <p
+                className="mt-10 font-mono uppercase text-ink-tertiary"
+                style={{ fontSize: '11px', letterSpacing: '0.08em' }}
+              >
+                Direct ·{' '}
+                <a
+                  href={`mailto:${SITE.email}`}
+                  className="text-accent hover:text-ink-primary"
+                >
+                  {SITE.email}
+                </a>{' '}
+                · {SITE.location}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

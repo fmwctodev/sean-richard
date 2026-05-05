@@ -1,24 +1,21 @@
 import { ExternalLink } from 'lucide-react';
+import Section from '@/components/editorial/Section';
 import { PORTFOLIO_VENTURES } from '@/content/ventures';
 
 export default function VenturesGrid() {
   return (
-    <section className="px-6 py-20 border-t border-white/10">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-12">
-          <p className="text-sm text-gray-500 uppercase tracking-wider mb-3">( Ventures )</p>
-          <h2 className="text-3xl md:text-5xl font-bold">Operating companies</h2>
-          <p className="text-gray-300 mt-4 max-w-2xl">
-            The portfolio of operating companies and the holding entity I run.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PORTFOLIO_VENTURES.map((v) => {
-            const Wrapper = v.url ? 'a' : 'div';
-            return (
+    <Section
+      number="04"
+      eyebrow="Ventures"
+      title="Where the work {{em}}lives{{/em}}."
+      intro="The portfolio of operating companies and the holding entity I run."
+    >
+      <ul>
+        {PORTFOLIO_VENTURES.map((v, i) => {
+          const Wrapper = v.url ? 'a' : 'div';
+          return (
+            <li key={v.id}>
               <Wrapper
-                key={v.id}
                 {...(v.url
                   ? {
                       href: v.url,
@@ -26,35 +23,40 @@ export default function VenturesGrid() {
                       rel: 'noopener noreferrer',
                     }
                   : {})}
-                className="group border border-white/10 hover:border-accent/40 p-6 flex flex-col transition-colors"
+                className="group grid grid-cols-1 md:grid-cols-[80px_1fr_220px] gap-3 md:gap-12 items-baseline py-8 border-t border-line transition-[padding] duration-300 hover:pl-4"
               >
-                <div className="aspect-[16/9] mb-4 overflow-hidden bg-white/5 rounded-md">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={v.image}
-                    alt={v.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
-                <p className="text-xs uppercase tracking-wider text-gray-500 mb-2">
-                  {v.category}
-                </p>
-                <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                  {v.name}
+                <span
+                  className="font-mono text-ink-tertiary"
+                  style={{ fontSize: '13px', letterSpacing: '0.06em' }}
+                >
+                  / {String(i + 1).padStart(2, '0')}
+                </span>
+                <span
+                  className="font-serif text-[clamp(24px,3vw,36px)] leading-none text-ink-primary group-hover:text-accent transition-colors duration-300 inline-flex items-center gap-3"
+                  style={{ letterSpacing: '-0.015em' }}
+                >
+                  {v.name.replace(/\s+(Inc|LLC)\.?$/, '')}
                   {v.url && (
                     <ExternalLink
                       size={14}
-                      className="text-gray-500 group-hover:text-accent"
+                      className="text-ink-tertiary group-hover:text-accent transition-colors"
                     />
                   )}
-                </h3>
-                <p className="text-sm text-gray-300 leading-relaxed">{v.shortPitch}</p>
+                </span>
+                <span
+                  className="font-mono text-ink-tertiary uppercase md:text-right"
+                  style={{ fontSize: '11px', letterSpacing: '0.08em' }}
+                >
+                  {v.category}
+                </span>
               </Wrapper>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+              <p className="md:pl-[92px] pb-6 text-ink-secondary text-[14px] leading-[1.6] max-w-[60ch]">
+                {v.shortPitch}
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+    </Section>
   );
 }
