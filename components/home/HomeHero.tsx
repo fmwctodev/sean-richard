@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import AvailabilityEyebrow from '@/components/editorial/AvailabilityEyebrow';
 import { ResumeButton } from '@/components/ResumeButton';
 
@@ -103,15 +104,14 @@ export default function HomeHero() {
               />
               {/* Headshot */}
               <div className="relative w-[260px] sm:w-[320px] md:w-[380px] lg:w-[420px]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/assets/headshots/sean-richard.png"
                   alt="Sean Richard - Professional Headshot"
                   className="relative w-full h-auto"
                   width={550}
                   height={700}
-                  loading="eager"
-                  fetchPriority="high"
+                  priority
+                  sizes="(max-width: 640px) 260px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 420px"
                 />
               </div>
               {/* Tech-y corner brackets */}

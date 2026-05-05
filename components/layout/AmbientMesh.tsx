@@ -69,6 +69,8 @@ export default function AmbientMesh() {
             'radial-gradient(circle at center, rgba(239, 68, 68, 0.55) 0%, rgba(239, 68, 68, 0.08) 40%, transparent 65%)',
           filter: 'blur(70px)',
           willChange: 'transform',
+          transform: 'translate3d(0, 0, 0)',
+          backfaceVisibility: 'hidden',
         }}
       />
 
@@ -86,6 +88,8 @@ export default function AmbientMesh() {
             'radial-gradient(circle at center, rgba(239, 68, 68, 0.4) 0%, rgba(239, 68, 68, 0.05) 45%, transparent 70%)',
           filter: 'blur(80px)',
           willChange: 'transform',
+          transform: 'translate3d(0, 0, 0)',
+          backfaceVisibility: 'hidden',
         }}
       />
 
@@ -103,6 +107,8 @@ export default function AmbientMesh() {
             'radial-gradient(circle at center, rgba(255, 145, 100, 0.28) 0%, rgba(255, 145, 100, 0.04) 45%, transparent 70%)',
           filter: 'blur(90px)',
           willChange: 'transform',
+          transform: 'translate3d(0, 0, 0)',
+          backfaceVisibility: 'hidden',
         }}
       />
 
@@ -120,6 +126,8 @@ export default function AmbientMesh() {
             'radial-gradient(circle at center, rgba(239, 68, 68, 0.3) 0%, rgba(239, 68, 68, 0.04) 45%, transparent 70%)',
           filter: 'blur(85px)',
           willChange: 'transform',
+          transform: 'translate3d(0, 0, 0)',
+          backfaceVisibility: 'hidden',
         }}
       />
 
@@ -136,6 +144,8 @@ export default function AmbientMesh() {
             'radial-gradient(circle at center, rgba(239, 68, 68, 0.18) 0%, rgba(239, 68, 68, 0.04) 40%, transparent 65%)',
           filter: 'blur(40px)',
           willChange: 'transform',
+          transform: 'translate3d(0, 0, 0)',
+          backfaceVisibility: 'hidden',
         }}
       />
 

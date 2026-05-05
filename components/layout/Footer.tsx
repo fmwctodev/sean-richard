@@ -17,12 +17,12 @@ export default function Footer() {
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
           <div>
-            <h4
+            <h3
               className="font-mono uppercase text-ink-secondary mb-4"
               style={{ fontSize: '13px', letterSpacing: '0.12em' }}
             >
               Site
-            </h4>
+            </h3>
             <nav className="flex flex-col gap-2 text-[15px]">
               <Link href="/" className="text-ink-secondary hover:text-ink-primary transition-colors">
                 Home
@@ -62,12 +62,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4
+            <h3
               className="font-mono uppercase text-ink-secondary mb-4"
               style={{ fontSize: '13px', letterSpacing: '0.12em' }}
             >
               Companies
-            </h4>
+            </h3>
             <nav className="flex flex-col gap-2 text-[15px]">
               {VENTURES.map((v) =>
                 v.url ? (
@@ -90,12 +90,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4
+            <h3
               className="font-mono uppercase text-ink-secondary mb-4"
               style={{ fontSize: '13px', letterSpacing: '0.12em' }}
             >
               Connect
-            </h4>
+            </h3>
             <nav className="flex flex-col gap-2 text-[15px]">
               <a
                 href={`mailto:${SITE.email}`}

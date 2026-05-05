@@ -14,12 +14,12 @@ function BookCard({ book }: { book: Book }) {
           filter: 'blur(24px)',
         }}
       />
-      <h4
+      <h3
         className="relative font-sans font-bold text-ink-primary leading-snug mb-1"
         style={{ fontSize: '16px', letterSpacing: '-0.005em' }}
       >
         {book.title}
-      </h4>
+      </h3>
       <p
         className="relative font-mono uppercase text-ink-tertiary mb-3"
         style={{ fontSize: '12px', letterSpacing: '0.06em' }}

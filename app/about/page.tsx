@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import MonoLabel from '@/components/editorial/MonoLabel';
 import ClosingCta from '@/components/editorial/ClosingCta';
 import OperatingInfluences from '@/components/about/OperatingInfluences';
@@ -103,15 +104,14 @@ export default function AboutPage() {
                   className="absolute inset-0 -m-3 rounded-full border border-accent/30"
                 />
                 <div className="relative w-[240px] sm:w-[280px] md:w-[340px] lg:w-[380px]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src="/assets/headshots/sean-richard.png"
                     alt="Sean Richard - Professional Headshot"
                     className="relative w-full h-auto"
                     width={550}
                     height={700}
-                    loading="eager"
-                    fetchPriority="high"
+                    priority
+                    sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, (max-width: 1024px) 340px, 380px"
                   />
                 </div>
               </div>

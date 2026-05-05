@@ -24,7 +24,7 @@ const config: Config = {
           DEFAULT: '#F2EDE6',
           primary: '#F2EDE6',
           secondary: '#B8B1A6',
-          tertiary: '#756E63',
+          tertiary: '#9A9388',
         },
         line: {
           DEFAULT: 'rgba(242, 237, 230, 0.08)',
