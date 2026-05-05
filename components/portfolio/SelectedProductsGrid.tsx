@@ -47,16 +47,21 @@ export default function SelectedProductsGrid() {
                 ))}
               </ul>
 
-              {product.liveUrl && (
-                <a
-                  href={product.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-light transition-colors"
-                >
-                  Visit live
-                  <ExternalLink size={14} />
-                </a>
+              {product.liveLinks && product.liveLinks.length > 0 && (
+                <div className="flex flex-wrap gap-x-4 gap-y-2 mt-auto pt-2 border-t border-white/5">
+                  {product.liveLinks.map((link) => (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent-light transition-colors"
+                    >
+                      <ExternalLink size={14} />
+                      <span>{link.label}</span>
+                    </a>
+                  ))}
+                </div>
               )}
             </article>
           ))}
