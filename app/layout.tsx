@@ -48,7 +48,14 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     locale: 'en_US',
     url: SITE.url,
-    images: [{ url: '/opengraph.png', alt: SITE.name }],
+    images: [
+      {
+        url: '/opengraph.png',
+        width: 2522,
+        height: 1682,
+        alt: 'Sean Richard — Entrepreneur and Systems Architect',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -57,6 +64,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+    'max-video-preview': -1,
     googleBot: {
       index: true,
       follow: true,

@@ -5,7 +5,7 @@ import ClosingCta from '@/components/editorial/ClosingCta';
 import OperatingInfluences from '@/components/about/OperatingInfluences';
 import SchemaMarkup, { JsonLd } from '@/components/seo/SchemaMarkup';
 import { VENTURES } from '@/content/ventures';
-import { getReadingListSchema } from '@/lib/schema';
+import { getReadingListSchema, getAboutProfileSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'About Sean Richard | Entrepreneur, Systems Architect & Fractional Executive',
@@ -43,6 +43,7 @@ export default function AboutPage() {
   return (
     <div>
       <SchemaMarkup path="/about" pageTitle="About Sean Richard" />
+      <JsonLd data={getAboutProfileSchema()} />
       <JsonLd data={getReadingListSchema()} />
 
       {/* HERO with headshot */}

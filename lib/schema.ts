@@ -235,3 +235,18 @@ export function getFaqSchema() {
   };
 }
 
+export function getAboutProfileSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${BASE_URL}/about#profile`,
+    url: `${BASE_URL}/about`,
+    name: 'About Sean Richard',
+    description:
+      "Background, ventures, and operating principles of Sean Richard — entrepreneur, systems architect, and fractional CMO/CTO based in Palm Coast, Florida.",
+    mainEntity: { '@id': `${BASE_URL}/#sean-richard` },
+    breadcrumb: { '@id': `${BASE_URL}/about#breadcrumb` },
+    inLanguage: 'en-US',
+  };
+}
+
