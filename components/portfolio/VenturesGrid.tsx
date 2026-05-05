@@ -1,21 +1,38 @@
 import { ExternalLink } from 'lucide-react';
-import Section from '@/components/editorial/Section';
+import MonoLabel from '@/components/editorial/MonoLabel';
 import { PORTFOLIO_VENTURES } from '@/content/ventures';
 
 export default function VenturesGrid() {
   return (
-    <Section
-      number="04"
-      eyebrow="Ventures"
-      title="Where the work {{em}}lives{{/em}}."
-      intro="The portfolio of operating companies and the holding entity I run."
-    >
-      <ul>
-        {PORTFOLIO_VENTURES.map((v, i) => {
-          const Wrapper = v.url ? 'a' : 'div';
-          return (
-            <li key={v.id}>
+    <section className="border-t border-line px-6 py-[clamp(64px,10vh,120px)]">
+      <div className="max-w-[1440px] mx-auto">
+        <div className="max-w-3xl mb-12">
+          <div className="mb-6">
+            <MonoLabel variant="accent" leading="rule">
+              Ventures
+            </MonoLabel>
+          </div>
+          <h2
+            className="font-sans font-extrabold text-ink-primary mb-6"
+            style={{
+              fontSize: 'clamp(32px, 4.5vw, 56px)',
+              lineHeight: 1.02,
+              letterSpacing: '-0.03em',
+            }}
+          >
+            Where the work <span className="text-accent">lives</span>.
+          </h2>
+          <p className="text-[18px] leading-[1.6] text-ink-secondary">
+            The portfolio of operating companies and the holding entity I run.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4">
+          {PORTFOLIO_VENTURES.map((v, i) => {
+            const Wrapper = v.url ? 'a' : 'div';
+            return (
               <Wrapper
+                key={v.id}
                 {...(v.url
                   ? {
                       href: v.url,
@@ -23,40 +40,51 @@ export default function VenturesGrid() {
                       rel: 'noopener noreferrer',
                     }
                   : {})}
-                className="group grid grid-cols-1 md:grid-cols-[80px_1fr_220px] gap-3 md:gap-12 items-baseline py-8 border-t border-line transition-[padding] duration-300 hover:pl-4"
+                className="group relative border border-line bg-bg-elevated/40 p-7 rounded-2xl flex flex-col overflow-hidden hover:border-accent/40 hover:bg-bg-elevated transition-all"
               >
                 <span
-                  className="font-mono text-ink-tertiary"
-                  style={{ fontSize: '13px', letterSpacing: '0.06em' }}
+                  aria-hidden
+                  className="absolute -bottom-12 -right-12 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                  style={{
+                    background:
+                      'radial-gradient(circle, rgba(239, 68, 68, 0.3) 0%, transparent 70%)',
+                    filter: 'blur(28px)',
+                  }}
+                />
+
+                <div
+                  className="relative font-mono mb-6 flex items-center justify-between"
+                  style={{ fontSize: '11px', letterSpacing: '0.16em' }}
                 >
-                  / {String(i + 1).padStart(2, '0')}
-                </span>
-                <span
-                  className="font-serif text-[clamp(24px,3vw,36px)] leading-none text-ink-primary group-hover:text-accent transition-colors duration-300 inline-flex items-center gap-3"
-                  style={{ letterSpacing: '-0.015em' }}
+                  <span className="text-accent">/ {String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-ink-tertiary uppercase">{v.category}</span>
+                </div>
+
+                <h3
+                  className="relative font-sans font-bold text-ink-primary mb-3 inline-flex items-center gap-2"
+                  style={{
+                    fontSize: 'clamp(22px, 2.4vw, 28px)',
+                    lineHeight: 1.05,
+                    letterSpacing: '-0.02em',
+                  }}
                 >
                   {v.name.replace(/\s+(Inc|LLC)\.?$/, '')}
                   {v.url && (
                     <ExternalLink
-                      size={14}
+                      size={16}
                       className="text-ink-tertiary group-hover:text-accent transition-colors"
                     />
                   )}
-                </span>
-                <span
-                  className="font-mono text-ink-tertiary uppercase md:text-right"
-                  style={{ fontSize: '11px', letterSpacing: '0.08em' }}
-                >
-                  {v.category}
-                </span>
+                </h3>
+
+                <p className="relative text-ink-secondary text-[14px] leading-[1.6]">
+                  {v.shortPitch}
+                </p>
               </Wrapper>
-              <p className="md:pl-[92px] pb-6 text-ink-secondary text-[14px] leading-[1.6] max-w-[60ch]">
-                {v.shortPitch}
-              </p>
-            </li>
-          );
-        })}
-      </ul>
-    </Section>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }

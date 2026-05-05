@@ -32,10 +32,11 @@ export default function FractionalPage() {
       <FitMatrix />
       <Outcomes />
       <ClosingCta
-        eyebrow="Apply to Work With Sean"
-        title="Qualified inquiries reviewed within {{em}}48 hours{{/em}}."
+        eyebrow="Apply to work with Sean"
+        title="Qualified inquiries reviewed within 48 hours."
+        accentWord="48 hours"
         primaryHref="/contact"
-        primaryLabel="Apply to Work With Sean"
+        primaryLabel="Apply to work with Sean"
         resumeLocation="portfolio_closing"
       />
     </div>

@@ -161,10 +161,18 @@ export default function ContactForm() {
     try {
       const form = e.currentTarget;
       const formDataObj = new FormData(form);
+      const params = new URLSearchParams();
+      formDataObj.forEach((value, key) => {
+        if (typeof value === 'string') params.append(key, value);
+      });
+
       const response = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataObj as unknown as Record<string, string>).toString(),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+          Accept: 'application/x-www-form-urlencoded,*/*;q=0.8',
+        },
+        body: params.toString(),
       });
 
       if (response.ok) {
