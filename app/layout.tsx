@@ -19,7 +19,7 @@ const instrumentSerif = Instrument_Serif({
 
 const geistSans = Geist({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
   variable: '--font-geist-sans',
 });
@@ -86,12 +86,6 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="preload"
-          as="image"
-          href="/assets/headshots/sean-richard.png"
-          fetchPriority="high"
-        />
       </head>
       <body className="bg-bg-primary text-ink-primary font-sans antialiased">
         <SchemaMarkup path="/" />
