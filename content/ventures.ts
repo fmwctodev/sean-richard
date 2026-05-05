@@ -118,23 +118,28 @@ export const VENTURES: Venture[] = [
     id: 'sean-scott-richard-llc',
     name: 'Sean Scott Richard LLC',
     legalName: 'Sean Scott Richard LLC',
-    shortPitch: 'Personal holding entity for consulting, investments, and select advisory work.',
+    shortPitch:
+      'Holding, advisory, and fractional executive work across technology, marketing, AI automation, and business infrastructure.',
     description:
-      'Sean Scott Richard LLC is the personal operating entity for advisory engagements, consulting work, and investments outside of the venture portfolio.',
-    category: 'Holding & Advisory',
+      "Sean Scott Richard LLC is Sean's holding and advisory entity for consulting, investments, fractional executive work, and select strategic partnerships.",
+    category: 'Holding · Advisory · Fractional Leadership',
     image: '/assets/images/autom8ion-lab.png',
-    industry: 'Consulting and Investments',
-    knowsAbout: ['Advisory', 'Consulting', 'Investments'],
+    industry: 'Consulting and Fractional Executive Services',
+    knowsAbout: [
+      'Fractional CMO',
+      'Fractional CTO',
+      'Advisory',
+      'Strategic operating partnerships',
+      'Investments',
+    ],
     expandedSections: [
       {
         heading: 'Overview',
-        body: 'Sean Scott Richard LLC operates as the personal holding entity for advisory work, select consulting engagements, and investments that sit outside the BuilderLync, Autom8ion Lab, and Sitehues Media portfolio.',
+        body: 'Supports advisory, investment, fractional executive, and strategic operating work across technology, marketing, AI automation, and business infrastructure. Operates as the engagement vehicle for select fractional CMO and CTO engagements with contractors, service businesses, SaaS startups, and growth-stage operators.',
       },
     ],
   },
 ];
 
 export const PORTFOLIO_VENTURES = VENTURES;
-export const HOMEPAGE_VENTURES = VENTURES.filter(
-  (v) => v.id !== 'sean-scott-richard-llc',
-);
+export const HOMEPAGE_VENTURES = VENTURES;

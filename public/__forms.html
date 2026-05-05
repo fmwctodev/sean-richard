@@ -15,8 +15,26 @@
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="name" />
       <input type="email" name="email" />
+      <input type="text" name="company" />
       <textarea name="building"></textarea>
-      <textarea name="reason"></textarea>
+      <select name="help_type">
+        <option value="Fractional CMO for contractors"></option>
+        <option value="Fractional CTO – technology leadership"></option>
+        <option value="AI automation systems"></option>
+        <option value="Software or SaaS platform build"></option>
+        <option value="CRM – marketing infrastructure"></option>
+        <option value="Strategic partnership"></option>
+        <option value="Other serious inquiry"></option>
+      </select>
+      <select name="company_stage">
+        <option value="Startup / pre-revenue"></option>
+        <option value="Under $1M/year"></option>
+        <option value="$1M–$5M/year"></option>
+        <option value="$5M–$10M/year"></option>
+        <option value="$10M+/year"></option>
+        <option value="Internal platform or venture-backed project"></option>
+      </select>
+      <textarea name="problem"></textarea>
     </form>
   </body>
 </html>

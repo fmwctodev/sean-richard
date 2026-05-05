@@ -8,14 +8,14 @@ import ClosingCta from '@/components/portfolio/ClosingCta';
 import SchemaMarkup from '@/components/seo/SchemaMarkup';
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
+  title: 'Portfolio | Sean Richard — AI Systems, SaaS, Automation & Fractional Leadership',
   description:
-    'Selected products, experience, education, and ventures from Sean Richard — AI product engineering, full-stack builds, and 0→1 founder work.',
+    "Explore Sean Richard's portfolio across AI automation, contractor SaaS, full-stack products, business infrastructure, and fractional CMO/CTO leadership.",
   alternates: { canonical: '/portfolio' },
   openGraph: {
     title: 'Portfolio · Sean Richard',
     description:
-      'AI product engineering, full-stack builds, and ventures. Download my resume or browse live products.',
+      'AI product engineering, full-stack builds, ventures, and fractional executive engagements.',
     url: 'https://seanrichard.com/portfolio',
   },
 };
