@@ -17,12 +17,12 @@ export default function HomeHero() {
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] gap-10 lg:gap-[clamp(40px,6vw,80px)] items-center min-h-[80vh]">
           {/* LEFT — copy, CTAs */}
           <div>
-            <div className="mb-10 animate-fade-in">
+            <div className="mb-10">
               <AvailabilityEyebrow detail="Fractional engagements" />
             </div>
 
             <h1
-              className="font-sans font-extrabold text-ink-primary mb-8 animate-slide-up"
+              className="font-sans font-bold text-ink-primary mb-8"
               style={{
                 fontSize: 'clamp(44px, 7vw, 96px)',
                 lineHeight: 0.96,
@@ -40,7 +40,7 @@ export default function HomeHero() {
               who need to scale.
             </h1>
 
-            <p className="text-[clamp(17px,1.4vw,21px)] leading-[1.55] text-ink-secondary max-w-[58ch] mb-10 animate-slide-up">
+            <p className="text-[clamp(17px,1.4vw,21px)] leading-[1.55] text-ink-secondary max-w-[58ch] mb-10">
               Fractional CMO/CTO, AI automation, and contractor SaaS — designed and
               deployed inside live businesses, not theory decks.{' '}
               <span className="text-ink-primary font-medium">
@@ -49,7 +49,7 @@ export default function HomeHero() {
               The systems get tested before they get sold.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 animate-slide-up">
+            <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
                 className="group relative inline-flex items-center gap-3 px-8 py-[18px] rounded-full bg-accent text-bg-primary font-semibold text-[15px] transition-all overflow-hidden"
@@ -81,7 +81,7 @@ export default function HomeHero() {
           </div>
 
           {/* RIGHT — headshot with glow ring */}
-          <div className="relative flex justify-center lg:justify-end animate-fade-in">
+          <div className="relative flex justify-center lg:justify-end">
             <div className="relative">
               {/* Glow halo behind headshot */}
               <div

@@ -19,7 +19,7 @@ const instrumentSerif = Instrument_Serif({
 
 const geistSans = Geist({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-geist-sans',
 });

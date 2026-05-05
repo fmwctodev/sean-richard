@@ -54,9 +54,24 @@ export default function AmbientMesh() {
       aria-hidden="true"
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
     >
-      {/* Hero center halo — large pulsing red core */}
+      {/* MOBILE — single static blob (no animation, smaller blur, GPU-cheap) */}
       <div
-        className="absolute rounded-full animate-mesh-drift-1"
+        className="md:hidden absolute rounded-full"
+        style={{
+          top: '-15%',
+          left: '50%',
+          marginLeft: '-50vw',
+          width: '100vw',
+          height: '100vw',
+          background:
+            'radial-gradient(circle at center, rgba(239, 68, 68, 0.35) 0%, rgba(239, 68, 68, 0.05) 45%, transparent 70%)',
+          filter: 'blur(50px)',
+        }}
+      />
+
+      {/* DESKTOP — full animated mesh (4 blobs) */}
+      <div
+        className="hidden md:block absolute rounded-full animate-mesh-drift-1"
         style={{
           top: '-25%',
           left: '50%',
@@ -74,9 +89,8 @@ export default function AmbientMesh() {
         }}
       />
 
-      {/* Right ember */}
       <div
-        className="absolute rounded-full animate-mesh-drift-2"
+        className="hidden md:block absolute rounded-full animate-mesh-drift-2"
         style={{
           top: '10%',
           right: '-20%',
@@ -93,9 +107,8 @@ export default function AmbientMesh() {
         }}
       />
 
-      {/* Warm amber accent left */}
       <div
-        className="absolute rounded-full animate-mesh-drift-3"
+        className="hidden md:block absolute rounded-full animate-mesh-drift-3"
         style={{
           top: '40%',
           left: '-15%',
@@ -112,9 +125,8 @@ export default function AmbientMesh() {
         }}
       />
 
-      {/* Bottom glow */}
       <div
-        className="absolute rounded-full animate-mesh-drift-4"
+        className="hidden md:block absolute rounded-full animate-mesh-drift-4"
         style={{
           bottom: '-20%',
           left: '15%',
@@ -149,9 +161,9 @@ export default function AmbientMesh() {
         }}
       />
 
-      {/* Animated grid texture overlay */}
+      {/* Grid texture overlay — desktop only (mix-blend cost on mobile) */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="hidden md:block absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             'linear-gradient(rgba(242, 237, 230, 0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(242, 237, 230, 0.6) 1px, transparent 1px)',
