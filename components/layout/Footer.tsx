@@ -69,23 +69,38 @@ export default function Footer() {
               Companies
             </h3>
             <nav className="flex flex-col gap-2 text-[15px]">
-              {VENTURES.map((v) =>
-                v.url ? (
-                  <a
-                    key={v.id}
-                    href={v.url}
-                    target="_blank"
-                    rel="me noopener noreferrer"
-                    className="text-ink-secondary hover:text-ink-primary transition-colors"
-                  >
-                    {v.name.replace(/\s+(Inc|LLC)\.?$/, '')}
-                  </a>
-                ) : (
+              {VENTURES.map((v) => {
+                const label = v.name.replace(/\s+(Inc|LLC)\.?$/, '');
+                if (v.internalPath) {
+                  return (
+                    <Link
+                      key={v.id}
+                      href={v.internalPath}
+                      className="text-ink-secondary hover:text-ink-primary transition-colors"
+                    >
+                      {label}
+                    </Link>
+                  );
+                }
+                if (v.url) {
+                  return (
+                    <a
+                      key={v.id}
+                      href={v.url}
+                      target="_blank"
+                      rel="me noopener noreferrer"
+                      className="text-ink-secondary hover:text-ink-primary transition-colors"
+                    >
+                      {label}
+                    </a>
+                  );
+                }
+                return (
                   <span key={v.id} className="text-ink-secondary">
-                    {v.name.replace(/\s+(Inc|LLC)\.?$/, '')}
+                    {label}
                   </span>
-                ),
-              )}
+                );
+              })}
             </nav>
           </div>
 

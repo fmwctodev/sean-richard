@@ -1,4 +1,5 @@
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import MonoLabel from '@/components/editorial/MonoLabel';
 import { PORTFOLIO_VENTURES } from '@/content/ventures';
 
@@ -29,19 +30,10 @@ export default function VenturesGrid() {
 
         <div className="grid md:grid-cols-2 gap-4">
           {PORTFOLIO_VENTURES.map((v, i) => {
-            const Wrapper = v.url ? 'a' : 'div';
-            return (
-              <Wrapper
-                key={v.id}
-                {...(v.url
-                  ? {
-                      href: v.url,
-                      target: '_blank',
-                      rel: 'noopener noreferrer',
-                    }
-                  : {})}
-                className="group relative border border-line bg-bg-elevated/40 p-7 rounded-2xl flex flex-col overflow-hidden hover:border-accent/40 hover:bg-bg-elevated transition-all"
-              >
+            const cardClass =
+              'group relative border border-line bg-bg-elevated/40 p-7 rounded-2xl flex flex-col overflow-hidden hover:border-accent/40 hover:bg-bg-elevated transition-all';
+            const cardBody = (
+              <>
                 <span
                   aria-hidden
                   className="absolute -bottom-12 -right-12 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
@@ -69,18 +61,61 @@ export default function VenturesGrid() {
                   }}
                 >
                   {v.name.replace(/\s+(Inc|LLC)\.?$/, '')}
-                  {v.url && (
-                    <ExternalLink
+                  {v.internalPath ? (
+                    <ArrowRight
                       size={16}
                       className="text-ink-tertiary group-hover:text-accent transition-colors"
                     />
+                  ) : (
+                    v.url && (
+                      <ExternalLink
+                        size={16}
+                        className="text-ink-tertiary group-hover:text-accent transition-colors"
+                      />
+                    )
                   )}
                 </h3>
 
-                <p className="relative text-ink-secondary text-[15px] leading-[1.6]">
+                <p className="relative text-ink-secondary text-[15px] leading-[1.6] mb-4">
                   {v.shortPitch}
                 </p>
-              </Wrapper>
+
+                {v.internalPath && v.url && (
+                  <p
+                    className="relative font-mono text-ink-tertiary mt-auto"
+                    style={{ fontSize: '11px', letterSpacing: '0.14em' }}
+                  >
+                    Live product →{' '}
+                    <span className="text-accent">{v.url.replace(/^https?:\/\//, '')}</span>
+                  </p>
+                )}
+              </>
+            );
+
+            if (v.internalPath) {
+              return (
+                <Link key={v.id} href={v.internalPath} className={cardClass}>
+                  {cardBody}
+                </Link>
+              );
+            }
+            if (v.url) {
+              return (
+                <a
+                  key={v.id}
+                  href={v.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClass}
+                >
+                  {cardBody}
+                </a>
+              );
+            }
+            return (
+              <div key={v.id} className={cardClass}>
+                {cardBody}
+              </div>
             );
           })}
         </div>

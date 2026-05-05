@@ -13,6 +13,7 @@ const PAGE_NAMES: Record<string, string> = {
   '/contact': 'Contact',
   '/privacy': 'Privacy Policy',
   '/terms': 'Terms of Service',
+  '/builderlync': 'BuilderLync',
 };
 
 function breadcrumbSchema(path: string, pageTitle?: string) {
@@ -236,6 +237,80 @@ export function getFaqSchema() {
     })),
   };
 }
+
+export function getBuilderLyncSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    '@id': `${BASE_URL}/builderlync#software`,
+    name: 'BuilderLync',
+    alternateName: 'BuilderLync Inc',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    url: 'https://builderlync.com',
+    sameAs: ['https://builderlync.com', `${BASE_URL}/#builderlync-inc`],
+    description:
+      'BuilderLync is an operating system for builders and contractors. It consolidates CRM, estimating, project management, lead routing, client communication, marketing automation, and AI-assisted workflows into a single platform built for the way home-service and construction businesses actually run.',
+    creator: { '@id': `${BASE_URL}/#sean-richard` },
+    publisher: { '@id': `${BASE_URL}/#sean-richard` },
+    offers: { '@type': 'Offer', category: 'SaaS' },
+    audience: {
+      '@type': 'BusinessAudience',
+      audienceType: 'Contractors, builders, and home-service businesses',
+    },
+  };
+}
+
+const BUILDERLYNC_FAQS = [
+  {
+    question: 'What is BuilderLync?',
+    answer:
+      'BuilderLync is an operating system for builders and contractors. It unifies CRM, estimating, project management, lead routing, client communication, marketing automation, and AI-assisted follow-up into a single platform built for home-service and construction businesses.',
+  },
+  {
+    question: 'Who is BuilderLync built for?',
+    answer:
+      'BuilderLync is built for builders, contractors, and home-service businesses that want to run lead generation, project management, client communication, and field operations from one connected platform instead of stitching together multiple disconnected tools.',
+  },
+  {
+    question: 'What does BuilderLync replace?',
+    answer:
+      'BuilderLync replaces the typical contractor software stack of a separate CRM, separate project management tool, separate estimating software, separate marketing automation, and manual lead follow-up. Everything lives in one system with shared data.',
+  },
+  {
+    question: 'Who founded BuilderLync?',
+    answer:
+      'BuilderLync was founded by Sean Richard, an entrepreneur and systems architect based in Palm Coast, Florida. Sean also operates Sitehues Media Inc and Autom8ion Lab, which inform how BuilderLync handles marketing infrastructure and AI automation.',
+  },
+  {
+    question: 'Where can I sign up or learn more?',
+    answer:
+      'Visit builderlync.com to sign up, request a demo, or learn more about the platform. For partnership or strategic inquiries, contact Sean Richard directly through seanrichard.com/contact.',
+  },
+  {
+    question: 'How does BuilderLync relate to Autom8ion Lab and Sitehues Media?',
+    answer:
+      'BuilderLync, Autom8ion Lab, and Sitehues Media are three separate companies operated by Sean Richard. Autom8ion Lab develops the AI automation patterns and Sitehues Media runs the digital infrastructure work that informs how BuilderLync handles AI communication and marketing automation inside the platform.',
+  },
+];
+
+export function getBuilderLyncFaqSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${BASE_URL}/builderlync#faq`,
+    mainEntity: BUILDERLYNC_FAQS.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export const BUILDERLYNC_FAQ_DATA = BUILDERLYNC_FAQS;
 
 export function getAboutProfileSchema() {
   return {

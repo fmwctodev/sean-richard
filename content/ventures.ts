@@ -7,6 +7,7 @@ export type Venture = {
   category: string;
   image: string;
   url?: string;
+  internalPath?: string;
   industry: string;
   knowsAbout: string[];
   expandedSections: { heading: string; body: string }[];
@@ -91,6 +92,7 @@ export const VENTURES: Venture[] = [
     category: 'Contractor SaaS',
     image: '/assets/images/builderlync.png',
     url: 'https://builderlync.com',
+    internalPath: '/builderlync',
     industry: 'Construction Software and SaaS',
     knowsAbout: [
       'Contractor software',

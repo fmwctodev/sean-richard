@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import MonoLabel from './MonoLabel';
 import { VENTURES } from '@/content/ventures';
 
@@ -10,33 +11,50 @@ export default function VenturesPanel() {
         </MonoLabel>
       </div>
       <ul className="border-t border-line">
-        {VENTURES.map((v) => (
-          <li
-            key={v.id}
-            className="flex items-baseline justify-between gap-4 py-[18px] border-b border-line"
-          >
-            {v.url ? (
+        {VENTURES.map((v) => {
+          const label = v.name.replace(/\s+(Inc|LLC)\.?$/, '');
+          const linkClass =
+            'font-serif italic text-[20px] md:text-[22px] leading-none text-ink-primary hover:text-accent transition-colors';
+          let nameNode;
+          if (v.internalPath) {
+            nameNode = (
+              <Link href={v.internalPath} className={linkClass}>
+                {label}
+              </Link>
+            );
+          } else if (v.url) {
+            nameNode = (
               <a
                 href={v.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-serif italic text-[20px] md:text-[22px] leading-none text-ink-primary hover:text-accent transition-colors"
+                className={linkClass}
               >
-                {v.name.replace(/\s+(Inc|LLC)\.?$/, '')}
+                {label}
               </a>
-            ) : (
+            );
+          } else {
+            nameNode = (
               <span className="font-serif italic text-[20px] md:text-[22px] leading-none text-ink-primary">
-                {v.name.replace(/\s+(Inc|LLC)\.?$/, '')}
+                {label}
               </span>
-            )}
-            <span
-              className="font-mono uppercase text-ink-tertiary text-right shrink-0"
-              style={{ fontSize: '13px', letterSpacing: '0.06em' }}
+            );
+          }
+          return (
+            <li
+              key={v.id}
+              className="flex items-baseline justify-between gap-4 py-[18px] border-b border-line"
             >
-              {v.category}
-            </span>
-          </li>
-        ))}
+              {nameNode}
+              <span
+                className="font-mono uppercase text-ink-tertiary text-right shrink-0"
+                style={{ fontSize: '13px', letterSpacing: '0.06em' }}
+              >
+                {v.category}
+              </span>
+            </li>
+          );
+        })}
       </ul>
     </aside>
   );
