@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import HomeHero from '@/components/home/HomeHero';
+import HomeOperatingPanel from '@/components/home/HomeOperatingPanel';
 import AuthorityStrip from '@/components/home/AuthorityStrip';
 import HomeServices from '@/components/home/HomeServices';
-import HomeVentures from '@/components/home/HomeVentures';
 import HomeFractionalPreview from '@/components/home/HomeFractionalPreview';
 import HomeSelectedWorkTeaser from '@/components/home/HomeSelectedWorkTeaser';
 import HomeFaq from '@/components/home/HomeFaq';
@@ -22,9 +22,9 @@ export default function HomePage() {
     <div className="pt-20">
       <JsonLd data={getFaqSchema()} />
       <HomeHero />
+      <HomeOperatingPanel />
       <AuthorityStrip />
       <HomeServices />
-      <HomeVentures />
       <HomeFractionalPreview />
       <HomeSelectedWorkTeaser />
       <HomeFaq />
