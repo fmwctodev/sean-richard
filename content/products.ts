@@ -87,7 +87,6 @@ export const SELECTED_PRODUCTS: Product[] = [
     liveLinks: [
       { label: 'BuilderLync Field', url: 'https://field.builderlync.com' },
       { label: 'Revive Customer Success', url: 'https://success.revive-gc.com' },
-      { label: 'Tarrytown Contact', url: 'https://contact.tarrytownroofing.com' },
     ],
   },
 ];

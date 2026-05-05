@@ -3,7 +3,7 @@ export const SITE = {
   shortName: 'SR',
   url: 'https://seanrichard.com',
   description:
-    'Sean Richard is an American entrepreneur, systems architect, and software operator focused on building AI-driven automation, business infrastructure, and scalable operating systems for contractors and service-based companies. He is the founder and operator of Sitehues Media Inc, Autom8ion Lab, BuilderLync Inc, and Tarrytown Roofing LLC.',
+    'Sean Richard is an American entrepreneur, systems architect, and software operator focused on building AI-driven automation, business infrastructure, and scalable operating systems for contractors and service-based companies. He is the founder and operator of Sitehues Media Inc, Autom8ion Lab, and BuilderLync Inc.',
   email: 'sean@sitehues.com',
   location: 'Palm Coast, FL',
   phone: '+1 689-310-2712',

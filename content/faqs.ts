@@ -12,7 +12,7 @@ export const FAQS: Faq[] = [
   {
     question: 'What companies does Sean Richard operate?',
     answer:
-      'Sean Richard founded and operates four companies: Sitehues Media Inc (digital infrastructure and marketing systems), Autom8ion Lab (AI automation and voice agents), BuilderLync Inc (contractor SaaS platform), and Tarrytown Roofing LLC (service business used for real-world system validation).',
+      'Sean Richard founded and operates three companies: Sitehues Media Inc (digital infrastructure and marketing systems), Autom8ion Lab (AI automation and voice agents), and BuilderLync Inc (contractor SaaS platform).',
   },
   {
     question: "What is Sean Richard's professional focus?",

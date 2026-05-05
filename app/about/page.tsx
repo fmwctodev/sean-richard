@@ -5,7 +5,7 @@ import SchemaMarkup from '@/components/seo/SchemaMarkup';
 export const metadata: Metadata = {
   title: 'About Sean Richard - Background, Companies, and Philosophy',
   description:
-    'Learn about Sean Richard, an American entrepreneur and systems architect building AI-driven automation, SaaS platforms, and operational infrastructure. Founder of Sitehues Media Inc, Autom8ion Lab, BuilderLync Inc, and Tarrytown Roofing LLC.',
+    'Learn about Sean Richard, an American entrepreneur and systems architect building AI-driven automation, SaaS platforms, and operational infrastructure. Founder of Sitehues Media Inc, Autom8ion Lab, and BuilderLync Inc.',
   alternates: { canonical: '/about' },
   openGraph: { type: 'profile', url: 'https://seanrichard.com/about' },
 };
@@ -26,7 +26,7 @@ export default function AboutPage() {
                 operator focused on building AI-driven automation, business infrastructure,
                 and scalable operating systems for contractors and service-based companies.
                 He is the founder and operator of Sitehues Media Inc, Autom8ion Lab,
-                BuilderLync Inc, and Tarrytown Roofing LLC.
+                and BuilderLync Inc.
               </p>
               <p>
                 His work centers on replacing fragmented tools, manual processes, and agency
@@ -131,16 +131,6 @@ export default function AboutPage() {
                   a single operating system. BuilderLync is built specifically for
                   contractors who want ownership of their data, processes, and growth systems
                   without relying on disconnected software stacks or external agencies.
-                </p>
-              </div>
-              <div className="p-6 border border-white/10 bg-white/5">
-                <h3 className="text-xl font-semibold text-white mb-3">Tarrytown Roofing LLC</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  A service based roofing company operated by Sean Richard and used as a live
-                  testing environment for systems, automation, sales pipelines, and
-                  contractor software. Every platform and workflow developed for BuilderLync
-                  by Autom8ion Lab is validated in real operational conditions through this
-                  business.
                 </p>
               </div>
             </div>

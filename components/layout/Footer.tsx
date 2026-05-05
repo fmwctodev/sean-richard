@@ -88,8 +88,7 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
           <p>
-            Founder of Sitehues Media Inc, Autom8ion Lab, BuilderLync Inc, and Tarrytown
-            Roofing LLC
+            Founder of Sitehues Media Inc, Autom8ion Lab, and BuilderLync Inc
           </p>
         </div>
       </div>

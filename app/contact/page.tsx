@@ -20,7 +20,7 @@ export default function ContactPage() {
         <div className="mb-8 p-6 border border-white/10 bg-white/5">
           <p className="text-gray-300 leading-relaxed">
             This site represents the work and companies operated by Sean Richard, including
-            Sitehues Media Inc, Autom8ion Lab, BuilderLync Inc, and Tarrytown Roofing LLC.
+            Sitehues Media Inc, Autom8ion Lab, and BuilderLync Inc.
           </p>
           <p className="text-gray-400 leading-relaxed mt-3">
             Inquiries should be related to software platforms, AI automation, systems

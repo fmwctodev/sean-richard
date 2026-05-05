@@ -115,38 +115,6 @@ export const VENTURES: Venture[] = [
     ],
   },
   {
-    id: 'tarrytown-roofing-llc',
-    name: 'Tarrytown Roofing LLC',
-    legalName: 'Tarrytown Roofing LLC',
-    shortPitch:
-      'Live operational testing ground — a working roofing company used to validate every system before it ships.',
-    description:
-      'Tarrytown Roofing LLC is a service-based roofing company operated by Sean Richard and used as a real-world testing environment for systems, automation, and contractor software.',
-    category: 'Live Operations',
-    image: '/assets/images/tarrytown-roofing.png',
-    industry: 'Roofing and Construction Services',
-    knowsAbout: [
-      'Roofing services',
-      'Service business operations',
-      'Process optimization',
-      'Automation testing',
-    ],
-    expandedSections: [
-      {
-        heading: 'Company Overview',
-        body: 'Tarrytown Roofing is a service-based roofing company operated as a real-world testing environment for systems, automation, and contractor software. It functions as a live production business, not a demonstration brand.',
-      },
-      {
-        heading: 'Key Operations',
-        body: 'The company manages residential and commercial roofing projects while running fully integrated sales pipelines, CRM workflows, and automated communication systems.',
-      },
-      {
-        heading: 'Operational Role',
-        body: 'Tarrytown Roofing is used to validate software, automation, and operational frameworks under real market conditions before they are deployed into SaaS platforms and client systems.',
-      },
-    ],
-  },
-  {
     id: 'sean-scott-richard-llc',
     name: 'Sean Scott Richard LLC',
     legalName: 'Sean Scott Richard LLC',
@@ -160,7 +128,7 @@ export const VENTURES: Venture[] = [
     expandedSections: [
       {
         heading: 'Overview',
-        body: 'Sean Scott Richard LLC operates as the personal holding entity for advisory work, select consulting engagements, and investments that sit outside the BuilderLync, Autom8ion Lab, Sitehues Media, and Tarrytown Roofing portfolio.',
+        body: 'Sean Scott Richard LLC operates as the personal holding entity for advisory work, select consulting engagements, and investments that sit outside the BuilderLync, Autom8ion Lab, and Sitehues Media portfolio.',
       },
     ],
   },
