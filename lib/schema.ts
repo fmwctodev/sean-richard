@@ -11,6 +11,8 @@ const PAGE_NAMES: Record<string, string> = {
   '/portfolio': 'Portfolio',
   '/fractional-cmo-cto': 'Fractional CMO/CTO',
   '/contact': 'Contact',
+  '/privacy': 'Privacy Policy',
+  '/terms': 'Terms of Service',
 };
 
 function breadcrumbSchema(path: string, pageTitle?: string) {

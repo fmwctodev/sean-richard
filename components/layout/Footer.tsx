@@ -134,6 +134,22 @@ export default function Footer() {
         <p className="mt-12 text-center text-ink-tertiary font-serif italic text-[15px]">
           {SITE.tagline}
         </p>
+
+        <nav className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[12px] font-mono uppercase tracking-wider text-ink-tertiary">
+          <Link
+            href="/privacy"
+            className="hover:text-ink-primary transition-colors"
+          >
+            Privacy Policy
+          </Link>
+          <span aria-hidden>&middot;</span>
+          <Link
+            href="/terms"
+            className="hover:text-ink-primary transition-colors"
+          >
+            Terms of Service
+          </Link>
+        </nav>
       </div>
     </footer>
   );
