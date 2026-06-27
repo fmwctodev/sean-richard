@@ -17,7 +17,7 @@ export const SERVICES: ServiceCard[] = [
     id: 'fractional-cto',
     title: 'Fractional CTO for Service-Based Companies',
     body:
-      'Executive-level technology direction without full-time overhead: roadmap, software stack review, automation architecture, AI implementation planning, vendor oversight, and security-aware system design.',
+      'Executive-level technology direction without full-time overhead: roadmap, software stack review, automation architecture, AI implementation planning, vendor oversight, cybersecurity posture review, and IT infrastructure direction.',
     href: '/fractional-cmo-cto#cto',
   },
   {
@@ -52,5 +52,6 @@ export const AUTHORITY_TAGS = [
   'Paid Media Infrastructure',
   'Business Operations',
   'Software Architecture',
-  'Cybersecurity-Aware Systems',
+  'Cybersecurity',
+  'IT Infrastructure',
 ];

@@ -45,8 +45,8 @@ export const FRACTIONAL_OFFERINGS: FractionalOffering[] = [
     title: 'Fractional CTO for Service-Based Companies and Growth-Stage Operators',
     headline: 'Fractional CTO for companies that need technology leadership without full-time overhead.',
     body: [
-      'Many growing companies rely on disconnected tools, fragile automations, vendor-built systems, and software decisions made without a clear technical roadmap. That creates operational drag, security gaps, poor data visibility, and expensive rebuilds later.',
-      "As a fractional CTO, I help companies make better technology decisions, design stronger infrastructure, evaluate software and vendors, plan automation, improve data flow, and build systems that support scale. The focus isn't technology for its own sake — it's operational leverage.",
+      'Many growing companies rely on disconnected tools, fragile automations, vendor-built systems, and software decisions made without a clear technical roadmap. That creates operational drag, cybersecurity exposure, poor data visibility, and expensive rebuilds later.',
+      "As a fractional CTO, I help companies make better technology decisions, design stronger infrastructure, evaluate software and vendors, plan automation, improve data flow, and build systems that support scale. My background spans IT operations, system administration, and cybersecurity — so technology direction here comes with practical knowledge of how production environments actually run, fail, and get attacked. The focus isn't technology for its own sake — it's operational leverage.",
     ],
     bestFit:
       "Service-based companies, contractors, SaaS startups, agencies, and operational teams that need executive-level technology direction but aren't ready for a full-time CTO.",
@@ -56,11 +56,11 @@ export const FRACTIONAL_OFFERINGS: FractionalOffering[] = [
       'CRM, automation, and workflow design',
       'AI automation strategy and implementation planning',
       'Data structure, reporting, and analytics planning',
-      'Cybersecurity-aware infrastructure review',
+      'Cybersecurity posture review and hardening recommendations',
+      'IT operations and infrastructure direction',
       'Internal tool and SaaS product planning',
       'Development team / vendor oversight',
       'Technical documentation and process mapping',
-      'Automation opportunity audits',
     ],
     outcome:
       'A clear technology roadmap, cleaner systems, better vendor decisions, and infrastructure that supports growth instead of slowing it down.',

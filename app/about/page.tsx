@@ -10,7 +10,7 @@ import { getReadingListSchema, getAboutProfileSchema } from '@/lib/schema';
 export const metadata: Metadata = {
   title: 'About Sean Richard | Entrepreneur, Systems Architect & Fractional Executive',
   description:
-    'Learn about Sean Richard, founder of Sitehues Media, Autom8ion Lab, and BuilderLync. Sean builds AI automation, contractor SaaS, and operational systems for service-based businesses.',
+    'Learn about Sean Richard, founder of Sitehues Media, Autom8ion Lab, and BuilderLync. Sean builds AI automation, contractor SaaS, IT systems, and cybersecurity-aware infrastructure for service-based businesses.',
   alternates: { canonical: '/about' },
   openGraph: { type: 'profile', url: 'https://seanrichard.com/about' },
 };
@@ -25,7 +25,8 @@ const FOCUS_AREAS = [
   'Lead-to-close system design',
   'Paid media and funnel infrastructure',
   'Internal process automation and orchestration',
-  'Security-aware platform and workflow design',
+  'Cybersecurity-aware platform and workflow design',
+  'IT operations and infrastructure direction',
   'Custom software and internal tool development',
 ];
 
@@ -160,13 +161,16 @@ export default function AboutPage() {
               <p>
                 Sean is a graduate of{' '}
                 <span className="text-ink-primary font-medium">Full Sail University</span>{' '}
-                with formal technical and digital training. He has expanded his expertise
-                across cybersecurity, system administration, software architecture,
-                marketing systems, automation, and business operations. His experience
-                spans Windows and Linux environments, networking, DNS, server
-                infrastructure, application-layer security, CRM systems, funnel
-                architecture, paid media infrastructure, SaaS product development, and AI
-                implementation.
+                with formal technical and digital training, and is pursuing a B.S. in
+                Cyber/Computer Forensics &amp; Counterterrorism. His core expertise is in{' '}
+                <span className="text-ink-primary font-medium">
+                  cybersecurity, IT operations, and system administration
+                </span>
+                , extended across software architecture, marketing systems, automation,
+                and business operations. His hands-on experience spans Windows and Linux
+                environments, networking, DNS, server infrastructure, application-layer
+                security, CRM systems, funnel architecture, paid media infrastructure,
+                SaaS product development, and AI implementation.
               </p>
               <p>
                 Before building software and automation companies, Sean worked across IT

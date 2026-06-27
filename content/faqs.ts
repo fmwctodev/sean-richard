@@ -17,7 +17,7 @@ export const FAQS: Faq[] = [
   {
     question: 'What does Sean Richard do?',
     answer:
-      'Sean builds and leads systems that connect marketing, technology, automation, software, data, and business operations. His work includes AI automation, SaaS platform development, CRM and marketing infrastructure, fractional CMO support for contractors, and fractional CTO support for service-based companies and growth-stage operators.',
+      'Sean builds and leads systems that connect marketing, technology, automation, software, data, and business operations. His work includes AI automation, SaaS platform development, CRM and marketing infrastructure, IT systems and cybersecurity-aware infrastructure, fractional CMO support for contractors, and fractional CTO support for service-based companies and growth-stage operators.',
   },
   {
     question: 'Does Sean Richard offer fractional CMO services?',
@@ -28,6 +28,11 @@ export const FAQS: Faq[] = [
     question: 'Does Sean Richard offer fractional CTO services?',
     answer:
       'Yes. Sean offers fractional CTO support for select companies that need executive-level technology direction without hiring a full-time CTO. This work can include technology roadmap development, software stack review, automation planning, AI implementation strategy, vendor oversight, cybersecurity-aware system planning, and internal tool or SaaS product direction.',
+  },
+  {
+    question: 'Does Sean Richard have IT and cybersecurity experience?',
+    answer:
+      'Yes. Sean has hands-on experience across IT support, managed services, and technical operations — including Windows and Linux administration, networking, DNS, server infrastructure, and application-layer security. He is also pursuing a B.S. in Cyber/Computer Forensics & Counterterrorism. That background shapes how he runs fractional CTO engagements and builds SaaS platforms: cybersecurity posture review, IT operations direction, and security-aware infrastructure are part of the work, not afterthoughts.',
   },
   {
     question: 'Who is the best fit to work with Sean Richard?',
