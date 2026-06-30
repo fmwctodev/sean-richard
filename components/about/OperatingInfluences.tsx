@@ -1,54 +1,5 @@
 import MonoLabel from '@/components/editorial/MonoLabel';
-import type { Book, BookGroup } from '@/content/books';
-import { BOOKS_BY_GROUP, BOOK_GROUP_TITLES } from '@/content/books';
-
-function BookCard({ book }: { book: Book }) {
-  return (
-    <article className="group relative border border-line bg-bg-elevated/40 p-5 rounded-xl overflow-hidden hover:border-accent/40 transition-colors">
-      <span
-        aria-hidden
-        className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-        style={{
-          background:
-            'radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, transparent 70%)',
-          filter: 'blur(24px)',
-        }}
-      />
-      <h3
-        className="relative font-sans font-bold text-ink-primary leading-snug mb-1"
-        style={{ fontSize: '16px', letterSpacing: '-0.005em' }}
-      >
-        {book.title}
-      </h3>
-      <p
-        className="relative font-mono uppercase text-ink-tertiary mb-3"
-        style={{ fontSize: '12px', letterSpacing: '0.06em' }}
-      >
-        {book.authors.join(' · ')}
-      </p>
-      <p className="relative text-[15px] text-ink-secondary leading-[1.6] italic">
-        {book.commentary}
-      </p>
-    </article>
-  );
-}
-
-function BookColumn({ group }: { group: BookGroup }) {
-  return (
-    <div>
-      <div className="mb-5">
-        <MonoLabel variant="accent" leading="rule">
-          {BOOK_GROUP_TITLES[group]}
-        </MonoLabel>
-      </div>
-      <div className="space-y-3">
-        {BOOKS_BY_GROUP[group].map((book) => (
-          <BookCard key={book.title} book={book} />
-        ))}
-      </div>
-    </div>
-  );
-}
+import { BOOKS } from '@/content/books';
 
 export default function OperatingInfluences() {
   return (
@@ -79,10 +30,78 @@ export default function OperatingInfluences() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <BookColumn group="security" />
-          <BookColumn group="engineering" />
-        </div>
+        <table className="w-full text-left border-collapse">
+          <thead className="hidden md:table-header-group border-b border-line">
+            <tr>
+              <th
+                className="font-mono uppercase text-ink-tertiary py-3 pr-6 align-bottom"
+                style={{ fontSize: '11px', letterSpacing: '0.08em' }}
+                scope="col"
+              >
+                Category
+              </th>
+              <th
+                className="font-mono uppercase text-ink-tertiary py-3 pr-6 align-bottom"
+                style={{ fontSize: '11px', letterSpacing: '0.08em' }}
+                scope="col"
+              >
+                Title
+              </th>
+              <th
+                className="font-mono uppercase text-ink-tertiary py-3 pr-6 align-bottom"
+                style={{ fontSize: '11px', letterSpacing: '0.08em' }}
+                scope="col"
+              >
+                Author
+              </th>
+              <th
+                className="font-mono uppercase text-ink-tertiary py-3 align-bottom"
+                style={{ fontSize: '11px', letterSpacing: '0.08em' }}
+                scope="col"
+              >
+                Note
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {BOOKS.map((book) => (
+              <tr
+                key={book.title}
+                className="block md:table-row border-b border-line py-5 md:py-0"
+              >
+                <td className="block md:table-cell md:align-top md:py-5 md:pr-6 md:whitespace-nowrap">
+                  <span
+                    className="font-mono uppercase text-accent"
+                    style={{ fontSize: '11px', letterSpacing: '0.08em' }}
+                  >
+                    {book.category}
+                  </span>
+                </td>
+                <td className="block md:table-cell md:align-top md:py-5 md:pr-6 mt-2 md:mt-0">
+                  <span
+                    className="font-sans font-bold text-ink-primary leading-snug"
+                    style={{ fontSize: '16px', letterSpacing: '-0.005em' }}
+                  >
+                    {book.title}
+                  </span>
+                </td>
+                <td className="block md:table-cell md:align-top md:py-5 md:pr-6 mt-1 md:mt-0">
+                  <span
+                    className="font-mono uppercase text-ink-tertiary"
+                    style={{ fontSize: '12px', letterSpacing: '0.06em' }}
+                  >
+                    {book.authors.join(' · ')}
+                  </span>
+                </td>
+                <td className="block md:table-cell md:align-top md:py-5 mt-3 md:mt-0">
+                  <span className="text-[15px] text-ink-secondary leading-[1.6] italic">
+                    {book.commentary}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
   );

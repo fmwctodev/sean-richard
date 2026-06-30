@@ -216,6 +216,7 @@ export function getReadingListSchema() {
             name: author,
           })),
           about: book.topic,
+          genre: book.category,
           ...(book.isbn ? { isbn: book.isbn } : {}),
         },
       })),
