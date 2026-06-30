@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import MonoLabel from '@/components/editorial/MonoLabel';
-import SchemaMarkup from '@/components/seo/SchemaMarkup';
-import ContactForm from '@/components/contact/ContactForm';
+import SchemaMarkup, { JsonLd } from '@/components/seo/SchemaMarkup';
+import { getWebPageSchema } from '@/lib/schema';
+import DynamicContactForm from '@/components/contact/DynamicContactForm';
 import NetlifyFormDefinition from '@/components/contact/NetlifyFormDefinition';
 import { SITE } from '@/content/nav';
 
@@ -16,6 +17,16 @@ export default function ContactPage() {
   return (
     <div>
       <SchemaMarkup path="/contact" pageTitle="Contact" />
+      <JsonLd
+        data={getWebPageSchema({
+          path: '/contact',
+          title: 'Contact Sean Richard | Fractional CMO, CTO, AI Automation & Systems',
+          description:
+            'Contact Sean Richard for serious inquiries related to fractional CMO support, fractional CTO leadership, AI automation, software platforms, contractor systems, and strategic partnerships.',
+          dateModified: '2026-05-05',
+          primaryImageUrl: 'https://seanrichard.com/opengraph.png',
+        })}
+      />
       <NetlifyFormDefinition />
 
       <section
@@ -53,7 +64,7 @@ export default function ContactPage() {
 
       <section className="px-6 pb-20">
         <div className="max-w-3xl mx-auto">
-          <ContactForm />
+          <DynamicContactForm />
 
           <div className="mt-16 border-t border-line pt-12">
             <div className="mb-4">

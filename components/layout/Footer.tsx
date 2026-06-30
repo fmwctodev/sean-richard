@@ -46,6 +46,12 @@ export default function Footer() {
                 Fractional CMO/CTO
               </Link>
               <Link
+                href="/articles"
+                className="text-ink-secondary hover:text-ink-primary transition-colors"
+              >
+                Articles
+              </Link>
+              <Link
                 href="/contact"
                 className="text-ink-secondary hover:text-ink-primary transition-colors"
               >

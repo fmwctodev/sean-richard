@@ -7,7 +7,11 @@ import FractionalFaq from '@/components/fractional/FractionalFaq';
 import ClosingCta from '@/components/editorial/ClosingCta';
 import SchemaMarkup, { JsonLd } from '@/components/seo/SchemaMarkup';
 import { FRACTIONAL_OFFERINGS } from '@/content/fractional';
-import { getFractionalServicesSchema, getFractionalFaqSchema } from '@/lib/schema';
+import {
+  getFractionalServicesSchema,
+  getFractionalFaqSchema,
+  getWebPageSchema,
+} from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'Fractional CMO for Contractors | Sean Richard',
@@ -24,6 +28,16 @@ export default function FractionalCmoContractorsPage() {
       <SchemaMarkup
         path="/fractional-cmo-contractors"
         pageTitle="Fractional CMO for Contractors"
+      />
+      <JsonLd
+        data={getWebPageSchema({
+          path: '/fractional-cmo-contractors',
+          title: 'Fractional CMO for Contractors | Sean Richard',
+          description:
+            'Fractional CMO services for contractors and home-service companies. Senior marketing leadership across paid media, CRM, funnel infrastructure, sales pipeline design, and lead-to-close automation — without hiring a full-time CMO.',
+          dateModified: '2026-06-29',
+          primaryImageUrl: 'https://seanrichard.com/opengraph.png',
+        })}
       />
       <JsonLd data={getFractionalServicesSchema('fractional-cmo')} />
       <JsonLd data={getFractionalFaqSchema('cmo', '/fractional-cmo-contractors')} />
@@ -87,6 +101,26 @@ export default function FractionalCmoContractorsPage() {
 
       <FractionalOfferingSection offering={cmo} />
       <EngagementProcess />
+
+      <section className="border-t border-line px-6 py-[clamp(48px,8vh,80px)]">
+        <div className="max-w-[1440px] mx-auto">
+          <Link
+            href="/articles/fractional-cmo-roofing-contractors"
+            className="group inline-flex items-center gap-3 text-ink-secondary hover:text-ink-primary transition-colors"
+          >
+            <span
+              className="font-mono uppercase text-accent-light"
+              style={{ fontSize: '11px', letterSpacing: '0.1em' }}
+            >
+              Related reading &rarr;
+            </span>
+            <span className="text-[17px] font-medium underline underline-offset-4 decoration-line group-hover:decoration-accent-light">
+              What does a fractional CMO do for a roofing company?
+            </span>
+          </Link>
+        </div>
+      </section>
+
       <FractionalFaq audience="cmo" />
       <ClosingCta
         eyebrow="Apply to work with Sean"

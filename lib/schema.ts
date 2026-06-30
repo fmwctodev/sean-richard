@@ -3,6 +3,7 @@ import { VENTURES } from '@/content/ventures';
 import { FAQS } from '@/content/faqs';
 import { BOOKS } from '@/content/books';
 import { FRACTIONAL_FAQS, type FractionalFaqAudience } from '@/content/fractional';
+import type { Article } from '@/content/articles';
 
 const BASE_URL = SITE.url;
 
@@ -13,6 +14,7 @@ const PAGE_NAMES: Record<string, string> = {
   '/fractional-cmo-cto': 'Fractional CMO/CTO',
   '/fractional-cmo-contractors': 'Fractional CMO for Contractors',
   '/fractional-cto-service-businesses': 'Fractional CTO for Service Businesses',
+  '/articles': 'Articles',
   '/contact': 'Contact',
   '/privacy': 'Privacy Policy',
   '/terms': 'Terms of Service',
@@ -74,6 +76,14 @@ export function getCoreSchemaGraph(path: string, pageTitle?: string) {
           'Personal website of Sean Richard, entrepreneur and systems architect focused on AI automation and business infrastructure.',
         publisher: { '@id': `${BASE_URL}/#sean-richard` },
         inLanguage: 'en-US',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${BASE_URL}/?q={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
       },
       breadcrumbSchema(path, pageTitle),
       {
@@ -119,6 +129,29 @@ export function getCoreSchemaGraph(path: string, pageTitle?: string) {
           'Fractional CMO',
           'Fractional CTO',
         ],
+        hasOccupation: [
+          {
+            '@type': 'Occupation',
+            name: 'Fractional Chief Marketing Officer',
+            occupationalCategory: '11-2021',
+            description:
+              'Senior marketing leadership for contractors and service-based companies on a fractional retainer basis: growth strategy, paid media direction, CRM and funnel architecture, sales pipeline design, and vendor oversight.',
+          },
+          {
+            '@type': 'Occupation',
+            name: 'Fractional Chief Technology Officer',
+            occupationalCategory: '11-3021',
+            description:
+              'Executive-level technology direction for service-based companies, SaaS startups, and growth-stage operators without full-time overhead: technology roadmap, software stack review, automation architecture, AI implementation, cybersecurity-aware infrastructure, and IT operations direction.',
+          },
+          {
+            '@type': 'Occupation',
+            name: 'Founder and Entrepreneur',
+            occupationalCategory: '11-1011',
+            description:
+              'Founder and operator of Sitehues Media Inc, Autom8ion Lab, and BuilderLync Inc — building AI automation, contractor SaaS, and operational infrastructure for service-based businesses.',
+          },
+        ],
         knowsAbout: [
           'AI automation',
           'Fractional CMO',
@@ -158,6 +191,43 @@ export function getCoreSchemaGraph(path: string, pageTitle?: string) {
       },
       ...VENTURES.map(organizationNode),
     ],
+  };
+}
+
+export function getWebPageSchema({
+  path,
+  title,
+  description,
+  dateModified,
+  primaryImageUrl,
+}: {
+  path: string;
+  title: string;
+  description: string;
+  dateModified?: string;
+  primaryImageUrl?: string;
+}) {
+  const url = `${BASE_URL}${path === '/' ? '' : path}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name: title,
+    description,
+    inLanguage: 'en-US',
+    isPartOf: { '@id': `${BASE_URL}/#website` },
+    breadcrumb: { '@id': `${BASE_URL}${path}#breadcrumb` },
+    about: { '@id': `${BASE_URL}/#sean-richard` },
+    ...(dateModified ? { dateModified } : {}),
+    ...(primaryImageUrl
+      ? {
+          primaryImageOfPage: {
+            '@type': 'ImageObject',
+            url: primaryImageUrl,
+          },
+        }
+      : {}),
   };
 }
 
@@ -240,6 +310,25 @@ export function getFaqSchema() {
         text: faq.answer,
       },
     })),
+  };
+}
+
+export function getArticleSchema(article: Article) {
+  const url = `${BASE_URL}/articles/${article.slug}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: article.title,
+    description: article.description,
+    datePublished: article.publishedDate,
+    ...(article.updatedDate ? { dateModified: article.updatedDate } : {}),
+    author: { '@id': `${BASE_URL}/#sean-richard` },
+    publisher: { '@id': `${BASE_URL}/#sean-richard` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    articleSection: article.category,
+    inLanguage: 'en-US',
+    image: `${BASE_URL}/opengraph.png`,
   };
 }
 

@@ -305,7 +305,7 @@ export default function ContactForm() {
     const isValid = fieldValid[key as keyof typeof fieldValid];
     const flashing = recentlyValidated.has(key);
     return [
-      'w-full px-4 py-[14px] bg-bg-elevated border focus:outline-none transition-all text-ink-primary placeholder:text-ink-tertiary rounded-lg',
+      'w-full px-4 py-[14px] text-[16px] bg-bg-elevated border focus:outline-none transition-all text-ink-primary placeholder:text-ink-tertiary rounded-lg',
       flashing
         ? 'border-accent shadow-[0_0_0_3px_rgba(239,68,68,0.25)]'
         : isValid
@@ -582,7 +582,7 @@ export default function ContactForm() {
           type="button"
           onClick={() => setStep(Math.max(1, step - 1))}
           disabled={step === 1}
-          className="font-mono uppercase text-ink-tertiary hover:text-ink-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="font-mono uppercase text-ink-tertiary hover:text-ink-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors px-3 py-3 -mx-3 -my-1 min-h-[44px] flex items-center"
           style={{ fontSize: '12px', letterSpacing: '0.12em' }}
         >
           ← Back

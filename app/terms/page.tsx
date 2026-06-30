@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import MonoLabel from '@/components/editorial/MonoLabel';
-import SchemaMarkup from '@/components/seo/SchemaMarkup';
+import SchemaMarkup, { JsonLd } from '@/components/seo/SchemaMarkup';
+import { getWebPageSchema } from '@/lib/schema';
 import { SITE } from '@/content/nav';
 
 export const metadata: Metadata = {
@@ -24,6 +25,15 @@ export default function TermsPage() {
   return (
     <div>
       <SchemaMarkup path="/terms" pageTitle="Terms of Service" />
+      <JsonLd
+        data={getWebPageSchema({
+          path: '/terms',
+          title: 'Terms of Service | Sean Richard',
+          description:
+            "Terms of Service for seanrichard.com — terms governing use of Sean Richard's website, content, and resources.",
+          dateModified: '2026-05-05',
+        })}
+      />
 
       <section
         className="relative px-6"

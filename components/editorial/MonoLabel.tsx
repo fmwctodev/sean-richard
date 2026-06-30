@@ -17,7 +17,7 @@ export default function MonoLabel({
     variant === 'tertiary'
       ? 'text-ink-tertiary'
       : variant === 'accent'
-        ? 'text-accent'
+        ? 'text-accent-light'
         : 'text-ink-secondary';
 
   return (

@@ -45,7 +45,7 @@ export default function Navigation() {
               <Link
                 key={link.to}
                 href={link.to!}
-                className={`text-[14px] transition-colors ${
+                className={`text-[14px] py-3 -my-1 transition-colors ${
                   pathname === link.to ? 'text-ink-primary' : 'text-ink-secondary hover:text-ink-primary'
                 }`}
               >
@@ -59,7 +59,7 @@ export default function Navigation() {
               href="/resume.pdf"
               download="Sean_Richard_Resume.pdf"
               onClick={() => trackResumeDownload('footer')}
-              className="hidden sm:inline-flex items-center gap-2 px-[18px] py-[10px] border border-line-strong text-ink-primary font-mono uppercase rounded-full hover:border-accent hover:text-accent transition-colors"
+              className="hidden sm:inline-flex items-center gap-2 px-[18px] py-3 border border-line-strong text-ink-primary font-mono uppercase rounded-full hover:border-accent hover:text-accent transition-colors min-h-[44px]"
               style={{ fontSize: '12px', letterSpacing: '0.04em' }}
             >
               Resume <span aria-hidden>↓</span>

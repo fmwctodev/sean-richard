@@ -7,6 +7,7 @@ import {
   BUILDERLYNC_FAQ_DATA,
   getBuilderLyncSchema,
   getBuilderLyncFaqSchema,
+  getWebPageSchema,
 } from '@/lib/schema';
 
 export const metadata: Metadata = {
@@ -57,6 +58,16 @@ export default function BuilderLyncPage() {
   return (
     <div>
       <SchemaMarkup path="/builderlync" pageTitle="BuilderLync" />
+      <JsonLd
+        data={getWebPageSchema({
+          path: '/builderlync',
+          title: 'BuilderLync | Operating System for Builders and Contractors',
+          description:
+            'BuilderLync is an operating system for builders and contractors — CRM, estimating, project management, lead routing, client communication, and AI-assisted workflows in one platform. Founded by Sean Richard.',
+          dateModified: '2026-05-05',
+          primaryImageUrl: 'https://seanrichard.com/opengraph.png',
+        })}
+      />
       <JsonLd data={getBuilderLyncSchema()} />
       <JsonLd data={getBuilderLyncFaqSchema()} />
 

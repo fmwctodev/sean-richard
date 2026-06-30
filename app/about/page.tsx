@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import MonoLabel from '@/components/editorial/MonoLabel';
 import ClosingCta from '@/components/editorial/ClosingCta';
 import OperatingInfluences from '@/components/about/OperatingInfluences';
 import SchemaMarkup, { JsonLd } from '@/components/seo/SchemaMarkup';
 import { VENTURES } from '@/content/ventures';
-import { getReadingListSchema, getAboutProfileSchema } from '@/lib/schema';
+import {
+  getReadingListSchema,
+  getAboutProfileSchema,
+  getWebPageSchema,
+} from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'About Sean Richard | Entrepreneur, Systems Architect & Fractional Executive',
@@ -44,6 +49,16 @@ export default function AboutPage() {
   return (
     <div>
       <SchemaMarkup path="/about" pageTitle="About Sean Richard" />
+      <JsonLd
+        data={getWebPageSchema({
+          path: '/about',
+          title: 'About Sean Richard | Entrepreneur, Systems Architect & Fractional Executive',
+          description:
+            'Learn about Sean Richard, founder of Sitehues Media, Autom8ion Lab, and BuilderLync. Sean builds AI automation, contractor SaaS, IT systems, and cybersecurity-aware infrastructure for service-based businesses.',
+          dateModified: '2026-06-29',
+          primaryImageUrl: 'https://seanrichard.com/assets/headshots/sean-richard.webp',
+        })}
+      />
       <JsonLd data={getAboutProfileSchema()} />
       <JsonLd data={getReadingListSchema()} />
 
@@ -79,7 +94,7 @@ export default function AboutPage() {
                 .
               </h1>
 
-              <p className="text-[clamp(17px,1.4vw,21px)] leading-[1.55] text-ink-secondary max-w-[58ch]">
+              <p className="text-[clamp(17px,1.4vw,21px)] leading-[1.55] text-ink-secondary max-w-[58ch] mb-10">
                 Sean Richard builds AI-driven automation, business infrastructure, and
                 scalable operating systems for contractors and service-based companies.
                 He is the founder and operator of{' '}
@@ -88,6 +103,28 @@ export default function AboutPage() {
                 and{' '}
                 <span className="text-ink-primary font-medium">BuilderLync Inc</span>.
               </p>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center gap-3 px-8 py-[18px] rounded-full bg-accent text-bg-primary font-semibold text-[15px] hover:bg-ink-primary transition-colors"
+                  style={{ boxShadow: '0 10px 40px -10px rgba(239, 68, 68, 0.6)' }}
+                >
+                  Work with Sean
+                  <span
+                    aria-hidden
+                    className="transition-transform group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </Link>
+                <Link
+                  href="/fractional-cmo-cto"
+                  className="inline-flex items-center px-8 py-[18px] rounded-full border border-line-strong text-ink-primary font-medium text-[15px] hover:border-ink-primary hover:bg-bg-elevated transition-all"
+                >
+                  Fractional services
+                </Link>
+              </div>
             </div>
 
             <div className="relative flex justify-center lg:justify-end">

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import MonoLabel from '@/components/editorial/MonoLabel';
-import SchemaMarkup from '@/components/seo/SchemaMarkup';
+import SchemaMarkup, { JsonLd } from '@/components/seo/SchemaMarkup';
+import { getWebPageSchema } from '@/lib/schema';
 import { SITE } from '@/content/nav';
 
 export const metadata: Metadata = {
@@ -24,6 +25,15 @@ export default function PrivacyPage() {
   return (
     <div>
       <SchemaMarkup path="/privacy" pageTitle="Privacy Policy" />
+      <JsonLd
+        data={getWebPageSchema({
+          path: '/privacy',
+          title: 'Privacy Policy | Sean Richard',
+          description:
+            'Privacy policy for seanrichard.com — how Sean Richard collects, uses, shares, and protects information from visitors.',
+          dateModified: '2026-05-05',
+        })}
+      />
 
       <section
         className="relative px-6"

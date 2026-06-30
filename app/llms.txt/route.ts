@@ -2,6 +2,7 @@ import { SITE } from '@/content/nav';
 import { VENTURES } from '@/content/ventures';
 import { FRACTIONAL_OFFERINGS } from '@/content/fractional';
 import { SELECTED_PRODUCTS } from '@/content/products';
+import { ARTICLES } from '@/content/articles';
 
 /**
  * /llms.txt — emerging standard for surfacing a curated, plain-text summary
@@ -18,6 +19,10 @@ export function GET() {
 
   const productLines = SELECTED_PRODUCTS.map(
     (p) => `- ${p.name}: ${p.tagline}`,
+  ).join('\n');
+
+  const articleLines = ARTICLES.map(
+    (a) => `- ${a.title} — ${SITE.url}/articles/${a.slug}`,
   ).join('\n');
 
   const fractionalLines = FRACTIONAL_OFFERINGS.map(
@@ -52,6 +57,12 @@ ${fractionalLines}
 ## Selected Products (built and shipped end-to-end)
 
 ${productLines}
+
+## Articles
+
+${articleLines}
+
+Articles index: ${SITE.url}/articles
 
 ## Areas of Expertise
 

@@ -7,7 +7,11 @@ import FractionalFaq from '@/components/fractional/FractionalFaq';
 import ClosingCta from '@/components/editorial/ClosingCta';
 import SchemaMarkup, { JsonLd } from '@/components/seo/SchemaMarkup';
 import { FRACTIONAL_OFFERINGS } from '@/content/fractional';
-import { getFractionalServicesSchema, getFractionalFaqSchema } from '@/lib/schema';
+import {
+  getFractionalServicesSchema,
+  getFractionalFaqSchema,
+  getWebPageSchema,
+} from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'Fractional CTO for Service Businesses | Sean Richard',
@@ -24,6 +28,16 @@ export default function FractionalCtoServiceBusinessesPage() {
       <SchemaMarkup
         path="/fractional-cto-service-businesses"
         pageTitle="Fractional CTO for Service Businesses"
+      />
+      <JsonLd
+        data={getWebPageSchema({
+          path: '/fractional-cto-service-businesses',
+          title: 'Fractional CTO for Service Businesses | Sean Richard',
+          description:
+            'Fractional CTO services for service-based companies, SaaS startups, agencies, and growth-stage operators. Technology roadmap, software stack review, automation architecture, AI implementation, vendor oversight, and cybersecurity-aware infrastructure — without the cost of a full-time CTO.',
+          dateModified: '2026-06-29',
+          primaryImageUrl: 'https://seanrichard.com/opengraph.png',
+        })}
       />
       <JsonLd data={getFractionalServicesSchema('fractional-cto')} />
       <JsonLd data={getFractionalFaqSchema('cto', '/fractional-cto-service-businesses')} />
