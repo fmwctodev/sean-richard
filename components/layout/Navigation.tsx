@@ -65,7 +65,7 @@ export default function Navigation() {
               Resume <span aria-hidden>↓</span>
             </a>
             <button
-              className="lg:hidden text-ink-primary"
+              className="lg:hidden text-ink-primary p-3 -mr-3 flex items-center justify-center min-w-[44px] min-h-[44px]"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >

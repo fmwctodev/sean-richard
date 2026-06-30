@@ -5,7 +5,6 @@ import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 import AmbientMesh from '@/components/layout/AmbientMesh';
 import ScrollProgress from '@/components/layout/ScrollProgress';
-import SchemaMarkup from '@/components/seo/SchemaMarkup';
 import { SITE } from '@/content/nav';
 import './globals.css';
 
@@ -94,7 +93,6 @@ export default function RootLayout({
       className={`${instrumentSerif.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
       <body className="bg-bg-primary text-ink-primary font-sans antialiased">
-        <SchemaMarkup path="/" />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="lazyOnload"

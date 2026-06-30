@@ -106,7 +106,7 @@ export default function HomeHero() {
               {/* Headshot */}
               <div className="relative w-[260px] sm:w-[320px] md:w-[380px] lg:w-[420px]">
                 <Image
-                  src="/assets/headshots/sean-richard.png"
+                  src="/assets/headshots/sean-richard.webp"
                   alt="Sean Richard - Professional Headshot"
                   className="relative w-full h-auto"
                   width={550}

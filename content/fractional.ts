@@ -102,3 +102,53 @@ export const WHO_THIS_IS_NOT_FOR = [
 
 export const FRACTIONAL_OUTCOMES =
   'What success looks like in a typical engagement: predictable lead flow with attribution, reduced vendor sprawl, documented operational systems, AI/automation deployed against real bottlenecks, clean data and reporting, and a leadership team that can defend technical and marketing decisions to investors or partners.';
+
+export type FractionalFaqAudience = 'all' | 'cmo' | 'cto';
+
+export type FractionalFaq = {
+  question: string;
+  answer: string;
+  audience: FractionalFaqAudience;
+};
+
+export const FRACTIONAL_FAQS: FractionalFaq[] = [
+  {
+    question: 'How does a fractional CMO or CTO engagement with Sean Richard work?',
+    answer:
+      'Engagements start with a Systems Review — a written diagnostic covering current state, bottlenecks, vendor landscape, and prioritized recommendations. From there, scope is defined as either a monthly retainer or a fixed project, with weekly working sessions, async progress reporting, and continuous iteration. Sean leads implementation directly or oversees internal teams and vendors depending on the engagement shape.',
+    audience: 'all',
+  },
+  {
+    question: 'How is a fractional CMO different from a marketing agency?',
+    answer:
+      'A marketing agency executes tactics inside its own playbook. A fractional CMO operates as senior marketing leadership inside your company: setting strategy, choosing vendors, designing the CRM and funnel infrastructure, building the sales pipeline, and being accountable for the full customer acquisition system. Sean Richard works as embedded leadership for contractors and service-based companies — not as an outside vendor adding another layer.',
+    audience: 'cmo',
+  },
+  {
+    question: 'How is a fractional CTO different from a consultant or development agency?',
+    answer:
+      'A consultant produces a deliverable and leaves; a development agency executes a defined build. A fractional CTO owns the technology direction over time — roadmap, software stack evaluation, automation architecture, AI implementation planning, vendor oversight, and cybersecurity posture review. Sean Richard provides executive-level technology direction without full-time overhead, with hands-on IT and cybersecurity background informing every recommendation.',
+    audience: 'cto',
+  },
+  {
+    question: 'Who is the best fit to work with Sean Richard as a fractional CMO or CTO?',
+    answer:
+      'Best-fit clients are contractors and service businesses doing $1M–$10M+ in revenue, SaaS startups and agencies that need senior technical or marketing direction without hiring full-time, and operators who want strategy directly tied to execution. Pre-revenue startups looking for free advisory, companies expecting generic coaching, and engagements where leadership will not make decisions or commit to execution are not a fit.',
+    audience: 'all',
+  },
+  {
+    question: 'What does a typical fractional engagement scope look like?',
+    answer:
+      'Engagements are scoped as monthly retainers or fixed projects. A retainer typically covers strategy, infrastructure design, weekly working sessions, and oversight of internal or vendor execution. Project scopes cover specific deliverables such as a Systems Review, technology roadmap, CRM and funnel rebuild, or AI automation implementation plan. Specific terms are scoped during the initial intake conversation.',
+    audience: 'all',
+  },
+  {
+    question: 'Does Sean Richard offer fractional services for companies outside contractors or service businesses?',
+    answer:
+      'Yes. While the fractional CMO practice is focused on contractors and home-service companies, the fractional CTO practice supports SaaS startups, agencies, and growth-stage operators that need executive-level technology direction. Engagements are evaluated on fit — operational complexity, decision-making capacity, and commitment to execution — rather than industry alone.',
+    audience: 'all',
+  },
+];
+
+export const FRACTIONAL_ENGAGEMENT_SCOPE =
+  'Fractional engagements are structured as scoped monthly retainers or fixed-scope projects. Specific scope, deliverables, and engagement range are defined during the initial intake conversation based on company size and complexity.';

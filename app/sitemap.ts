@@ -2,55 +2,16 @@ import type { MetadataRoute } from 'next';
 import { SITE } from '@/content/nav';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
   return [
-    {
-      url: `${SITE.url}/`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${SITE.url}/about`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${SITE.url}/portfolio`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${SITE.url}/fractional-cmo-cto`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.95,
-    },
-    {
-      url: `${SITE.url}/contact`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${SITE.url}/builderlync`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${SITE.url}/privacy`,
-      lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${SITE.url}/terms`,
-      lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
+    { url: `${SITE.url}/`, lastModified: new Date('2026-06-26') },
+    { url: `${SITE.url}/about`, lastModified: new Date('2026-06-29') },
+    { url: `${SITE.url}/portfolio`, lastModified: new Date('2026-05-05') },
+    { url: `${SITE.url}/fractional-cmo-cto`, lastModified: new Date('2026-06-29') },
+    { url: `${SITE.url}/fractional-cmo-contractors`, lastModified: new Date('2026-06-29') },
+    { url: `${SITE.url}/fractional-cto-service-businesses`, lastModified: new Date('2026-06-29') },
+    { url: `${SITE.url}/contact`, lastModified: new Date('2026-05-05') },
+    { url: `${SITE.url}/builderlync`, lastModified: new Date('2026-05-05') },
+    { url: `${SITE.url}/privacy`, lastModified: new Date('2026-05-05') },
+    { url: `${SITE.url}/terms`, lastModified: new Date('2026-05-05') },
   ];
 }

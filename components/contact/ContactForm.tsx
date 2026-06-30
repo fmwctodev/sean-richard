@@ -228,7 +228,7 @@ export default function ContactForm() {
         setStep(1);
       } else {
         setError(
-          `Submission failed (status ${response.status}). Please try again, or email sean@sitehues.com directly.`,
+          `Submission failed (status ${response.status}). Please try again, or email sean@autom8ionlab.com directly.`,
         );
       }
     } catch {

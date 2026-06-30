@@ -45,7 +45,9 @@ ${ventureLines}
 
 ${fractionalLines}
 
-Details: ${SITE.url}/fractional-cmo-cto
+- Fractional CMO services hub (contractors): ${SITE.url}/fractional-cmo-contractors
+- Fractional CTO services hub (service businesses, SaaS, growth-stage operators): ${SITE.url}/fractional-cto-service-businesses
+- Combined overview and engagement framework: ${SITE.url}/fractional-cmo-cto
 
 ## Selected Products (built and shipped end-to-end)
 

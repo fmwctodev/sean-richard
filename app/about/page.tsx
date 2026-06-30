@@ -107,7 +107,7 @@ export default function AboutPage() {
                 />
                 <div className="relative w-[240px] sm:w-[280px] md:w-[340px] lg:w-[380px]">
                   <Image
-                    src="/assets/headshots/sean-richard.png"
+                    src="/assets/headshots/sean-richard.webp"
                     alt="Sean Richard - Professional Headshot"
                     className="relative w-full h-auto"
                     width={550}

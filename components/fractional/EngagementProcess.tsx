@@ -1,5 +1,5 @@
 import MonoLabel from '@/components/editorial/MonoLabel';
-import { ENGAGEMENT_STEPS } from '@/content/fractional';
+import { ENGAGEMENT_STEPS, FRACTIONAL_ENGAGEMENT_SCOPE } from '@/content/fractional';
 
 export default function EngagementProcess() {
   return (
@@ -22,6 +22,10 @@ export default function EngagementProcess() {
             Three steps, no <span className="text-accent">theater</span>.
           </h2>
         </div>
+
+        <p className="max-w-[72ch] text-[15px] leading-[1.7] text-ink-tertiary mb-8 font-mono">
+          {FRACTIONAL_ENGAGEMENT_SCOPE}
+        </p>
 
         <div className="grid md:grid-cols-3 gap-4">
           {ENGAGEMENT_STEPS.map((step) => (

@@ -31,6 +31,14 @@ export default function FractionalHero() {
         </h1>
 
         <p
+          className="text-[clamp(17px,1.4vw,21px)] leading-[1.55] text-ink-primary font-medium mb-6"
+          style={{ maxWidth: '60ch' }}
+        >
+          Sean Richard provides fractional CMO and CTO support for contractors,
+          service-based companies, and growth-stage operators &mdash; senior marketing
+          and technology leadership without full-time overhead.
+        </p>
+        <p
           className="text-[clamp(17px,1.4vw,21px)] leading-[1.55] text-ink-secondary mb-12"
           style={{ maxWidth: '60ch' }}
         >

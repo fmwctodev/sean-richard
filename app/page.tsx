@@ -7,7 +7,7 @@ import HomeFractionalPreview from '@/components/home/HomeFractionalPreview';
 import HomeSelectedWorkTeaser from '@/components/home/HomeSelectedWorkTeaser';
 import HomeFaq from '@/components/home/HomeFaq';
 import HomeCta from '@/components/home/HomeCta';
-import { JsonLd } from '@/components/seo/SchemaMarkup';
+import SchemaMarkup, { JsonLd } from '@/components/seo/SchemaMarkup';
 import { getFaqSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="pt-20">
+      <SchemaMarkup path="/" pageTitle="Home" />
       <JsonLd data={getFaqSchema()} />
       <HomeHero />
       <HomeOperatingPanel />

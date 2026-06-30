@@ -6,7 +6,7 @@ export const SITE = {
     'Sean Richard is an entrepreneur, systems architect, and fractional CMO/CTO building AI automation, contractor SaaS, marketing infrastructure, and business systems for service-based companies. Founder and operator of Sitehues Media Inc, Autom8ion Lab, and BuilderLync Inc.',
   tagline: 'Building the systems behind modern service businesses.',
   legalEntity: 'Sean Scott Richard LLC',
-  email: 'sean@sitehues.com',
+  email: 'sean@autom8ionlab.com',
   location: 'Palm Coast, FL',
   phone: '+1 689-310-2712',
   social: {

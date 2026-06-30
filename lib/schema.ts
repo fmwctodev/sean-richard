@@ -2,6 +2,7 @@ import { SITE } from '@/content/nav';
 import { VENTURES } from '@/content/ventures';
 import { FAQS } from '@/content/faqs';
 import { BOOKS } from '@/content/books';
+import { FRACTIONAL_FAQS, type FractionalFaqAudience } from '@/content/fractional';
 
 const BASE_URL = SITE.url;
 
@@ -10,6 +11,8 @@ const PAGE_NAMES: Record<string, string> = {
   '/about': 'About',
   '/portfolio': 'Portfolio',
   '/fractional-cmo-cto': 'Fractional CMO/CTO',
+  '/fractional-cmo-contractors': 'Fractional CMO for Contractors',
+  '/fractional-cto-service-businesses': 'Fractional CTO for Service Businesses',
   '/contact': 'Contact',
   '/privacy': 'Privacy Policy',
   '/terms': 'Terms of Service',
@@ -95,7 +98,7 @@ export function getCoreSchemaGraph(path: string, pageTitle?: string) {
             addressCountry: 'US',
           },
         },
-        email: `mailto:${SITE.email}`,
+        email: SITE.email,
         alumniOf: [
           {
             '@type': 'CollegeOrUniversity',
@@ -158,14 +161,14 @@ export function getCoreSchemaGraph(path: string, pageTitle?: string) {
   };
 }
 
-export function getFractionalServicesSchema() {
+export function getFractionalServicesSchema(filterId?: 'fractional-cmo' | 'fractional-cto') {
   const offerings = [
     {
       id: 'fractional-cmo',
       name: 'Fractional CMO for Contractors',
       description:
         'Senior marketing leadership for contractors building accountable growth systems across lead generation, paid media, CRM, sales process, follow-up automation, reporting, and vendor oversight.',
-      url: `${BASE_URL}/fractional-cmo-cto#cmo`,
+      url: `${BASE_URL}/fractional-cmo-contractors`,
       serviceType: 'Fractional CMO',
       areaServed: 'United States',
     },
@@ -173,16 +176,18 @@ export function getFractionalServicesSchema() {
       id: 'fractional-cto',
       name: 'Fractional CTO for Service-Based Companies',
       description:
-        'Executive-level technology direction without full-time overhead: technology roadmap, software stack review, automation architecture, AI implementation planning, vendor oversight, and security-aware system design.',
-      url: `${BASE_URL}/fractional-cmo-cto#cto`,
+        'Executive-level technology direction without full-time overhead: technology roadmap, software stack review, automation architecture, AI implementation planning, vendor oversight, and cybersecurity-aware system design.',
+      url: `${BASE_URL}/fractional-cto-service-businesses`,
       serviceType: 'Fractional CTO',
       areaServed: 'United States',
     },
   ];
 
+  const filtered = filterId ? offerings.filter((o) => o.id === filterId) : offerings;
+
   return {
     '@context': 'https://schema.org',
-    '@graph': offerings.map((o) => ({
+    '@graph': filtered.map((o) => ({
       '@type': 'Service',
       '@id': `${BASE_URL}/#${o.id}`,
       name: o.name,
@@ -198,29 +203,28 @@ export function getFractionalServicesSchema() {
 export function getReadingListSchema() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'ReadAction',
+    '@type': 'ItemList',
     '@id': `${BASE_URL}/about#operating-influences`,
-    agent: { '@id': `${BASE_URL}/#sean-richard` },
     name: 'Operating Influences — Sean Richard reading list',
-    object: {
-      '@type': 'ItemList',
-      name: 'Operating Influences',
-      itemListElement: BOOKS.map((book, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'Book',
-          name: book.title,
-          author: book.authors.map((author) => ({
-            '@type': 'Person',
-            name: author,
-          })),
-          about: book.topic,
-          genre: book.category,
-          ...(book.isbn ? { isbn: book.isbn } : {}),
-        },
-      })),
-    },
+    description:
+      "Books actively shaping Sean Richard's thinking on security, infrastructure, and the systems his companies run on.",
+    itemListOrder: 'https://schema.org/ItemListOrderAscending',
+    numberOfItems: BOOKS.length,
+    itemListElement: BOOKS.map((book, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Book',
+        name: book.title,
+        author: book.authors.map((author) => ({
+          '@type': 'Person',
+          name: author,
+        })),
+        about: book.topic,
+        genre: book.category,
+        ...(book.isbn ? { isbn: book.isbn } : {}),
+      },
+    })),
   };
 }
 
@@ -229,6 +233,29 @@ export function getFaqSchema() {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: FAQS.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export function getFractionalFaqSchema(
+  audience?: Exclude<FractionalFaqAudience, 'all'>,
+  pagePath: string = '/fractional-cmo-cto',
+) {
+  const filtered = audience
+    ? FRACTIONAL_FAQS.filter((f) => f.audience === 'all' || f.audience === audience)
+    : FRACTIONAL_FAQS;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${BASE_URL}${pagePath}#faq`,
+    mainEntity: filtered.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {
